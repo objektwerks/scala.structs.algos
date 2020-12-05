@@ -1,6 +1,6 @@
 Scala 3 Structs and Algos
 -------------------------
->Scala structures and algos.
+>Scala structs and algos.
 
 Test
 ----
