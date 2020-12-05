@@ -5,7 +5,7 @@ import scala.collection.mutable.ArrayBuffer
 
 object BigO {
   // O(1) - Constant Time
-  def constantTimeSearch(array: Array[Int], index: Int): Int = array(index)
+  def constantTimeGetByIndex(array: Array[Int], index: Int): Int = array(index)
 
   // O(n) - Linear Time
   def linearTimeSum(array: Array[Int]): Int = {
@@ -20,7 +20,7 @@ object BigO {
   def binarySearch(buffer: ArrayBuffer[Value], value: Value): Int = buffer.search(value).insertionPoint
 
   // O(n^2) - Quadratic Time
-  def quadraticTimeMatrix(): Array[Array[Int]] = {
+  def quadraticTimeBuildMatrix(): Array[Array[Int]] = {
     val matrix = Array.ofDim[Int](3, 3)
     for (i <- 0 until matrix.length - 1) {
       for (j <- 0 until matrix.length - 1) {

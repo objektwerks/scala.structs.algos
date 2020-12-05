@@ -9,7 +9,7 @@ class BigOTest extends AnyFunSuite with Matchers {
   import BigO._
 
   test("constant time - O(1)") {
-    constantTimeSearch((1 to 10).toArray[Int], 3) shouldBe 4
+    constantTimeGetByIndex((1 to 10).toArray[Int], 3) shouldBe 4
   }
 
   test("linear time - O(n)") {
@@ -23,7 +23,7 @@ class BigOTest extends AnyFunSuite with Matchers {
   }
 
   test("quadratic time - O(n^2)") {
-    quadraticTimeMatrix().length shouldBe 3
+    quadraticTimeBuildMatrix().length shouldBe 3
   }
 
   test("exponential time - O(2^N)") {
