@@ -1,31 +1,29 @@
 package objektwerks
 
 import scala.annotation.tailrec
+import scala.collection.mutable.ArrayBuffer
 
 object BigO {
   // O(1) - Constant Time
-  def constantTime(array: Array[Int]): Int = {
-    array(0)
-  }
+  def constantTimeSearch(array: Array[Int], index: Int): Int = array(index)
 
   // O(n) - Linear Time
-  def linearTime(array: Array[Int]): Int = {
+  def linearTimeSum(array: Array[Int]): Int = {
     var sum = 0
-    for (i <- array) {
-      sum = sum + i
-    }
+    for (i <- array) { sum = sum + i }
     sum
   }
 
   // O(log N) - Binary Search
   case class Value(number: Int)
   implicit def ordering: Ordering[Value] = Ordering.by(_.number)
+  def binarySearch(buffer: ArrayBuffer[Value], value: Value): Int = buffer.search(value).insertionPoint
 
   // O(n^2) - Quadratic Time
-  def quadraticTime(): Array[Array[Int]] = {
+  def quadraticTimeMatrix(): Array[Array[Int]] = {
     val matrix = Array.ofDim[Int](3, 3)
-    for (i <- 0 to matrix.length - 1) {
-      for (j <- 0 to matrix.length - 1) {
+    for (i <- 0 until matrix.length - 1) {
+      for (j <- 0 until matrix.length - 1) {
         matrix(i)(j) = j
       }
     }
@@ -33,7 +31,7 @@ object BigO {
   }
 
   // O(2^N) - Exponential Time
-  def fibonacci(n: Long): BigInt = {
+  def exponentialTimeFibonacci(n: Long): BigInt = {
     @tailrec
     def loop(n: Long, a: Long, b: Long): BigInt = n match {
       case 0 => a
@@ -44,16 +42,16 @@ object BigO {
 
   // O(N!) - Factorial Time
   @tailrec
-  final def intersectLists[A](listA: List[A],
-                              listB: List[A],
-                              acc: List[A] = List.empty[A]): List[A] =
+  final def factorialTimeIntersectLists[A](listA: List[A],
+                                           listB: List[A],
+                                           acc: List[A] = List.empty[A]): List[A] =
     listA match {
       case Nil => acc
       case head :: tail =>
         if (listB.contains(head)) {
-          intersectLists(tail, listB, acc :+ head)
+          factorialTimeIntersectLists(tail, listB, acc :+ head)
         } else {
-          intersectLists(tail, listB, acc)
+          factorialTimeIntersectLists(tail, listB, acc)
         }
     }
 }
