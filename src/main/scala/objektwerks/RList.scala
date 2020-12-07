@@ -7,6 +7,7 @@ object RList {
     def head: T
     def tail: RList[T]
     def isEmpty: Boolean
+    def apply(index: Int): T
     def ::[S >: T](element: S): RList[S] = new ::(element, this)
   }
 
@@ -15,6 +16,7 @@ object RList {
     override def tail: RList[Nothing] = throw new NoSuchElementException
     override def isEmpty: Boolean = true
     override def toString: String = "[]"
+    override def apply(index: Int): Nothing = throw new NoSuchElementException
   }
 
   case class ::[+T](override val head: T,
@@ -28,6 +30,16 @@ object RList {
         else loop(remainder.tail, s"$result${remainder.head}, ")
       }
       "[" + loop(this, "") + "]"
+    }
+
+    override def apply(index: Int): T = {
+      @tailrec
+      def loop(remainder: RList[T], currentIndex: Int): T = {
+        if ( currentIndex == index) remainder.head
+        else loop( remainder.tail, currentIndex + 1)
+      }
+      if ( index < 0 ) throw new NoSuchElementException
+      else loop(this, 0)
     }
   }
 }
