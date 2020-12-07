@@ -3,7 +3,7 @@ package objektwerks
 object RList {
   import scala.annotation.tailrec
 
-  def from[T](iterable: Iterable[T]): RList[T] = {
+  def iterable[T](iterable: Iterable[T]): RList[T] = {
     @tailrec
     def loop(remainder: Iterable[T], result: RList[T]): RList[T] = {
       if (remainder.isEmpty) result
