@@ -21,6 +21,7 @@ object RList {
     def reverse: RList[T]
     def ::[S >: T](element: S): RList[S] = new ::(element, this)
     def ++[S >: T](other: RList[S]): RList[S]
+    def -=(index: Int): RList[T]
   }
 
   case object RNil extends RList[Nothing] {
@@ -32,6 +33,7 @@ object RList {
     override def length: Int = 0
     override def reverse: RList[Nothing] = RNil
     override def ++[S >: Nothing](other: RList[S]): RList[S] = other
+    override def -=(index: Int): RList[Nothing] = RNil
   }
 
   case class ::[+T](override val head: T,
@@ -78,6 +80,15 @@ object RList {
         else loop(other.tail, other.head :: result)
       }
       loop(this.reverse, other)
+    }
+    override def -=(index: Int): RList[T] = {
+      @tailrec
+      def loop(remainder: RList[T], currentIndex: Int, predecessors: RList[T]): RList[T] = {
+        if (currentIndex == index) predecessors.reverse ++ remainder.tail
+        else if (remainder.isEmpty) predecessors.reverse
+        else loop(remainder.tail, currentIndex + 1, remainder.head :: predecessors)
+      }
+      loop(this, 0, RNil)
     }
   }
 }
