@@ -17,10 +17,8 @@ class RListTest extends AnyFunSuite with Matchers {
   }
 
   test("iterable") {
-    val cons = RList.from(1 to 100)
-    cons.isEmpty shouldBe false
-    cons.length shouldBe 100
-    cons(50) shouldBe 50
-    cons.reverse shouldBe cons.reverse
+    val cons = RList.from(1 to 1000)
+    cons.length shouldBe 1000
+    cons(500) shouldBe 500
   }
 }
