@@ -12,6 +12,7 @@ class RListTest extends AnyFunSuite with Matchers {
     cons.length shouldBe 3
     cons(2) shouldBe 3
     cons.reverse shouldBe 3 :: 2 :: 1 :: RNil
+    (cons ++ (4 :: RNil)) shouldBe 1 :: 2 :: 3 :: 4 :: RNil
   }
 
   test("iterable") {
