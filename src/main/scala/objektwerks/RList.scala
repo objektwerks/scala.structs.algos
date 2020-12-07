@@ -22,10 +22,10 @@ object RList {
     override def isEmpty: Boolean = false
     override def toString: String = {
       @tailrec
-      def loop(remaining: RList[T], result: String): String = {
-        if (remaining.isEmpty) result
-        else if (remaining.tail.isEmpty) s"$result${remaining.head}"
-        else loop(remaining.tail, s"$result${remaining.head}, ")
+      def loop(remainder: RList[T], result: String): String = {
+        if (remainder.isEmpty) result
+        else if (remainder.tail.isEmpty) s"$result${remainder.head}"
+        else loop(remainder.tail, s"$result${remainder.head}, ")
       }
       "[" + loop(this, "") + "]"
     }
