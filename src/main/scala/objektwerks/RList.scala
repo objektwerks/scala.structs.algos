@@ -83,10 +83,10 @@ object RList {
     }
     override def -=(index: Int): RList[T] = {
       @tailrec
-      def loop(remainder: RList[T], currentIndex: Int, predecessors: RList[T]): RList[T] = {
-        if (currentIndex == index) predecessors.reverse ++ remainder.tail
-        else if (remainder.isEmpty) predecessors.reverse
-        else loop(remainder.tail, currentIndex + 1, remainder.head :: predecessors)
+      def loop(remainder: RList[T], currentIndex: Int, unmatchedIndexes: RList[T]): RList[T] = {
+        if (currentIndex == index) unmatchedIndexes.reverse ++ remainder.tail
+        else if (remainder.isEmpty) unmatchedIndexes.reverse
+        else loop(remainder.tail, currentIndex + 1, remainder.head :: unmatchedIndexes)
       }
       loop(this, 0, RNil)
     }
