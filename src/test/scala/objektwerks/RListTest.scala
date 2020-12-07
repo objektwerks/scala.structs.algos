@@ -11,5 +11,6 @@ class RListTest extends AnyFunSuite with Matchers {
     cons.isEmpty shouldBe false
     cons.length shouldBe 3
     cons(2) shouldBe 3
+    cons.reverse shouldBe 3 :: 2 :: 1 :: RNil
   }
 }
