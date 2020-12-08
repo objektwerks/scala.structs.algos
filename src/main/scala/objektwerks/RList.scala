@@ -47,10 +47,10 @@ object RList {
     override def isEmpty: Boolean = false
     override def toString: String = {
       @tailrec
-      def loop(remainder: RList[T], result: String): String = {
-        if (remainder.isEmpty) result
-        else if (remainder.tail.isEmpty) s"$result${remainder.head}"
-        else loop(remainder.tail, s"$result${remainder.head}, ")
+      def loop(remainder: RList[T], accumulator: String): String = {
+        if (remainder.isEmpty) accumulator
+        else if (remainder.tail.isEmpty) s"$accumulator${remainder.head}"
+        else loop(remainder.tail, s"$accumulator${remainder.head}, ")
       }
       "[" + loop(this, "") + "]"
     }
@@ -73,17 +73,17 @@ object RList {
     }
     override def reverse: RList[T] = {
       @tailrec
-      def loop(remainder: RList[T], result: RList[T]): RList[T] = {
-        if (remainder.isEmpty) result
-        else loop(remainder.tail, remainder.head :: result)
+      def loop(remainder: RList[T], accumulator: RList[T]): RList[T] = {
+        if (remainder.isEmpty) accumulator
+        else loop(remainder.tail, remainder.head :: accumulator)
       }
       loop(this, RNil)
     }
     override def ++[S >: T](other: RList[S]): RList[S] = {
       @tailrec
-      def loop(other: RList[S], result: RList[S]): RList[S] = {
-        if (other.isEmpty) result
-        else loop(other.tail, other.head :: result)
+      def loop(other: RList[S], accumulator: RList[S]): RList[S] = {
+        if (other.isEmpty) accumulator
+        else loop(other.tail, other.head :: accumulator)
       }
       loop(this.reverse, other)
     }
@@ -98,13 +98,20 @@ object RList {
     }
     override def map[S](f: T => S): RList[S] = {
       @tailrec
-      def loop(remainder: RList[T], result: RList[S]): RList[S] = {
-        if (remainder.isEmpty) result.reverse
-        else loop(remainder.tail, f(remainder.head) :: result)
+      def loop(remainder: RList[T], accumulator: RList[S]): RList[S] = {
+        if (remainder.isEmpty) accumulator.reverse
+        else loop(remainder.tail, f(remainder.head) :: accumulator)
       }
       loop(this, RNil)
     }
-    override def flatMap[S](f: T => RList[S]): RList[S] = ???
+    override def flatMap[S](f: T => RList[S]): RList[S] = {
+      @tailrec
+      def loop(remainder: RList[T], accumulator: RList[S]): RList[S] = {
+        if (remainder.isEmpty) accumulator.reverse
+        else loop(remainder.tail, f(remainder.head).reverse ++ accumulator)
+      }
+      loop(this, RNil)
+    }
     override def filter(f: T => Boolean): RList[T] = ???
   }
 }

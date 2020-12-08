@@ -46,6 +46,11 @@ class RListTest extends AnyFunSuite with Matchers {
 
   test("map") {
     val rlist = 1 :: 2 :: 3 :: RNil
-    rlist.map(_ * 2) shouldBe 2 :: 4 :: 6 :: RNil
+    rlist.map(x => x * 2) shouldBe 2 :: 4 :: 6 :: RNil
+  }
+
+  test("flatMap") {
+    val rlist = 1 :: 2 :: 3 :: RNil
+    rlist.flatMap(x => x :: (x * 2) :: RNil) shouldBe 1 :: 2 :: 2 :: 4 :: 3 :: 6 :: RNil
   }
 }
