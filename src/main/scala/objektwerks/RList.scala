@@ -106,9 +106,15 @@ object RList {
     }
     override def flatMap[S](func: T => RList[S]): RList[S] = {
       @tailrec
-      def loop(remainder: RList[T], accumulator: RList[S]): RList[S] = {
-        if (remainder.isEmpty) accumulator.reverse
-        else loop(remainder.tail, func( remainder.head ).reverse ++ accumulator)
+      def loop(remainder: RList[T], accumulator: RList[RList[S]]): RList[S] = {
+        if (remainder.isEmpty) flatten(accumulator, RNil, RNil)
+        else loop(remainder.tail, func( remainder.head ).reverse :: accumulator)
+      }
+      @tailrec
+      def flatten(lists: RList[RList[S]], currentList: RList[S], accumulator: RList[S]): RList[S] = {
+        if (lists.isEmpty && currentList.isEmpty) accumulator
+        else if (currentList.isEmpty) flatten(lists.tail, lists.head, accumulator)
+        else flatten(lists, currentList.tail, currentList.head :: accumulator)
       }
       loop(this, RNil)
     }
