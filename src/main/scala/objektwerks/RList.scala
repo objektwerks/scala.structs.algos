@@ -47,10 +47,10 @@ object RList {
     override def isEmpty: Boolean = false
     override def toString: String = {
       @tailrec
-      def loop(list: RList[T], accumulator: String): String = {
-        if (list.isEmpty) accumulator
-        else if (list.tail.isEmpty) s"$accumulator${list.head}"
-        else loop(list.tail, s"$accumulator${list.head}, ")
+      def loop(list: RList[T], acc: String): String = {
+        if (list.isEmpty) acc
+        else if (list.tail.isEmpty) s"$acc${list.head}"
+        else loop(list.tail, s"$acc${list.head}, ")
       }
       "[" + loop(this, "") + "]"
     }
@@ -65,25 +65,25 @@ object RList {
     }
     override def length: Int = {
       @tailrec
-      def loop(list: RList[T], accumulator: Int): Int = {
-        if (list.isEmpty) accumulator
-        else loop(list.tail, accumulator + 1)
+      def loop(list: RList[T], acc: Int): Int = {
+        if (list.isEmpty) acc
+        else loop(list.tail, acc + 1)
       }
       loop(this, 0)
     }
     override def reverse: RList[T] = {
       @tailrec
-      def loop(list: RList[T], accumulator: RList[T]): RList[T] = {
-        if (list.isEmpty) accumulator
-        else loop(list.tail, list.head :: accumulator)
+      def loop(list: RList[T], acc: RList[T]): RList[T] = {
+        if (list.isEmpty) acc
+        else loop(list.tail, list.head :: acc)
       }
       loop(this, RNil)
     }
     override def ++[S >: T](other: RList[S]): RList[S] = {
       @tailrec
-      def loop(other: RList[S], accumulator: RList[S]): RList[S] = {
-        if (other.isEmpty) accumulator
-        else loop(other.tail, other.head :: accumulator)
+      def loop(other: RList[S], acc: RList[S]): RList[S] = {
+        if (other.isEmpty) acc
+        else loop(other.tail, other.head :: acc)
       }
       loop(this.reverse, other)
     }
@@ -98,32 +98,32 @@ object RList {
     }
     override def map[S](func: T => S): RList[S] = {
       @tailrec
-      def loop(list: RList[T], accumulator: RList[S]): RList[S] = {
-        if (list.isEmpty) accumulator.reverse
-        else loop(list.tail, func( list.head ) :: accumulator)
+      def loop(list: RList[T], acc: RList[S]): RList[S] = {
+        if (list.isEmpty) acc.reverse
+        else loop(list.tail, func( list.head ) :: acc)
       }
       loop(this, RNil)
     }
     override def flatMap[S](func: T => RList[S]): RList[S] = {
       @tailrec
-      def loop(list: RList[T], accumulator: RList[RList[S]]): RList[S] = {
-        if (list.isEmpty) flatten(accumulator, RNil, RNil)
-        else loop(list.tail, func( list.head ).reverse :: accumulator)
+      def loop(list: RList[T], acc: RList[RList[S]]): RList[S] = {
+        if (list.isEmpty) flatten(acc, RNil, RNil)
+        else loop(list.tail, func( list.head ).reverse :: acc)
       }
       @tailrec
-      def flatten(lists: RList[RList[S]], currentList: RList[S], accumulator: RList[S]): RList[S] = {
-        if (lists.isEmpty && currentList.isEmpty) accumulator
-        else if (currentList.isEmpty) flatten(lists.tail, lists.head, accumulator)
-        else flatten(lists, currentList.tail, currentList.head :: accumulator)
+      def flatten(lists: RList[RList[S]], currentList: RList[S], acc: RList[S]): RList[S] = {
+        if (lists.isEmpty && currentList.isEmpty) acc
+        else if (currentList.isEmpty) flatten(lists.tail, lists.head, acc)
+        else flatten(lists, currentList.tail, currentList.head :: acc)
       }
       loop(this, RNil)
     }
     override def filter(predicate: T => Boolean): RList[T] = {
       @tailrec
-      def loop(list: RList[T], accumulator: RList[T]): RList[T] = {
-        if(list.isEmpty) accumulator.reverse
-        else if( predicate( list.head )) loop(list.tail, list.head :: accumulator)
-        else loop(list.tail, accumulator)
+      def loop(list: RList[T], acc: RList[T]): RList[T] = {
+        if(list.isEmpty) acc.reverse
+        else if( predicate( list.head )) loop(list.tail, list.head :: acc)
+        else loop(list.tail, acc)
       }
       loop(this, RNil)
     }
