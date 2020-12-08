@@ -6,13 +6,35 @@ import org.scalatest.matchers.should.Matchers
 import RList._
 
 class RListTest extends AnyFunSuite with Matchers {
-  test("rlist") {
+  test("isEmpty") {
     val rlist = 1 :: 2 :: 3 :: RNil
     rlist.isEmpty shouldBe false
+  }
+
+  test("length") {
+    val rlist = 1 :: 2 :: 3 :: RNil
     rlist.length shouldBe 3
+  }
+
+  test("apply") {
+    val rlist = 1 :: 2 :: 3 :: RNil
     rlist(2) shouldBe 3
+  }
+
+  test("reverse") {
+    val rlist = 1 :: 2 :: 3 :: RNil
     rlist.reverse shouldBe 3 :: 2 :: 1 :: RNil
     (rlist ++ (4 :: RNil)) shouldBe 1 :: 2 :: 3 :: 4 :: RNil
+    (rlist -= 2) shouldBe 1 :: 2 :: RNil
+  }
+
+  test("append ++") {
+    val rlist = 1 :: 2 :: 3 :: RNil
+    (rlist ++ (4 :: RNil)) shouldBe 1 :: 2 :: 3 :: 4 :: RNil
+  }
+
+  test("remove -=") {
+    val rlist = 1 :: 2 :: 3 :: RNil
     (rlist -= 2) shouldBe 1 :: 2 :: RNil
   }
 
@@ -20,5 +42,10 @@ class RListTest extends AnyFunSuite with Matchers {
     val rlist = RList.iterable(1 to 1000)
     rlist.length shouldBe 1000
     rlist(500) shouldBe 500
+  }
+
+  test("map") {
+    val rlist = 1 :: 2 :: 3 :: RNil
+    rlist.map(_ * 2) shouldBe 2 :: 4 :: 6 :: RNil
   }
 }
