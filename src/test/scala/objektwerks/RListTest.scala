@@ -30,8 +30,6 @@ class RListTest extends AnyFunSuite with Matchers {
   test("reverse") {
     val rlist = 1 :: 2 :: 3 :: RNil
     rlist.reverse shouldBe 3 :: 2 :: 1 :: RNil
-    (rlist ++ (4 :: RNil)) shouldBe 1 :: 2 :: 3 :: 4 :: RNil
-    (rlist -= 2) shouldBe 1 :: 2 :: RNil
   }
 
   test("append ++") {
