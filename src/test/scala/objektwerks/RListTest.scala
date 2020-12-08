@@ -6,6 +6,12 @@ import org.scalatest.matchers.should.Matchers
 import RList._
 
 class RListTest extends AnyFunSuite with Matchers {
+  test("cons :: > prepend ::") {
+    val cons = 1 :: 2 :: 3 :: RNil
+    val prepend = 0 :: cons
+    prepend shouldBe 0 :: 1 :: 2 :: 3 :: RNil
+  }
+
   test("isEmpty") {
     val rlist = 1 :: 2 :: 3 :: RNil
     rlist.isEmpty shouldBe false
