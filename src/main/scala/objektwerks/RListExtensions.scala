@@ -1,6 +1,6 @@
 package objektwerks
 
-trait RListOps {
+trait RListExtensions {
   import scala.annotation.tailrec
   import RList._
 

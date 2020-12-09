@@ -1,6 +1,6 @@
 package objektwerks
 
-object RList extends RListOps {
+object RList extends RListExtensions {
   import scala.annotation.tailrec
 
   sealed abstract class RList[+T] {
