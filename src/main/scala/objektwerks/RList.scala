@@ -1,5 +1,7 @@
 package objektwerks
 
+import scala.util.Random
+
 object RList {
   import scala.annotation.tailrec
 
@@ -28,6 +30,7 @@ object RList {
     def count: RList[(T, Int)]
     def duplicate(by: Int): RList[T]
     def rotate(by: Int): RList[T]
+    def random(by: Int): RList[T]
   }
 
   case object RNil extends RList[Nothing] {
@@ -46,6 +49,7 @@ object RList {
     override def count: RList[(Nothing, Int)] = RNil
     override def duplicate(by: Int): RList[Nothing] = RNil
     override def rotate(by: Int): RList[Nothing] = RNil
+    override def random(by: Int): RList[Nothing] = RNil
   }
 
   case class ::[+T](override val head: T,
@@ -162,6 +166,20 @@ object RList {
         else loop(list.tail, current - 1, list.head :: acc)
       }
       loop(this, by, RNil)
+    }
+    override def random(by: Int): RList[T] = {
+      val random = new Random(System.currentTimeMillis())
+      val length = this.length
+      @tailrec
+      def loop(current: Int, acc: RList[T]): RList[T] = {
+        if (current == 0) acc
+        else {
+          val index = random.nextInt(length)
+          val number = this(index)
+          loop(current -1, number :: acc)
+        }
+      }
+      if (by < 0) RNil else loop(by, RNil)
     }
   }
 }

@@ -77,4 +77,9 @@ class RListTest extends AnyFunSuite with Matchers {
     val rlist = 1 :: 2 :: 3 :: RNil
     rlist.rotate(by = 1) shouldBe 2 :: 3 :: 1 :: RNil
   }
+
+  test("random") {
+    val rlist = RList.iterable(1 to 10)
+    rlist.random(7).length shouldBe 7
+  }
 }
