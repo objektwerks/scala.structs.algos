@@ -27,6 +27,7 @@ object RList {
     def filter(predicate: T => Boolean): RList[T]
     def count: RList[(T, Int)]
     def duplicate(by: Int): RList[T]
+    def rotate(by: Int): RList[T]
   }
 
   case object RNil extends RList[Nothing] {
@@ -44,6 +45,7 @@ object RList {
     override def filter(predicate: Nothing => Boolean): RList[Nothing] = RNil
     override def count: RList[(Nothing, Int)] = RNil
     override def duplicate(by: Int): RList[Nothing] = RNil
+    override def rotate(by: Int): RList[Nothing] = RNil
   }
 
   case class ::[+T](override val head: T,
@@ -150,6 +152,16 @@ object RList {
         else loop(list, current, duplicates + 1, current :: acc)
       }
       loop(this.tail, this.head, 0, RNil)
+    }
+    override def rotate(by: Int): RList[T] = {
+      @tailrec
+      def loop(list: RList[T], current: Int, acc: RList[T]): RList[T] = {
+        if (list.isEmpty && current == 0) this
+        else if (list.isEmpty) loop(this, current, RNil)
+        else if (current == 0) list ++ acc.reverse
+        else loop(list.tail, current - 1, list.head :: acc)
+      }
+      loop(this, by, RNil)
     }
   }
 }

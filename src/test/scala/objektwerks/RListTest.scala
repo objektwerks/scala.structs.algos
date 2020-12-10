@@ -72,4 +72,9 @@ class RListTest extends AnyFunSuite with Matchers {
     val rlist = 1 :: 2 :: 3 :: RNil
     rlist.duplicate(by = 2) shouldBe 1 :: 1 :: 2 :: 2 :: 3 :: 3 :: RNil
   }
+
+  test("rotate") {
+    val rlist = 1 :: 2 :: 3 :: RNil
+    rlist.rotate(by = 1) shouldBe 2 :: 3 :: 1 :: RNil
+  }
 }
