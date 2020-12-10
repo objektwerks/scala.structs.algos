@@ -5,9 +5,9 @@ object RList {
 
   def iterable[T](iterable: Iterable[T]): RList[T] = {
     @tailrec
-    def loop(remainder: Iterable[T], result: RList[T]): RList[T] = {
-      if (remainder.isEmpty) result
-      else loop(remainder.tail, remainder.head :: result)
+    def loop(iterable: Iterable[T], acc: RList[T]): RList[T] = {
+      if (iterable.isEmpty) acc
+      else loop(iterable.tail, iterable.head :: acc)
     }
     loop(iterable, RNil)
   }
