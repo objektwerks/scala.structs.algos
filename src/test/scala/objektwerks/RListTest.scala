@@ -79,7 +79,7 @@ class RListTest extends AnyFunSuite with Matchers {
   }
 
   test("random") {
-    val rlist = RList.iterable(1 to 10)
-    rlist.random(7).length shouldBe 7
+    val rlist = RList.iterable(1 to 100)
+    rlist.random(50).length shouldBe 50
   }
 }
