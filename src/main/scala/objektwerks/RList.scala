@@ -1,9 +1,8 @@
 package objektwerks
 
-import scala.util.Random
-
 object RList {
   import scala.annotation.tailrec
+  import scala.util.Random
 
   def iterable[T](iterable: Iterable[T]): RList[T] = {
     @tailrec
