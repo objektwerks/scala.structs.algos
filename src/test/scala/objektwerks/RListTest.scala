@@ -67,4 +67,9 @@ class RListTest extends AnyFunSuite with Matchers {
     val rlist = 1 :: 2 :: 2 :: 3 :: 3 :: 3 :: RNil
     rlist.count shouldBe (1, 1) :: (2, 2) :: (3, 3) :: RNil
   }
+
+  test("duplicate") {
+    val rlist = 1 :: 2 :: 3 :: RNil
+    rlist.duplicate(by = 2) shouldBe 1 :: 1 :: 2 :: 2 :: 3 :: 3 :: RNil
+  }
 }

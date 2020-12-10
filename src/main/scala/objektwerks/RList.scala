@@ -26,6 +26,7 @@ object RList {
     def flatMap[S](func: T => RList[S]): RList[S]
     def filter(predicate: T => Boolean): RList[T]
     def count: RList[(T, Int)]
+    def duplicate(by: Int): RList[T]
   }
 
   case object RNil extends RList[Nothing] {
@@ -42,6 +43,7 @@ object RList {
     override def flatMap[S](func: Nothing => RList[S]): RList[S] = RNil
     override def filter(predicate: Nothing => Boolean): RList[Nothing] = RNil
     override def count: RList[(Nothing, Int)] = RNil
+    override def duplicate(by: Int): RList[Nothing] = RNil
   }
 
   case class ::[+T](override val head: T,
@@ -138,6 +140,16 @@ object RList {
         else loop(list.tail, (list.head, 1), current :: acc )
       }
       loop(this.tail, (this.head, 1), RNil).reverse
+    }
+    override def duplicate(by: Int): RList[T] = {
+      @tailrec
+      def loop(list: RList[T], current: T, duplicates: Int, acc: RList[T]): RList[T] = {
+        if (list.isEmpty && duplicates == by) acc.reverse
+        else if (list.isEmpty) loop(list, current, duplicates + 1, current :: acc)
+        else if (duplicates == by) loop(list.tail, list.head, 0, acc)
+        else loop(list, current, duplicates + 1, current :: acc)
+      }
+      loop(this.tail, this.head, 0, RNil)
     }
   }
 }
