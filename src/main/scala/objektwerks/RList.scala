@@ -16,6 +16,7 @@ object RList extends RListExtensions {
     def map[S](func: T => S): RList[S]
     def flatMap[S](func: T => RList[S]): RList[S]
     def filter(predicate: T => Boolean): RList[T]
+    def count: RList[(T, Int)]
   }
 
   case object RNil extends RList[Nothing] {
@@ -31,6 +32,7 @@ object RList extends RListExtensions {
     override def map[S](func: Nothing => S): RList[S] = RNil
     override def flatMap[S](func: Nothing => RList[S]): RList[S] = RNil
     override def filter(predicate: Nothing => Boolean): RList[Nothing] = RNil
+    override def count: RList[(Nothing, Int)] = RNil
   }
 
   case class ::[+T](override val head: T,
@@ -47,9 +49,9 @@ object RList extends RListExtensions {
     }
     override def apply(index: Int): T = {
       @tailrec
-      def loop(list: RList[T], currentIndex: Int): T = {
-        if ( currentIndex == index) list.head
-        else loop( list.tail, currentIndex + 1)
+      def loop(list: RList[T], current: Int): T = {
+        if ( current == index) list.head
+        else loop(list.tail, current + 1)
       }
       if ( index < 0 ) throw new NoSuchElementException
       else loop(this, 0)
@@ -70,20 +72,20 @@ object RList extends RListExtensions {
       }
       loop(this, RNil)
     }
-    override def ++[S >: T](other: RList[S]): RList[S] = {
+    override def ++[S >: T](list: RList[S]): RList[S] = {
       @tailrec
       def loop(other: RList[S], acc: RList[S]): RList[S] = {
         if (other.isEmpty) acc
         else loop(other.tail, other.head :: acc)
       }
-      loop(this.reverse, other)
+      loop(this.reverse, list)
     }
     override def -=(index: Int): RList[T] = {
       @tailrec
-      def loop(list: RList[T], currentIndex: Int, unmatchedIndexes: RList[T]): RList[T] = {
-        if (currentIndex == index) unmatchedIndexes.reverse ++ list.tail
+      def loop(list: RList[T], current: Int, unmatchedIndexes: RList[T]): RList[T] = {
+        if (current == index) unmatchedIndexes.reverse ++ list.tail
         else if (list.isEmpty) unmatchedIndexes.reverse
-        else loop(list.tail, currentIndex + 1, list.head :: unmatchedIndexes)
+        else loop(list.tail, current + 1, list.head :: unmatchedIndexes)
       }
       loop(this, 0, RNil)
     }
@@ -102,10 +104,10 @@ object RList extends RListExtensions {
         else loop(list.tail, func( list.head ).reverse :: acc)
       }
       @tailrec
-      def flatten(lists: RList[RList[S]], currentList: RList[S], acc: RList[S]): RList[S] = {
-        if (lists.isEmpty && currentList.isEmpty) acc
-        else if (currentList.isEmpty) flatten(lists.tail, lists.head, acc)
-        else flatten(lists, currentList.tail, currentList.head :: acc)
+      def flatten(lists: RList[RList[S]], current: RList[S], acc: RList[S]): RList[S] = {
+        if (lists.isEmpty && current.isEmpty) acc
+        else if (current.isEmpty) flatten(lists.tail, lists.head, acc)
+        else flatten(lists, current.tail, current.head :: acc)
       }
       loop(this, RNil)
     }
@@ -117,6 +119,16 @@ object RList extends RListExtensions {
         else loop(list.tail, acc)
       }
       loop(this, RNil)
+    }
+    override def count: RList[(T, Int)] = {
+      @tailrec
+      def loop(list: RList[T], current: (T, Int), acc: RList[(T, Int)]): RList[(T, Int)] = {
+        if (list.isEmpty && current._2 == 0) acc
+        else if (list.isEmpty) current :: acc
+        else if (list.head == current._1) loop(list.tail, current.copy(_2 = current._2 + 1), acc)
+        else loop(list.tail, (list.head, 1), current :: acc )
+      }
+      loop(this.tail, (this.head, 1), RNil).reverse
     }
   }
 }
