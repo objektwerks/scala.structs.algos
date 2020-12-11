@@ -30,6 +30,7 @@ object RList {
     def duplicate(by: Int): RList[T]
     def rotate(by: Int): RList[T]
     def random(by: Int): RList[T]
+    def sorted[S >: T](implicit ordering: Ordering[S]): RList[S]
   }
 
   case object RNil extends RList[Nothing] {
@@ -49,6 +50,7 @@ object RList {
     override def duplicate(by: Int): RList[Nothing] = RNil
     override def rotate(by: Int): RList[Nothing] = RNil
     override def random(by: Int): RList[Nothing] = RNil
+    override def sorted[S >: Nothing](implicit ordering: Ordering[S]): RList[S] = RNil
   }
 
   case class ::[+T](override val head: T,
@@ -179,6 +181,19 @@ object RList {
         }
       }
       if (by < 0) RNil else loop(by, RNil)
+    }
+    override def sorted[S >: T](implicit ordering: Ordering[S]): RList[S] = {
+      @tailrec
+      def sort(element: T, before: RList[S], after: RList[S]): RList[S] = {
+        if (after.isEmpty || ordering.lteq(element, after.head)) before ++ (element :: after)
+        else sort(element, after.head :: before, after.tail)
+      }
+      @tailrec
+      def loop(list: RList[T], acc: RList[S]): RList[S] = {
+        if (list.isEmpty) acc
+        else loop(list.tail, sort(list.head, acc, RNil))
+      }
+      loop(this, RNil).reverse
     }
   }
 }
