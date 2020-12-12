@@ -83,8 +83,8 @@ class RListTest extends AnyFunSuite with Matchers {
     rlist.random(50).length shouldBe 50
   }
 
-  test("sorted") {
+  test("insertion sort") {
     val rlist = 3 :: 2 :: 1 :: RNil
-    rlist.sorted shouldBe 1 :: 2 :: 3 :: RNil
+    rlist.insertionSort shouldBe 1 :: 2 :: 3 :: RNil
   }
 }
