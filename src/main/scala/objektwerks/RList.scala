@@ -199,11 +199,28 @@ object RList {
     }
     override def mergeSort[S >: T](implicit ordering: Ordering[S]): RList[S] = {
       @tailrec
-      def loop(list: RList[T], acc: RList[S]): RList[S] = {
-        if (list.isEmpty) acc
-        else loop(list.tail, loop(list, acc))
+      def merge(listA: RList[S], listB: RList[S], acc: RList[S]): RList[S] = {
+        if (listA.isEmpty) acc.reverse ++ listB
+        else if (listB.isEmpty) acc.reverse ++ listA
+        else if (ordering.lteq(listA.head, listB.head)) merge(listA.tail, listB, listA.head :: acc)
+        else merge(listA, listB.tail, listB.head :: acc)
       }
-      loop(this, RNil)
+      @tailrec
+      def loop(smallLists: RList[RList[S]], bigLists: RList[RList[S]]): RList[S] = {
+        if (smallLists.isEmpty) {
+          if (bigLists.isEmpty) RNil
+          else if (bigLists.tail.isEmpty) bigLists.head
+          else loop(bigLists, RNil)
+        } else if (smallLists.tail.isEmpty) {
+          loop(smallLists.head :: bigLists, RNil)
+        } else {
+          val first = smallLists.head
+          val second = smallLists.tail.head
+          val merged = merge(first, second, RNil)
+          loop(smallLists.tail.tail, merged:: bigLists)
+        }
+      }
+      loop(this.map(x => x :: RNil), RNil)
     }
   }
 }

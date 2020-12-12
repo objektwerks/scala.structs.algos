@@ -87,4 +87,9 @@ class RListTest extends AnyFunSuite with Matchers {
     val rlist = 3 :: 2 :: 1 :: RNil
     rlist.insertionSort shouldBe 1 :: 2 :: 3 :: RNil
   }
+
+  test("merge sort") {
+    val rlist = 3 :: 2 :: 1 :: RNil
+    rlist.mergeSort shouldBe 1 :: 2 :: 3 :: RNil
+  }
 }
