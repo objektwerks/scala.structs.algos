@@ -212,7 +212,8 @@ object RList {
           else if (bigLists.tail.isEmpty) bigLists.head
           else loop(bigLists, RNil)
         } else if (smallLists.tail.isEmpty) {
-          loop(smallLists.head :: bigLists, RNil)
+          if (bigLists.isEmpty) smallLists.head
+          else loop(smallLists.head :: bigLists, RNil)
         } else {
           val first = smallLists.head
           val second = smallLists.tail.head
