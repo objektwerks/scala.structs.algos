@@ -32,6 +32,7 @@ object RList {
     def random(by: Int): RList[T]
     def insertionSort[S >: T](implicit ordering: Ordering[S]): RList[S]
     def mergeSort[S >: T](implicit ordering: Ordering[S]): RList[S]
+    def quickSort[S >: T](implicit ordering: Ordering[S]): RList[S]
   }
 
   case object RNil extends RList[Nothing] {
@@ -53,6 +54,7 @@ object RList {
     override def random(by: Int): RList[Nothing] = RNil
     override def insertionSort[S >: Nothing](implicit ordering: Ordering[S]): RList[S] = RNil
     override def mergeSort[S >: Nothing](implicit ordering: Ordering[S]): RList[S] = RNil
+    override def quickSort[S >: Nothing](implicit ordering: Ordering[S]): RList[S] = RNil
   }
 
   case class ::[+T](override val head: T,
@@ -222,6 +224,28 @@ object RList {
         }
       }
       loop(this.map(x => x :: RNil), RNil)
+    }
+    override def quickSort[S >: T](implicit ordering: Ordering[S]): RList[S] = {
+      @tailrec
+      def partition(list: RList[T], pivot: T, smaller: RList[T], larger: RList[T]): (RList[T], RList[T]) = {
+        if (list.isEmpty) (smaller, larger)
+        else if (ordering.lteq(list.head, pivot)) partition(list.tail, pivot, list.head :: smaller, larger)
+        else partition(list.tail, pivot, smaller, list.head :: larger)
+      }
+      @tailrec
+      def loop(lists: RList[RList[T]], acc: RList[RList[T]]): RList[T] = {
+        if (lists.isEmpty) acc.flatMap(xs => xs).reverse
+        else if (lists.head.isEmpty) loop(lists.tail, acc)
+        else if (lists.head.tail.isEmpty) loop(lists.tail, lists.head :: acc)
+        else {
+          val list = lists.head
+          val pivot = list.head
+          val listToSplit = list.tail
+          val (smaller, larger) = partition(listToSplit, pivot, RNil, RNil)
+          loop(smaller :: (pivot :: RNil) :: larger :: lists.tail, acc)
+        }
+      }
+      loop(this :: RNil, RNil)
     }
   }
 }
