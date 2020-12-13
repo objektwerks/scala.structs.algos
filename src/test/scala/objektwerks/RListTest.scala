@@ -12,9 +12,19 @@ class RListTest extends AnyFunSuite with Matchers {
     prepend shouldBe 0 :: 1 :: 2 :: 3 :: RNil
   }
 
+  test("apply") {
+    val rlist = 1 :: 2 :: 3 :: RNil
+    rlist(2) shouldBe 3
+  }
+
   test("isEmpty") {
     val rlist = 1 :: 2 :: 3 :: RNil
     rlist.isEmpty shouldBe false
+  }
+
+  test("nonEmpty") {
+    val rlist = 1 :: 2 :: 3 :: RNil
+    rlist.nonEmpty shouldBe true
   }
 
   test("length") {
@@ -22,9 +32,9 @@ class RListTest extends AnyFunSuite with Matchers {
     rlist.length shouldBe 3
   }
 
-  test("apply") {
+  test("contains") {
     val rlist = 1 :: 2 :: 3 :: RNil
-    rlist(2) shouldBe 3
+    rlist.contains(3) shouldBe true
   }
 
   test("reverse") {
@@ -102,5 +112,12 @@ class RListTest extends AnyFunSuite with Matchers {
     rlist.quickSort shouldBe 1 :: 2 :: 3 :: RNil
     val singleList = 3 :: RNil
     singleList.quickSort shouldBe (3 :: RNil)
+  }
+
+  test("intersect") {
+    val rlistA = RList.iterable(1 to 10)
+    val rlistB = RList.iterable(5 to 15)
+    val rlistIntersection = RList.iterable(5 to 10)
+    rlistA.intersect(rlistB) shouldBe rlistIntersection
   }
 }

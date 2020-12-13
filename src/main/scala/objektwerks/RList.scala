@@ -16,9 +16,11 @@ object RList {
   sealed abstract class RList[+T] {
     def head: T
     def tail: RList[T]
-    def isEmpty: Boolean
     def apply(index: Int): T
+    def isEmpty: Boolean
+    def nonEmpty: Boolean
     def length: Int
+    def contains[S >: T](element: S): Boolean
     def reverse: RList[T]
     def ::[S >: T](element: S): RList[S] = new ::(element, this)
     def ++[S >: T](other: RList[S]): RList[S]
@@ -33,15 +35,18 @@ object RList {
     def insertionSort[S >: T](implicit ordering: Ordering[S]): RList[S]
     def mergeSort[S >: T](implicit ordering: Ordering[S]): RList[S]
     def quickSort[S >: T](implicit ordering: Ordering[S]): RList[S]
+    def intersect[S >: T](other: RList[S]): RList[S]
   }
 
   case object RNil extends RList[Nothing] {
     override def head: Nothing = throw new NoSuchElementException
     override def tail: RList[Nothing] = throw new NoSuchElementException
-    override def isEmpty: Boolean = true
-    override def toString: String = "[]"
     override def apply(index: Int): Nothing = throw new NoSuchElementException
+    override def toString: String = "[]"
+    override def isEmpty: Boolean = true
+    override def nonEmpty: Boolean = false
     override def length: Int = 0
+    override def contains[S >: Nothing](element: S): Boolean = throw new NoSuchElementException
     override def reverse: RList[Nothing] = RNil
     override def ++[S >: Nothing](other: RList[S]): RList[S] = other
     override def -=(index: Int): RList[Nothing] = RNil
@@ -55,20 +60,11 @@ object RList {
     override def insertionSort[S >: Nothing](implicit ordering: Ordering[S]): RList[S] = RNil
     override def mergeSort[S >: Nothing](implicit ordering: Ordering[S]): RList[S] = RNil
     override def quickSort[S >: Nothing](implicit ordering: Ordering[S]): RList[S] = RNil
+    override def intersect[S >: Nothing](other: RList[S]): RList[S] = RNil
   }
 
   case class ::[+T](override val head: T,
                     override val tail: RList[T]) extends RList[T] {
-    override def isEmpty: Boolean = false
-    override def toString: String = {
-      @tailrec
-      def loop(list: RList[T], acc: String): String = {
-        if (list.isEmpty) acc
-        else if (list.tail.isEmpty) s"$acc${list.head}"
-        else loop(list.tail, s"$acc${list.head}, ")
-      }
-      "[" + loop(this, "") + "]"
-    }
     override def apply(index: Int): T = {
       @tailrec
       def loop(list: RList[T], current: Int): T = {
@@ -78,6 +74,17 @@ object RList {
       if ( index < 0 ) throw new NoSuchElementException
       else loop(this, 0)
     }
+    override def toString: String = {
+      @tailrec
+      def loop(list: RList[T], acc: String): String = {
+        if (list.isEmpty) acc
+        else if (list.tail.isEmpty) s"$acc${list.head}"
+        else loop(list.tail, s"$acc${list.head}, ")
+      }
+      "[" + loop(this, "") + "]"
+    }
+    override def isEmpty: Boolean = false
+    override def nonEmpty: Boolean = this.length > 0
     override def length: Int = {
       @tailrec
       def loop(list: RList[T], acc: Int): Int = {
@@ -86,6 +93,7 @@ object RList {
       }
       loop(this, 0)
     }
+    override def contains[S >: T](element: S): Boolean = this.filter(_ == element).length > 0
     override def reverse: RList[T] = {
       @tailrec
       def loop(list: RList[T], acc: RList[T]): RList[T] = {
@@ -246,6 +254,17 @@ object RList {
         }
       }
       loop(this :: RNil, RNil)
+    }
+    override def intersect[S >: T](other: RList[S]): RList[S] = {
+      @tailrec
+      def loop(list: RList[T], other: RList[S], acc: RList[S]): RList[S] = {
+        if (list.isEmpty) acc
+        else {
+          if (other.contains(list.head)) loop(list.tail, other, acc ++ (list.head :: RNil))
+          else loop(list.tail, other, acc)
+        }
+      }
+      loop(this, other, RNil)
     }
   }
 }
