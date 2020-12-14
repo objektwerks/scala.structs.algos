@@ -8,5 +8,6 @@ import Numbers._
 class NumbersTest extends AnyFunSuite with Matchers {
   test("is prime") {
     isPrime(11) shouldBe true
+    isPrime(15) shouldBe false
   }
 }
