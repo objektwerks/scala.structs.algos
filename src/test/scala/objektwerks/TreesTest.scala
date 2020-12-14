@@ -27,4 +27,8 @@ class TreesTest extends AnyFunSuite with Matchers {
   test("collect leaves") {
     tree.collectLeaves.map(_.value) shouldBe List(8, 7, 5, 3)
   }
+
+  test("size") {
+    tree.size shouldBe 8
+  }
 }

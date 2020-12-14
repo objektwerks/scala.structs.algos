@@ -11,6 +11,7 @@ object Trees {
     def isLeaf: Boolean
     def collectLeaves: List[BTree[T]]
     def leafCount: Int
+    val size: Int
   }
 
   case object BEnd extends BTree[Nothing] {
@@ -21,6 +22,7 @@ object Trees {
     override def isLeaf: Boolean = false
     override def collectLeaves: List[BTree[Nothing]] = List()
     override def leafCount: Int = 0
+    override val size: Int = 0
   }
 
   case class BNode[+T](override val value: T,
@@ -42,5 +44,6 @@ object Trees {
       loop(List(this), List())
     }
     override def leafCount: Int = collectLeaves.length
+    override val size: Int = 1 + left.size + right.size
   }
 }
