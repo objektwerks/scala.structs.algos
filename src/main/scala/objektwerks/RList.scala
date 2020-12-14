@@ -71,7 +71,7 @@ object RList {
         if ( current == index) list.head
         else loop(list.tail, current + 1)
       }
-      if ( index < 0 ) throw new NoSuchElementException
+      if (index < 0) throw new NoSuchElementException
       else loop(this, 0)
     }
     override def toString: String = {
