@@ -11,13 +11,13 @@ object Graphs {
     "Mary" -> Set("Bob", "Charlie")
   )
 
-  // Number of nodes adjacent to node.
+  // Number of nodes adjacent to node - or node's set count.
   def outDegree[T](graph: Graph[T], node: T): Int = {
     if (graph.contains(node)) graph(node).size
     else 0
   }
 
-  // Number of nodes connected to node.
+  // Number of nodes connected to node - or node occurences in all sets.
   def inDegree[T](graph: Graph[T], node: T): Int = {
     graph.values.count(_.contains(node))
   }
