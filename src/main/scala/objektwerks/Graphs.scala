@@ -60,4 +60,26 @@ object Graphs {
   }
 
   def findCycle[T](graph: Graph[T], node: T): List[T] = findPath(graph, node, node)
+
+  // Bidirectional graph.
+  def toUndirected[T](graph: Graph[T]): Graph[T] = {
+    def addEdge(graph: Graph[T], from: T, to: T): Graph[T] = {
+      if (!graph.contains(from)) graph + (from -> Set(to))
+      else {
+        val neighbors = graph(from)
+        graph + (from -> (neighbors + to))
+      }
+    }
+    @tailrec
+    def addOpposingEdges(list: Set[T], acc: Graph[T]): Graph[T] = {
+      if (list.isEmpty) acc
+      else {
+        val node = list.head
+        val neighbors = graph(node)
+        val newGraph = neighbors.foldLeft(acc)((graph, neighbor) => addEdge(graph, neighbor, node))
+        addOpposingEdges(list.tail, newGraph)
+      }
+    }
+    addOpposingEdges(graph.keySet, graph)
+  }
 }

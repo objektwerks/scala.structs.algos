@@ -35,4 +35,11 @@ class GraphsTest extends AnyFunSuite with Matchers {
   test("findCycle") {
     findCycle(socialGraph, "Alice") shouldBe List()
   }
+
+  test("toUndirected") {
+    val unidirectedSocialGraph = toUndirected(socialGraph)
+    unidirectedSocialGraph("Bob") shouldBe Set("Alice", "Mary", "David")
+    unidirectedSocialGraph("Alice") shouldBe Set("Bob", "Charlie", "David")
+    unidirectedSocialGraph("David") shouldBe Set("Bob", "Mary", "Alice", "Charlie")
+  }
 }
