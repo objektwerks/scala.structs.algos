@@ -38,7 +38,7 @@ object Graphs {
     loop(List(start), Set())
   }
 
-  def findpath[T](graph: Graph[T], start: T, end: T): List[T] = {
+  def findPath[T](graph: Graph[T], start: T, end: T): List[T] = {
     @tailrec
     def loop(list: List[(T, List[T])], visited: Set[T]): List[T] = {
       if (list.isEmpty) List()
@@ -53,6 +53,11 @@ object Graphs {
         }
       }
     }
-    loop(List((start, List(start))), Set())
+    loop(
+      list = graph(start).map(n => (n, n :: List(start))).toList,
+      visited = Set(start)
+    )
   }
+
+  def findCycle[T](graph: Graph[T], node: T): List[T] = findPath(graph, node, node)
 }

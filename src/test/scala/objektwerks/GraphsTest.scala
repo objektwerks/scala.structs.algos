@@ -28,7 +28,11 @@ class GraphsTest extends AnyFunSuite with Matchers {
   }
 
   test("findPath") {
-    findpath(socialGraph, "Alice", "Mary") shouldBe List("Alice", "David", "Mary")
-    findpath(socialGraph, "Bob", "Mary") shouldBe List()
+    findPath(socialGraph, "Alice", "Mary") shouldBe List("Alice", "David", "Mary")
+    findPath(socialGraph, "Bob", "Mary") shouldBe List()
+  }
+
+  test("findCycle") {
+    findCycle(socialGraph, "Alice") shouldBe List()
   }
 }
