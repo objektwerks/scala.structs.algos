@@ -1,9 +1,11 @@
 package objektwerks
 
 object Graphs {
+  import scala.annotation.tailrec
+
   type Graph[T] = Map[T, Set[T]]
 
-  val socialNetwork: Graph[String] = Map(
+  val socialGraph: Graph[String] = Map(
     "Alice" -> Set("Bob", "Charlie", "David"),
     "Bob" -> Set(),
     "Charlie" -> Set("David"),
@@ -20,5 +22,19 @@ object Graphs {
   // Number of nodes connected to node - or node occurences in all sets.
   def inDegree[T](graph: Graph[T], node: T): Int = {
     graph.values.count(_.contains(node))
+  }
+
+  def isPath[T](graph: Graph[T], start: T, end: T): Boolean = {
+    @tailrec
+    def loop(list: List[T], visited: Set[T]): Boolean = {
+      if (list.isEmpty) false
+      else {
+        val node = list.head
+        if (node == end) true
+        else if (visited.contains(node)) loop(list.tail, visited)
+        else loop(list.tail ++ graph(node), visited + node)
+      }
+    }
+    loop(List(start), Set())
   }
 }

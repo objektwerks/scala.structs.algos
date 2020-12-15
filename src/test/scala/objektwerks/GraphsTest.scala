@@ -6,19 +6,24 @@ import org.scalatest.matchers.should.Matchers
 import Graphs._
 
 class GraphsTest extends AnyFunSuite with Matchers {
-  test("out degree") {
-    outDegree(socialNetwork, "Alice") shouldBe 3
-    outDegree(socialNetwork, "Bob") shouldBe 0
-    outDegree(socialNetwork, "Charlie") shouldBe 1
-    outDegree(socialNetwork, "David") shouldBe 2
-    outDegree(socialNetwork, "Mary") shouldBe 2
+  test("outDegree") {
+    outDegree(socialGraph, "Alice") shouldBe 3
+    outDegree(socialGraph, "Bob") shouldBe 0
+    outDegree(socialGraph, "Charlie") shouldBe 1
+    outDegree(socialGraph, "David") shouldBe 2
+    outDegree(socialGraph, "Mary") shouldBe 2
   }
 
-  test("in degree") {
-    inDegree(socialNetwork, "Alice") shouldBe 0
-    inDegree(socialNetwork, "Bob") shouldBe 3
-    inDegree(socialNetwork, "Charlie") shouldBe 2
-    inDegree(socialNetwork, "David") shouldBe 2
-    inDegree(socialNetwork, "Mary") shouldBe 1
+  test("inDegree") {
+    inDegree(socialGraph, "Alice") shouldBe 0
+    inDegree(socialGraph, "Bob") shouldBe 3
+    inDegree(socialGraph, "Charlie") shouldBe 2
+    inDegree(socialGraph, "David") shouldBe 2
+    inDegree(socialGraph, "Mary") shouldBe 1
+  }
+
+  test("isPath") {
+    isPath(socialGraph, "Alice", "Mary") shouldBe true
+    isPath(socialGraph, "Bob", "Mary") shouldBe false
   }
 }
