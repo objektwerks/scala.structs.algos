@@ -26,4 +26,9 @@ class GraphsTest extends AnyFunSuite with Matchers {
     isPath(socialGraph, "Alice", "Mary") shouldBe true
     isPath(socialGraph, "Bob", "Mary") shouldBe false
   }
+
+  test("findPath") {
+    findpath(socialGraph, "Alice", "Mary") shouldBe List("Alice", "David", "Mary")
+    findpath(socialGraph, "Bob", "Mary") shouldBe List()
+  }
 }

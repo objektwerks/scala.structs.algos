@@ -37,4 +37,22 @@ object Graphs {
     }
     loop(List(start), Set())
   }
+
+  def findpath[T](graph: Graph[T], start: T, end: T): List[T] = {
+    @tailrec
+    def loop(list: List[(T, List[T])], visited: Set[T]): List[T] = {
+      if (list.isEmpty) List()
+      else {
+        val (node, path) = list.head
+        if (node == end) path.reverse
+        else if (visited.contains(node)) loop(list.tail, visited)
+        else {
+          val neighbors = graph(node)
+          val tuples = neighbors.map(n => (n, n :: path))
+          loop(list.tail ++ tuples, visited + node)
+        }
+      }
+    }
+    loop(List((start, List(start))), Set())
+  }
 }
