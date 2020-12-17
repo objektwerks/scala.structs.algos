@@ -18,5 +18,6 @@ class NumbersTest extends AnyFunSuite with Matchers {
     listFactors(11) shouldBe List(11)
     listFactors(15) shouldBe List(5, 3)
     listFactors(21) shouldBe List(7, 3)
+    listFactors(0) shouldBe List()
   }
 }
