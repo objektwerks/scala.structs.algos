@@ -82,4 +82,28 @@ object Graphs {
     }
     addOpposingEdges(graph.keySet, graph)
   }
+
+  def color[T](undirectedGraph: Graph[T]): Map[T, Int] = {
+    @tailrec
+    def loop(list: List[T], current: Int, acc: Map[T, Int]): Map[T, Int] = {
+      if (list.isEmpty) acc
+      else {
+        val node = list.head
+        if (acc.contains(node)) loop(list.tail, current, acc)
+        else {
+          val uncoloredNodes = list.tail.foldLeft[Set[T]](Set(node)) { (nodesToColor, n) =>
+            val neighbors = nodesToColor.flatMap(nodeToColor => undirectedGraph(nodeToColor))
+            if (acc.contains(n) || neighbors.contains(n)) nodesToColor
+            else nodesToColor + n
+          }
+          val newColoredNodes = uncoloredNodes.map((_, current)).toMap
+          loop(list.tail, current + 1, acc ++ newColoredNodes)
+        }
+      }
+    }
+    val orderedNodes = undirectedGraph.keySet.toList.sortWith((a, b) =>
+      outDegree(undirectedGraph, a) > outDegree(undirectedGraph, b)
+    )
+    loop(orderedNodes, 0, Map())
+  }
 }

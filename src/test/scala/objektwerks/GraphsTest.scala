@@ -42,4 +42,9 @@ class GraphsTest extends AnyFunSuite with Matchers {
     unidirectedSocialGraph("Alice") shouldBe Set("Bob", "Charlie", "David")
     unidirectedSocialGraph("David") shouldBe Set("Bob", "Mary", "Alice", "Charlie")
   }
+
+  test("color") {
+    val unidirectedSocialGraph = toUndirected(socialGraph)
+    color(unidirectedSocialGraph) shouldBe Map("Bob" -> 1, "Alice" -> 2, "Charlie" -> 1, "Mary" -> 2, "David" -> 0)
+  }
 }
