@@ -1,8 +1,10 @@
 package objektwerks
 
+
 object Numbers {
   import Math._
   import scala.annotation.tailrec
+  import scala.util.Random
 
   def isPrime(n: Int): Boolean = {
     @tailrec
@@ -21,5 +23,15 @@ object Numbers {
       else loop(remaining, currentDivisor + 1, acc)
     }
     if (n < 1) List.empty[Int] else loop(n, 2, List())
+  }
+
+  def approximatePi(points: Int): Double = {
+    val random = new Random(System.currentTimeMillis())
+    val pointInCircle = (1 to points).map { _ =>
+      val x = random.nextDouble()
+      val y = random.nextDouble()
+      x * x + y * y
+    }.count(distance => distance < 1)
+    pointInCircle * 4.0 / points
   }
 }

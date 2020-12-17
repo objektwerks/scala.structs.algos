@@ -20,4 +20,8 @@ class NumbersTest extends AnyFunSuite with Matchers {
     listFactors(21) shouldBe List(7, 3)
     listFactors(0) shouldBe List()
   }
+
+  test("approximatePi") {
+    approximatePi(100_000) should be >  3.1
+  }
 }
