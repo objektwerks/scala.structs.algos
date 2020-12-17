@@ -13,4 +13,10 @@ class NumbersTest extends AnyFunSuite with Matchers {
     isPrime(1) shouldBe false
     isPrime(-1) shouldBe false
   }
+
+  test("listFactors") {
+    listFactors(11) shouldBe List(11)
+    listFactors(15) shouldBe List(5, 3)
+    listFactors(21) shouldBe List(7, 3)
+  }
 }
