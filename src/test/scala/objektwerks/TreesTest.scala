@@ -20,6 +20,20 @@ class TreesTest extends AnyFunSuite with Matchers {
     )
   )
 
+  val xtree = BNode(10,
+    BNode(20,
+      BNode(30, BEnd, BEnd),
+      BNode(40,
+        BEnd,
+        BNode(50, BEnd, BEnd),
+      )
+    ),
+    BNode(60,
+      BNode(70, BEnd, BEnd),
+      BNode(80, BEnd, BEnd)
+    )
+  )
+
   test("leafCount") {
     tree.leafCount shouldBe 4
   }
@@ -48,6 +62,7 @@ class TreesTest extends AnyFunSuite with Matchers {
 
   test("isEqual") {
     tree.isEqual(tree) shouldBe true
+    tree.isEqual(xtree) shouldBe true
     tree.isEqual(tree.mirror) shouldBe false
   }
 }
