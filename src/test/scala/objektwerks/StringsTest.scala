@@ -14,4 +14,9 @@ class StringsTest extends AnyFunSuite with Matchers {
     checkAnagrams("desserts","stressed") shouldBe true
     checkAnagrams("scala", "haskell") shouldBe false
   }
+
+  test("checkSortedAnagrams") {
+    checkSortedAnagrams("desserts","stressed") shouldBe true
+    checkSortedAnagrams("scala", "haskell") shouldBe false
+  }
 }

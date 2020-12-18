@@ -16,4 +16,5 @@ object Strings {
   }
 
   def checkAnagrams(first: String, second: String): Boolean = countChars(first) == countChars(second)
+  def checkSortedAnagrams(first: String, second: String): Boolean = first.sorted == second.sorted
 }
