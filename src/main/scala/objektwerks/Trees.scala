@@ -14,7 +14,8 @@ object Trees {
     def collectLeaves: List[BTree[T]]
     def collectNodes(level: Int): List[BTree[T]]
     def mirror: BTree[T]
-    def isEqual[S >: T](other: BTree[S]): Boolean
+    def sameShapeAs[S >: T](other: BTree[S]): Boolean
+    def isSymmetrical: Boolean
   }
 
   case object BEnd extends BTree[Nothing] {
@@ -28,7 +29,8 @@ object Trees {
     override def collectLeaves: List[BTree[Nothing]] = List()
     override def collectNodes(level: Int): List[BTree[Nothing]] = List()
     override def mirror: BTree[Nothing] = BEnd
-    override def isEqual[S >: Nothing](other: BTree[S]): Boolean = false
+    override def sameShapeAs[S >: Nothing](other: BTree[S]): Boolean = false
+    override def isSymmetrical: Boolean = true
   }
 
   case class BNode[+T](override val value: T,
@@ -86,8 +88,7 @@ object Trees {
       }
       loop(List(this), Set(), List())
     }
-
-    override def isEqual[S >: T](other: BTree[S]): Boolean = {
+    override def sameShapeAs[S >: T](other: BTree[S]): Boolean = {
       @tailrec
       def loop(thisTree: List[BTree[S]], otherTree: List[BTree[S]]): Boolean = {
         if (thisTree.isEmpty) otherTree.isEmpty
@@ -105,5 +106,6 @@ object Trees {
       }
       loop(List(this), List(other))
     }
+    override def isSymmetrical: Boolean = sameShapeAs(this.mirror)
   }
 }

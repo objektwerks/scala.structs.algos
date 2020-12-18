@@ -34,6 +34,16 @@ class TreesTest extends AnyFunSuite with Matchers {
     )
   )
 
+  val symmetricalTree = BNode(1,
+    BNode(2,
+      BNode(3, BEnd, BEnd),
+      BNode(4, BEnd, BEnd),
+    ),
+    BNode(6,
+      BNode(7, BEnd, BEnd),
+      BNode(8, BEnd, BEnd)
+    )
+  )
   test("leafCount") {
     tree.leafCount shouldBe 4
   }
@@ -60,9 +70,15 @@ class TreesTest extends AnyFunSuite with Matchers {
     mirror.collectNodes(2).map(_.value) shouldBe List(8, 7, 4, 3)
   }
 
-  test("isEqual") {
-    tree.isEqual(tree) shouldBe true
-    tree.isEqual(xtree) shouldBe true
-    tree.isEqual(tree.mirror) shouldBe false
+  test("sameShapeAs") {
+    tree.sameShapeAs(tree) shouldBe true
+    tree.sameShapeAs(xtree) shouldBe true
+    tree.sameShapeAs(tree.mirror) shouldBe false
+  }
+
+  test("isSymmetrical") {
+    symmetricalTree.isSymmetrical shouldBe true
+    tree.isSymmetrical shouldBe false
+    tree.mirror.isSymmetrical shouldBe false
   }
 }
