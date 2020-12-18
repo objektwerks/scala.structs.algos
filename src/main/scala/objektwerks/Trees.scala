@@ -13,6 +13,7 @@ object Trees {
     val size: Int
     def collectLeaves: List[BTree[T]]
     def collectNodes(level: Int): List[BTree[T]]
+    def mirror: BTree[T]
   }
 
   case object BEnd extends BTree[Nothing] {
@@ -25,6 +26,7 @@ object Trees {
     override val size: Int = 0
     override def collectLeaves: List[BTree[Nothing]] = List()
     override def collectNodes(level: Int): List[BTree[Nothing]] = List()
+    override def mirror: BTree[Nothing] = BEnd
   }
 
   case class BNode[+T](override val value: T,
@@ -61,6 +63,26 @@ object Trees {
         }
       }
       if (level < 0) List() else loop(0, List(this))
+    }
+    override def mirror: BTree[T] = {
+      @tailrec
+      def loop(todos: List[BTree[T]], expanded: Set[BTree[T]], acc: List[BTree[T]]): BTree[T] = {
+        if (todos.isEmpty) acc.head
+        else {
+          val node = todos.head
+          if (node.isEmpty || node.isLeaf) {
+            loop(todos.tail, expanded, node :: acc)
+          } else if (!expanded.contains(node)) {
+            loop(node.left :: node.right :: todos, expanded + node, acc)
+          } else {
+            val newLeft = acc.head
+            val newRight = acc.tail.head
+            val newNode = BNode(node.value, newLeft, newRight)
+            loop(todos.tail, expanded, newNode :: acc.drop(2))
+          }
+        }
+      }
+      loop(List(this), Set(), List())
     }
   }
 }

@@ -39,4 +39,10 @@ class TreesTest extends AnyFunSuite with Matchers {
     tree.collectNodes(2).map(_.value) shouldBe List(3, 4, 7, 8)
     tree.collectNodes(3).map(_.value) shouldBe List(5)
   }
+
+  test("mirror") {
+    val mirror = tree.mirror
+    mirror.collectNodes(1).map(_.value) shouldBe List(6, 2)
+    mirror.collectNodes(2).map(_.value) shouldBe List(8, 7, 4, 3)
+  }
 }
