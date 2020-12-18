@@ -9,9 +9,10 @@ object Trees {
     def right: BTree[T]
     def isEmpty: Boolean
     def isLeaf: Boolean
-    def collectLeaves: List[BTree[T]]
     def leafCount: Int
     val size: Int
+    def collectLeaves: List[BTree[T]]
+    def collectNodes(level: Int): List[BTree[T]]
   }
 
   case object BEnd extends BTree[Nothing] {
@@ -20,9 +21,10 @@ object Trees {
     override def right: BTree[Nothing] = throw new NoSuchElementException
     override def isEmpty: Boolean = true
     override def isLeaf: Boolean = false
-    override def collectLeaves: List[BTree[Nothing]] = List()
     override def leafCount: Int = 0
     override val size: Int = 0
+    override def collectLeaves: List[BTree[Nothing]] = List()
+    override def collectNodes(level: Int): List[BTree[Nothing]] = List()
   }
 
   case class BNode[+T](override val value: T,
@@ -30,6 +32,8 @@ object Trees {
                        override val right: BTree[T]) extends BTree[T] {
     override def isEmpty: Boolean = false
     override def isLeaf: Boolean = left.isEmpty && right.isEmpty
+    override def leafCount: Int = collectLeaves.length
+    override val size: Int = 1 + left.size + right.size
     override def collectLeaves: List[BTree[T]] = {
       @tailrec
       def loop(todos: List[BTree[T]], leaves: List[BTree[T]]): List[BTree[T]] = {
@@ -43,7 +47,20 @@ object Trees {
       }
       loop(List(this), List())
     }
-    override def leafCount: Int = collectLeaves.length
-    override val size: Int = 1 + left.size + right.size
+    override def collectNodes(level: Int): List[BTree[T]] = {
+      @tailrec
+      def loop(currentLevel: Int, currentNodes: List[BTree[T]]): List[BTree[T]] = {
+        if (currentNodes.isEmpty) List()
+        else if (currentLevel == level) currentNodes
+        else {
+          val expandedNodes = for {
+            node <- currentNodes
+            child <- List(node.left, node.right) if !child.isEmpty
+          } yield child
+          loop(currentLevel + 1, expandedNodes)
+        }
+      }
+      if (level < 0) List() else loop(0, List(this))
+    }
   }
 }
