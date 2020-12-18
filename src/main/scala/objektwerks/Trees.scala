@@ -14,6 +14,7 @@ object Trees {
     def collectLeaves: List[BTree[T]]
     def collectNodes(level: Int): List[BTree[T]]
     def mirror: BTree[T]
+    def isEqual[S >: T](other: BTree[S]): Boolean
   }
 
   case object BEnd extends BTree[Nothing] {
@@ -27,6 +28,7 @@ object Trees {
     override def collectLeaves: List[BTree[Nothing]] = List()
     override def collectNodes(level: Int): List[BTree[Nothing]] = List()
     override def mirror: BTree[Nothing] = BEnd
+    override def isEqual[S >: Nothing](other: BTree[S]): Boolean = false
   }
 
   case class BNode[+T](override val value: T,
@@ -83,6 +85,25 @@ object Trees {
         }
       }
       loop(List(this), Set(), List())
+    }
+
+    override def isEqual[S >: T](other: BTree[S]): Boolean = {
+      @tailrec
+      def loop(thisTree: List[BTree[S]], otherTree: List[BTree[S]]): Boolean = {
+        if (thisTree.isEmpty) otherTree.isEmpty
+        else if (otherTree.isEmpty) thisTree.isEmpty
+        else {
+          val thisNode = thisTree.head
+          val thatNode = otherTree.head
+          if (thisNode.isEmpty) thatNode.isEmpty && loop(thisTree.tail, otherTree.tail)
+          else if (thisNode.isLeaf) thatNode.isLeaf && loop(thisTree.tail, otherTree.tail)
+          else loop(
+            thisNode.left :: thisNode.right :: thisTree.tail,
+            thatNode.left :: thatNode.right :: otherTree.tail
+          )
+        }
+      }
+      loop(List(this), List(other))
     }
   }
 }

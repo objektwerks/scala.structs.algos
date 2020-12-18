@@ -45,4 +45,9 @@ class TreesTest extends AnyFunSuite with Matchers {
     mirror.collectNodes(1).map(_.value) shouldBe List(6, 2)
     mirror.collectNodes(2).map(_.value) shouldBe List(8, 7, 4, 3)
   }
+
+  test("isEqual") {
+    tree.isEqual(tree) shouldBe true
+    tree.isEqual(tree.mirror) shouldBe false
+  }
 }
