@@ -24,4 +24,10 @@ class StringsTest extends AnyFunSuite with Matchers {
     containsBalancedParens("()") shouldBe true
     containsBalancedParens("(") shouldBe false
   }
+
+  test("buildListOfAllValidParens") {
+    buildListOfAllValidParens(0) shouldBe List()
+    buildListOfAllValidParens(1) shouldBe List("()")
+    buildListOfAllValidParens(2) shouldBe List("()()", "(())")
+  }
 }

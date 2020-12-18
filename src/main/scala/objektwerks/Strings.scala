@@ -28,4 +28,22 @@ object Strings {
     }
     loop(string, 0)
   }
+
+  def buildListOfAllValidParens(n: Int): List[String] = {
+    @tailrec
+    def loop(remainingParens: Int, currentStrings: Set[String]): Set[String] = {
+      if (remainingParens == 0) currentStrings
+      else {
+        val newStrings = for {
+          string <- currentStrings
+          index <- 0 until string.length
+        } yield {
+          val (before, after) = string.splitAt(index)
+          s"$before()$after"
+        }
+        loop(remainingParens - 1, newStrings)
+      }
+    }
+    if (n < 1) List() else loop(n - 1, Set("()")).toList
+  }
 }
