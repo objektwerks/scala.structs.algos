@@ -33,6 +33,7 @@ class TreesTest extends AnyFunSuite with Matchers {
   }
 
   test("collectNodes") {
+    tree.collectNodes(-1).map(_.value) shouldBe List()
     tree.collectNodes(0).map(_.value) shouldBe List(1)
     tree.collectNodes(1).map(_.value) shouldBe List(2, 6)
     tree.collectNodes(2).map(_.value) shouldBe List(3, 4, 7, 8)
