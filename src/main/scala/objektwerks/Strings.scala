@@ -17,4 +17,15 @@ object Strings {
 
   def checkAnagrams(first: String, second: String): Boolean = countChars(first) == countChars(second)
   def checkSortedAnagrams(first: String, second: String): Boolean = first.sorted == second.sorted
+
+  def containsBalancedParens(string: String): Boolean = {
+    @tailrec
+    def loop(remaining: String, openParens: Int): Boolean = {
+      if (remaining.isEmpty) openParens == 0
+      else if (openParens == 0 && remaining.head == ')') false
+      else if (remaining.head == '(') loop(remaining.tail, openParens + 1)
+      else loop(remaining.tail, openParens - 1)
+    }
+    loop(string, 0)
+  }
 }

@@ -19,4 +19,9 @@ class StringsTest extends AnyFunSuite with Matchers {
     checkSortedAnagrams("desserts","stressed") shouldBe true
     checkSortedAnagrams("scala", "haskell") shouldBe false
   }
+
+  test("containsBalancedParens") {
+    containsBalancedParens("()") shouldBe true
+    containsBalancedParens("(") shouldBe false
+  }
 }
