@@ -20,11 +20,11 @@ class TreesTest extends AnyFunSuite with Matchers {
     )
   )
 
-  test("leaf count") {
+  test("leafCount") {
     tree.leafCount shouldBe 4
   }
 
-  test("collect leaves") {
+  test("collectLeaves") {
     tree.collectLeaves.map(_.value) shouldBe List(8, 7, 5, 3)
   }
 
