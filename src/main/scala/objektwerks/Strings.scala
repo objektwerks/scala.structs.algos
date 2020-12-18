@@ -14,4 +14,6 @@ object Strings {
     }
     loop(s, Map.empty[Char, Int])
   }
+
+  def checkAnagrams(first: String, second: String): Boolean = countChars(first) == countChars(second)
 }

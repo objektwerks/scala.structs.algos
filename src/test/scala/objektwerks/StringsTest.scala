@@ -6,7 +6,12 @@ import org.scalatest.matchers.should.Matchers
 import Strings._
 
 class StringsTest extends AnyFunSuite with Matchers {
-  test("count chars") {
+  test("countChars") {
     countChars("scala") shouldBe Map('a' -> 2, 'c' -> 1, 'l' -> 1, 's' -> 1)
+  }
+
+  test("checkAnagrams") {
+    checkAnagrams("desserts","stressed") shouldBe true
+    checkAnagrams("scala", "haskell") shouldBe false
   }
 }
