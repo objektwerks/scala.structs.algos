@@ -1,6 +1,6 @@
 package objektwerks
 
-object SierpinskiTrianglesApp {
+object SierpinskiApp {
   import scala.annotation.tailrec
 
   def main(args: Array[String]): Unit = {
