@@ -28,6 +28,7 @@ class NumbersTest extends AnyFunSuite with Matchers {
   test("fractionToRecurringDecimals") {
     fractionToRecurringDecimals(1, 3) shouldBe "0.(3)"
     fractionToRecurringDecimals(1, 2) shouldBe "0.5"
+    fractionToRecurringDecimals(1, 6) shouldBe "0.1(6)"
     fractionToRecurringDecimals(4, 2) shouldBe "2"
   }
 }
