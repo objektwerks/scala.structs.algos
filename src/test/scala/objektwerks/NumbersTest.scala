@@ -24,4 +24,10 @@ class NumbersTest extends AnyFunSuite with Matchers {
   test("approximatePi") {
     approximatePi(100_000) should be >  3.1
   }
+
+  test("fractionToRecurringDecimals") {
+    fractionToRecurringDecimals(1, 3) shouldBe "0.(3)"
+    fractionToRecurringDecimals(1, 2) shouldBe "0.5"
+    fractionToRecurringDecimals(4, 2) shouldBe "2"
+  }
 }

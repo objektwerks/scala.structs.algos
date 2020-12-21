@@ -1,6 +1,5 @@
 package objektwerks
 
-
 object Numbers {
   import Math._
   import scala.annotation.tailrec
@@ -33,5 +32,39 @@ object Numbers {
       x * x + y * y
     }.count(distance => distance < 1)
     pointInCircle * 4.0 / points
+  }
+
+  def fractionToRecurringDecimals(numerator: Long, denominator: Long): String = {
+    def fractionToDecimal(n: Long, d: Long): String = {
+      @tailrec
+      def findStart(digit: Long, digits: List[Long], rem: Long, remainders: List[Long], currentIndex: Int): Int = {
+        if (digits.isEmpty || remainders.isEmpty) -1
+        else if (digit == digits.head && rem == remainders.head) currentIndex
+        else findStart(digit, digits.tail, rem, remainders.tail, currentIndex + 1)
+      }
+      @tailrec
+      def loop(num: Long, denom: Long, digits: List[Long], remainders: List[Long]): String = {
+        val quot = (num * 10) / denom
+        val rem = (num * 10) % denom
+        if (rem == 0) (digits :+ quot).mkString("")
+        else {
+          val recurrenceStartIndex = findStart(quot, digits, rem, remainders, 0)
+          if (recurrenceStartIndex == -1) loop(rem, denom, digits :+ quot, remainders :+ rem)
+          else {
+            val (beforeRecurrence, recurrence) = digits.splitAt(recurrenceStartIndex)
+            s"${beforeRecurrence.mkString("")}(${recurrence.mkString("")})"
+          }
+        }
+      }
+      if (n > 0 && d < 0) s"-${fractionToDecimal(n, -d)}"
+      else if (n < 0 && d > 0) s"-${fractionToDecimal(-n, d)}"
+      else {
+        val quotient = n / d
+        val remainder = n % d
+        if (remainder == 0) s"$quotient"
+        else s"$quotient.${loop(remainder, d, List(), List())}"
+      }
+    }
+    fractionToDecimal(numerator, denominator)
   }
 }
