@@ -30,8 +30,4 @@ class StringsTest extends AnyFunSuite with Matchers {
     buildListOfAllValidParens(1) shouldBe List("()")
     buildListOfAllValidParens(2) shouldBe List("()()", "(())")
   }
-
-  test("justify") {
-    justify("Scala is the most amazing language you will ever write any code in", 6).nonEmpty shouldBe true
-  }
 }
