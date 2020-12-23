@@ -4,6 +4,7 @@ import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
 import Numbers._
+import EvalApp._
 
 class NumbersTest extends AnyFunSuite with Matchers {
   test("is prime") {
@@ -31,5 +32,13 @@ class NumbersTest extends AnyFunSuite with Matchers {
     fractionToRecurringDecimals(1, 6) shouldBe "0.1(6)"
     fractionToRecurringDecimals(4, 2) shouldBe "2"
     fractionToRecurringDecimals(-1, 2) shouldBe "-0.5"
+  }
+
+  test("eval") {
+    eval("1 + 2") shouldBe 3
+    eval("4 - 1") shouldBe 3
+    eval("1 * 3") shouldBe 3
+    eval("9 / 3") shouldBe 3
+    eval("1 + 2 * 3 + 4 / 5 + 6 * 7 - 8") shouldBe 41
   }
 }

@@ -15,6 +15,7 @@ object EvalApp {
     val operators = Set("+", "-", "*", "/")
 
     def getOperators: List[String] = expr.split(" ").filter(operators.contains).toList
+
     def getNumbers: List[Int] = expr.split(" ").filter(!operators.contains(_)).map(_.toInt).toList
 
     def simpleOperation(op1: Int, op2: Int, operator: String) = operator match {
@@ -25,7 +26,7 @@ object EvalApp {
       case _ => throw new IllegalArgumentException(s"Invalid operator: $operator")
     }
 
-    def priority(operator: String): Int = operator match {
+    def prioritizeOperator(operator: String): Int = operator match {
       case "+" | "-" => 1
       case "*" | "/" => 2
       case _ => 0
@@ -49,7 +50,7 @@ object EvalApp {
       } else if (remainingOperands.length > remainingOperators.length) {
         // pop an operand and proceed
         loop(remainingOperands.tail, remainingOperators, remainingOperands.head :: operandStack, operatorStack)
-      } else if (operatorStack.isEmpty || priority(operatorStack.head) < priority(remainingOperators.head)) {
+      } else if (operatorStack.isEmpty || prioritizeOperator(operatorStack.head) < prioritizeOperator(remainingOperators.head)) {
         // pop an operator and proceed
         loop(remainingOperands, remainingOperators.tail, operandStack, remainingOperators.head :: operatorStack)
       } else {
