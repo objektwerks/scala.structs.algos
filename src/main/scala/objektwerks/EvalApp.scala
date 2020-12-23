@@ -18,7 +18,7 @@ object EvalApp {
 
     def getNumbers: List[Int] = expr.split(" ").filter(!operators.contains(_)).map(_.toInt).toList
 
-    def simplifyOperation(op1: Int, op2: Int, operator: String) = operator match {
+    def evalSimpleOperation(op1: Int, op2: Int, operator: String) = operator match {
       case "+" => op1 + op2
       case "-" => op1 - op2
       case "*" => op1 * op2
@@ -44,7 +44,7 @@ object EvalApp {
           val op2 = operandStack.head
           val op1 = operandStack.tail.head
           val operator = operatorStack.head
-          val simpleResult = simplifyOperation(op1, op2, operator)
+          val simpleResult = evalSimpleOperation(op1, op2, operator)
           loop(remainingOperands, remainingOperators, simpleResult :: operandStack.drop(2), operatorStack.tail)
         }
       } else if (remainingOperands.length > remainingOperators.length) {
@@ -58,7 +58,7 @@ object EvalApp {
         val op2 = operandStack.head
         val op1 = operandStack.tail.head
         val operator = operatorStack.head
-        val simpleResult = simplifyOperation(op1, op2, operator)
+        val simpleResult = evalSimpleOperation(op1, op2, operator)
         loop(remainingOperands, remainingOperators, simpleResult :: operandStack.drop(2), operatorStack.tail)
       }
     }
