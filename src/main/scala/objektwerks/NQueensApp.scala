@@ -4,12 +4,12 @@ object NQueensApp {
   import scala.annotation.tailrec
 
   def main(args: Array[String]): Unit = {
-    val solutions = nQueens(8)
+    val solutions = nQueens()
     println(solutions.mkString("\n\n"))
     println(s"Total solutions: ${solutions.length}")
   }
 
-  def nQueens(n: Int): List[String] = {
+  def nQueens(n: Int = 8): List[String] = {
     def conflict(position: Int, queens: List[Int]): Boolean = {
       def conflictOneQueen(position: Int, queen: Int, index: Int): Boolean =
         queen == position || (index + 1) == (position - queen) || (index + 1) == (queen - position)
