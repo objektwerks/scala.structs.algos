@@ -30,4 +30,8 @@ class StringsTest extends AnyFunSuite with Matchers {
     buildListOfAllValidParens(1) shouldBe List("()")
     buildListOfAllValidParens(2) shouldBe List("()()", "(())")
   }
+
+  test("justifyText") {
+    justify(app.JustifyTextApp.text, 40).nonEmpty shouldBe true
+  }
 }
