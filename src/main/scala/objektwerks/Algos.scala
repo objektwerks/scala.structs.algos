@@ -66,7 +66,6 @@ object Algos {
         conflictOneQueen(position, queen, index)
       }
     }
-
     @tailrec
     def loop(currentPosition: Int, currentQueens: List[Int], solutions: List[List[Int]]): List[List[Int]] = {
       // I'm out of options
@@ -86,7 +85,6 @@ object Algos {
         loop(0, currentPosition :: currentQueens, solutions)
       }
     }
-
     def prettyPrint(solution: List[Int]): String = {
       val topEdge = (1 to n).map(_ => "_").mkString(".", ".", ".") // ._._._._.
       val rows = solution.map { queen =>

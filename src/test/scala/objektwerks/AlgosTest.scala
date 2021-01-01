@@ -42,7 +42,11 @@ class AlgosTest extends AnyFunSuite with Matchers {
     ( listA intersect listB ) shouldBe listIntersection
   }
 
-  test("triangles") {
+  test("nqueens") {
+    nQueens().length shouldBe 92
+  }
+
+  test("sierpinski") {
     sierpinski(1).length shouldBe 7
     sierpinski(2).length shouldBe 31
     sierpinski(3).length shouldBe 127
