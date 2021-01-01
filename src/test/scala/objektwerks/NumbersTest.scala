@@ -4,7 +4,7 @@ import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
 import Numbers._
-import app.EvalApp._
+import Eval._
 
 class NumbersTest extends AnyFunSuite with Matchers {
   test("is prime") {
