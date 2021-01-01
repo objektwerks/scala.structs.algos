@@ -1,4 +1,4 @@
-package objektwerks
+package objektwerks.app
 
 object SierpinskiApp {
   import scala.annotation.tailrec

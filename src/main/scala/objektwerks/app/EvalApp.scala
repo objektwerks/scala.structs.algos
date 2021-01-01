@@ -1,4 +1,4 @@
-package objektwerks
+package objektwerks.app
 
 object EvalApp {
   import scala.annotation.tailrec

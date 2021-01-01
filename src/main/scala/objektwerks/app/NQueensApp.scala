@@ -1,4 +1,4 @@
-package objektwerks
+package objektwerks.app
 
 object NQueensApp {
   import scala.annotation.tailrec

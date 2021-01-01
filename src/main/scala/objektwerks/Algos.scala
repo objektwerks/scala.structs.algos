@@ -1,6 +1,6 @@
 package objektwerks
 
-object Functions {
+object Algos {
   import scala.annotation.tailrec
   import scala.util.Try
 

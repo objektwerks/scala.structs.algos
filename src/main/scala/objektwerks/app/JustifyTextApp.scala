@@ -1,4 +1,4 @@
-package objektwerks
+package objektwerks.app
 
 object JustifyTextApp {
   import scala.annotation.tailrec
