@@ -113,23 +113,19 @@ object Algos {
     loop(0, List("*")).mkString("\n")
   }
 
-  /**
-   * equilateral = all 3 sides equal
-   * isosceles = 2 sides equal
-   * scalene = 0 sides equal
-   */
-  object Triangles extends Enumeration {
-    type Triangles = Value
-    val equilateral, isoceles, scalene = Value
+  object Triangle {
+    trait Kind
+    case object scalene extends Kind     // 0 sides equal
+    case object isoceles extends Kind    // 2 sides equal
+    case object equilateral extends Kind // 3 sides equal
   }
 
   case class Triangle(a: Int, b: Int, c: Int) {
-    import Triangles._
-
-    def kind: Triangles = (a, b, c) match {
-      case (x, y, z) if x == y && y == z => Triangles.equilateral
-      case (x, y, z) if x == y || y == z || z == x => Triangles.isoceles
-      case _ => Triangles.scalene
+    import Triangle._
+    def kind: Kind = (a, b, c) match {
+      case (x, y, z) if x == y && y == z => equilateral
+      case (x, y, z) if x == y || y == z || z == x => isoceles
+      case _ => scalene
     }
   }
 }
