@@ -51,4 +51,15 @@ class AlgosTest extends AnyFunSuite with Matchers {
     sierpinski(2).length shouldBe 31
     sierpinski(3).length shouldBe 127
   }
+
+  test("triangles") {
+    val equilateral = Triangle(3, 3, 3)
+    equilateral.kind shouldEqual Triangles.equilateral
+
+    val isosceles = Triangle(3, 6, 3)
+    isosceles.kind shouldEqual Triangles.isoceles
+
+    val scalene = Triangle(3, 6, 9)
+    scalene.kind shouldEqual Triangles.scalene
+  }
 }
