@@ -4,7 +4,7 @@ object HashBuilder {
   import java.nio.charset.StandardCharsets
   import java.security.MessageDigest
 
-  def hash(value: String): String = {
+  def build(value: String): String = {
     val digest = MessageDigest.getInstance("SHA3-256")
     val hashBytes = digest.digest(value.getBytes(StandardCharsets.UTF_8))
     bytesToHexString(hashBytes)
