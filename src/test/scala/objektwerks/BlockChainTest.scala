@@ -6,23 +6,29 @@ import org.scalatest.matchers.should.Matchers
 class BlockChainTest extends AnyFunSuite with Matchers {
   test("blockchain") {
     val chain = new Chain[String]()
+    val chainHash = chain.hash
     chain.timestamp should be > 0L
-    chain.hash.nonEmpty shouldBe true
+    chainHash.nonEmpty shouldBe true
 
     val genesis = Block[String](previousHash = Hash.sha3256("genesis"), value = "genesis")
+    val genesisHash = genesis.hash
     genesis.timestamp should be > 0L
-    genesis.hash.nonEmpty shouldBe true
+    genesisHash.nonEmpty shouldBe true
     chain.addBlock(genesis) shouldBe true
 
     val first = Block[String](previousHash = genesis.previousHash, value = "first")
+    val firstHash = first.hash
     first.timestamp should be > 0L
-    first.hash.nonEmpty shouldBe true
+    firstHash.nonEmpty shouldBe true
     chain.addBlock(first) shouldBe true
 
-    chain.getBlock(genesis.hash) shouldBe Some(genesis)
-    chain.getBlock(first.hash) shouldBe Some(first)
+    chain.getBlock(genesisHash) shouldBe Some(genesis)
+    chain.getBlock(genesisHash).get.hash shouldBe genesisHash
+
+    chain.getBlock(firstHash) shouldBe Some(first)
+    chain.getBlock(firstHash).get.hash shouldBe firstHash
 
     chain.getBlocks.size shouldBe 2
-    chain.hash.nonEmpty shouldBe true
+    (chain.hash == chainHash) shouldBe false
   }
 }
