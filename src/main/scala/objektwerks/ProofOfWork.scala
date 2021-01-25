@@ -1,9 +1,9 @@
 package objektwerks
 
-object ProofOfWorkBuilder {
+object ProofOfWork {
   import scala.annotation.tailrec
 
-  def build(lastHash: String): Long = {
+  def proof(lastHash: String): Long = {
     @tailrec
     def loop(lastHash: String, proof: Long): Long = {
       if ( isProofValid(lastHash, proof) )
@@ -14,9 +14,9 @@ object ProofOfWorkBuilder {
     loop(lastHash, 0)
   }
 
-  private def isProofValid(lastHash: String, proof: Long): Boolean = {
+  def isProofValid(lastHash: String, proof: Long): Boolean = {
     val guess = lastHash ++ proof.toString
-    val guessHash = HashBuilder.build(guess)
+    val guessHash = Hash.sha3256(guess)
     (guessHash take 4) == "0000"
   }
 }

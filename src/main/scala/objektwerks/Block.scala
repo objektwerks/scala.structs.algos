@@ -5,6 +5,7 @@ sealed trait Entity extends Product with Serializable
 final case class Block[T](timestamp: Long,
                           hash: String,
                           previousHash: String,
+                          proof: Long,
                           data: List[Transaction[T]]) extends Entity
 
 final case class Transaction[T](timestamp: Long,

@@ -1,10 +1,10 @@
 package objektwerks
 
-object HashBuilder {
+object Hash {
   import java.nio.charset.StandardCharsets
   import java.security.MessageDigest
 
-  def build(value: String): String = {
+  def sha3256(value: String): String = {
     val digest = MessageDigest.getInstance("SHA3-256")
     val hashBytes = digest.digest(value.getBytes(StandardCharsets.UTF_8))
     bytesToHexString(hashBytes)
