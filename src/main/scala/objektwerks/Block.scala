@@ -1,7 +1,5 @@
 package objektwerks
 
-import objektwerks.Entity._
-
 sealed trait Entity extends Product with Serializable
 object Entity {
   import java.sql.Timestamp
@@ -14,16 +12,16 @@ object Entity {
   def proof(hash: String): Long = ProofOfWork.proof(hash)
 }
 
-final case class Block[T](timestamp: Long = timeStamp,
+final case class Block[T](timestamp: Long,
                           hash: String,
                           previousHash: String,
                           proof: Long,
-                          data: List[Transaction[T]]) extends Entity
+                          transactions: List[Transaction[T]]) extends Entity
 
-final case class Transaction[T](timestamp: Long = timeStamp,
+final case class Transaction[T](timestamp: Long,
                                 hash: String,
                                 data: T) extends Entity
 
-final case class Chain[T](timestamp: Long = timeStamp,
+final case class Chain[T](timestamp: Long,
                           hash: String,
                           blocks: List[Block[T]]) extends Entity
