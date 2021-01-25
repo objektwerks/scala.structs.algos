@@ -1,13 +1,15 @@
 package objektwerks
 
+final case class ProofOfWork(value: Long) extends Entity
+
 object ProofOfWork {
   import scala.annotation.tailrec
 
-  def proof(lastHash: String): Long = {
+  def calculate(lastHash: String): ProofOfWork = {
     @tailrec
-    def loop(lastHash: String, proof: Long): Long = {
+    def loop(lastHash: String, proof: Long): ProofOfWork = {
       if ( isProofValid(lastHash, proof) )
-        proof
+        ProofOfWork( proof )
       else
         loop(lastHash, proof + 1)
     }
@@ -17,6 +19,6 @@ object ProofOfWork {
   def isProofValid(lastHash: String, proof: Long): Boolean = {
     val guess = lastHash ++ proof.toString
     val guessHash = Hash.sha3256(guess)
-    (guessHash take 4) == "0000"
+    (guessHash.value take 4) == "0000"
   }
 }

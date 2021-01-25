@@ -1,27 +1,16 @@
 package objektwerks
 
-sealed trait Entity extends Product with Serializable
-object Entity {
-  import java.sql.Timestamp
-  import java.time.Instant
+final case class Block[T](hash: Hash,
+                          previousHash: Hash,
+                          proofOfWork: ProofOfWork,
+                          value: T) extends Entity
 
-  def timeStamp: Long = Timestamp.from(Instant.now).getTime
+final case class Chain[T]() extends Entity {
+  import scala.collection.mutable
 
-  def hash(value: String): String = Hash.sha3256(value)
+  private val blocks = mutable.Map.empty[Hash, Block[T]]
 
-  def proof(hash: String): Long = ProofOfWork.proof(hash)
+  def addBlock(block: Block[T]): Unit = blocks += block.hash -> block
+
+  def getBlock(hash: Hash): Option[Block[T]] = blocks.get(hash)
 }
-
-final case class Block[T](timestamp: Long,
-                          hash: String,
-                          previousHash: String,
-                          proof: Long,
-                          transactions: List[Transaction[T]]) extends Entity
-
-final case class Transaction[T](timestamp: Long,
-                                hash: String,
-                                data: T) extends Entity
-
-final case class Chain[T](timestamp: Long,
-                          hash: String,
-                          blocks: List[Block[T]]) extends Entity

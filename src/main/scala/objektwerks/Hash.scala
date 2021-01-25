@@ -1,13 +1,15 @@
 package objektwerks
 
+final case class Hash(value: String) extends Entity
+
 object Hash {
   import java.nio.charset.StandardCharsets
   import java.security.MessageDigest
 
-  def sha3256(value: String): String = {
+  def sha3256(value: String): Hash = {
     val digest = MessageDigest.getInstance("SHA3-256")
     val hashBytes = digest.digest(value.getBytes(StandardCharsets.UTF_8))
-    bytesToHexString(hashBytes)
+    Hash( bytesToHexString(hashBytes) )
   }
 
   private def bytesToHexString(hashBytes: Array[Byte]): String = {
