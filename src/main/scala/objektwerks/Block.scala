@@ -1,32 +1,38 @@
 package objektwerks
 
+import Entity.timeStamp
 import Hash.Hash
 import ProofOfWork.ProofOfWork
 
-trait Entity extends Product with Serializable {
+sealed trait Entity extends Product with Serializable
+object Entity {
   import java.sql.Timestamp
   import java.time.Instant
 
-  val timestamp = Timestamp.from(Instant.now).getTime
+  def timeStamp: Long = Timestamp.from(Instant.now).getTime
 }
 
-final case class Block[T](hash: Hash,
+final case class Block[T](timestamp: Long,
+                          hash: Hash,
                           previousHash: Hash,
                           proofOfWork: ProofOfWork,
                           value: T) extends Entity
 
 object Block {
   def apply[T](previousHash: Hash, value: T): Block[T] = {
-    val hash = Hash.sha3256(value.toString)
+    val timestamp = timeStamp
+    val hash = Hash.sha3256( timestamp.toString + value.toString )
     val proofOfWork = ProofOfWork.solve(hash)
-    Block[T](hash, previousHash, proofOfWork, value)
+    Block[T](timestamp, hash, previousHash, proofOfWork, value)
   }
 }
 
-final case class Chain[T]() extends Entity {
+final case class Chain[T](timestamp: Long = timeStamp) extends Entity {
   import scala.collection.mutable
 
   private val chain = mutable.Map.empty[Hash, Block[T]]
+
+  def hash: String = Hash.sha3256( chain.keys.fold( timeStamp.toString )(_ + _) )
 
   def addBlock(block: Block[T]): Boolean =
     if ( chain.contains(block.hash) ) {
