@@ -28,7 +28,13 @@ final case class Chain[T]() extends Entity {
 
   private val chain = mutable.Map.empty[Hash, Block[T]]
 
-  def addBlock(block: Block[T]): Unit = chain += block.hash -> block
+  def addBlock(block: Block[T]): Boolean =
+    if ( chain.contains(block.hash) ) {
+      false
+    } else {
+      chain += block.hash -> block
+      true
+    }
 
   def getBlock(hash: Hash): Option[Block[T]] = chain.get(hash)
 
