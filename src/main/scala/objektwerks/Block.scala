@@ -26,9 +26,11 @@ object Block {
 final case class Chain[T]() extends Entity {
   import scala.collection.mutable
 
-  private val blocks = mutable.Map.empty[Hash, Block[T]]
+  private val chain = mutable.Map.empty[Hash, Block[T]]
 
-  def addBlock(block: Block[T]): Unit = blocks += block.hash -> block
+  def addBlock(block: Block[T]): Unit = chain += block.hash -> block
 
-  def getBlock(hash: Hash): Option[Block[T]] = blocks.get(hash)
+  def getBlock(hash: Hash): Option[Block[T]] = chain.get(hash)
+
+  def getBlocks: Map[Hash, Block[T]] = chain.toMap
 }

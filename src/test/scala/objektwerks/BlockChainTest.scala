@@ -15,5 +15,7 @@ class BlockChainTest extends AnyFunSuite with Matchers {
 
     chain.getBlock(genesis.hash) shouldBe Some(genesis)
     chain.getBlock(first.hash) shouldBe Some(first)
+
+    chain.getBlocks.size shouldBe 2
   }
 }
