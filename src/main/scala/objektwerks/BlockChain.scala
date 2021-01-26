@@ -19,9 +19,7 @@ final case class Block[T](timestamp: Long,
                           value: T) extends Entity
 
 object Block {
-  def apply[T](value: T): Block[T] = {
-    Block[T]( dateTimeMillis, "0", "0", 0L, value )
-  }
+  def apply[T](value: T): Block[T] = Block[T]( dateTimeMillis, "0", "0", 0L, value )
 
   def apply[T](blockChain: BlockChain[T], value: T): Block[T] = {
     val timestamp = dateTimeMillis
