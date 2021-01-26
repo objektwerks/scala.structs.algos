@@ -28,13 +28,17 @@ object Block {
 }
 
 final case class Chain[T](timestamp: Long = dateTimeInMillis) extends Entity {
-  import scala.collection.concurrent.TrieMap
+  import scala.collection.mutable
 
-  private val chain = TrieMap.empty[Hash, Block[T]]
+  private val chain = mutable.LinkedHashMap.empty[Hash, Block[T]]
 
   def hash: String = Hash.sha3256( chain.keys.fold( dateTimeInMillis.toString )(_ + _) )
 
-  def addBlock(block: Block[T]): Boolean =
+  def genesis: (Hash, Block[T]) = chain.head
+
+  def last: (Hash, Block[T]) = chain.last
+
+  def add(block: Block[T]): Boolean =
     if ( chain.contains(block.hash) ) {
       false
     } else {
@@ -42,7 +46,7 @@ final case class Chain[T](timestamp: Long = dateTimeInMillis) extends Entity {
       true
     }
 
-  def getBlock(hash: Hash): Option[Block[T]] = chain.get(hash)
+  def get(hash: Hash): Option[Block[T]] = chain.get(hash)
 
-  def getBlocks: Map[Hash, Block[T]] = chain.toMap
+  def list: Map[Hash, Block[T]] = chain.toMap
 }

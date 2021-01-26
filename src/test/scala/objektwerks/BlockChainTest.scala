@@ -20,16 +20,24 @@ class BlockChainTest extends AnyFunSuite with Matchers {
     first.timestamp should be > 0L
     firstHash.nonEmpty shouldBe true
 
-    chain.addBlock(genesis) shouldBe true
-    chain.addBlock(first) shouldBe true
+    chain.add(genesis) shouldBe true
+    chain.add(first) shouldBe true
 
-    chain.getBlock(genesisHash) shouldBe Some(genesis)
-    chain.getBlock(genesisHash).get.hash shouldBe genesisHash
+    chain.get(genesisHash) shouldBe Some(genesis)
+    chain.get(genesisHash).get.hash shouldBe genesisHash
 
-    chain.getBlock(firstHash) shouldBe Some(first)
-    chain.getBlock(firstHash).get.hash shouldBe firstHash
+    chain.get(firstHash) shouldBe Some(first)
+    chain.get(firstHash).get.hash shouldBe firstHash
 
-    chain.getBlocks.size shouldBe 2
+    chain.list.size shouldBe 2
     (chain.hash == chainHash) shouldBe false
+
+    val ( genesisKey, genesisValue ) = chain.genesis
+    genesisKey shouldBe genesis.hash
+    genesisValue shouldBe genesis
+
+    val ( firstKey, firstValue ) = chain.last
+    firstKey shouldBe first.hash
+    firstValue shouldBe first
   }
 }
