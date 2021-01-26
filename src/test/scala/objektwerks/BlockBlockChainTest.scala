@@ -5,40 +5,22 @@ import org.scalatest.matchers.should.Matchers
 
 class BlockBlockChainTest extends AnyFunSuite with Matchers {
   test("blockchain") {
-    val blockChain = new BlockChain[String]()
-    val blockChainHash = blockChain.hash
-    blockChain.timestamp should be > 0L
-    blockChainHash.nonEmpty shouldBe true
+    val genesis = Block[String](previousHash = Hash.sha3256("genesis"), value = "genesis")
 
-    val genesisBlock = Block[String](previousHash = Hash.sha3256("genesis"), value = "genesis")
-    val genesisHash = genesisBlock.hash
-    genesisBlock.timestamp should be > 0L
-    genesisHash.nonEmpty shouldBe true
-    blockChain.add(genesisBlock) shouldBe true
+    val blockChain = new BlockChain[String](genesis)
+    blockChain.list.size shouldBe 1
+    val blockChainHash = blockChain.hash
 
     val firstBlock = Block[String](previousHash = blockChain.last.hash, value = "first")
-    val firstHash = firstBlock.hash
-    firstBlock.timestamp should be > 0L
-    firstHash.nonEmpty shouldBe true
+    firstBlock.previousHash shouldBe genesis.hash
+
     blockChain.add(firstBlock) shouldBe true
-
-    firstBlock.previousHash shouldBe genesisBlock.hash
-
-    blockChain.get(genesisHash) shouldBe Some(genesisBlock)
-    blockChain.get(genesisHash).get.hash shouldBe genesisHash
-
-    blockChain.get(firstHash) shouldBe Some(firstBlock)
-    blockChain.get(firstHash).get.hash shouldBe firstHash
-
     blockChain.list.size shouldBe 2
-    (blockChain.hash == blockChainHash) shouldBe false
+    (blockChainHash != blockChain.hash) shouldBe true
+    blockChain.get(firstBlock.hash) shouldBe Some(firstBlock)
 
-    val genensisHashBlock = blockChain.genesis
-    genensisHashBlock.hash shouldBe genesisBlock.hash
-    genensisHashBlock.block shouldBe genesisBlock
-
-    val firstHashBlock = blockChain.last
-    firstHashBlock.hash shouldBe firstBlock.hash
-    firstHashBlock.block shouldBe firstBlock
+    val lastHashBlock = blockChain.last
+    lastHashBlock.hash shouldBe firstBlock.hash
+    lastHashBlock.block shouldBe firstBlock
   }
 }
