@@ -43,6 +43,8 @@ final case class BlockChain[T](genesisBlock: Block[T]) extends Entity {
 
   def last: HashBlock[T] = toHashBlock( chain.last )
 
+  def count: Int = chain.size
+
   def add(block: Block[T]): Boolean =
     if ( !chain.contains(block.hash) && ( block.previousHash == last.hash ) ) {
       chain += block.hash -> block
@@ -50,10 +52,6 @@ final case class BlockChain[T](genesisBlock: Block[T]) extends Entity {
     } else false
 
   def get(hash: Hash): Option[Block[T]] = chain.get(hash)
-
-  def list: Map[Hash, Block[T]] = chain.toMap
-
-  def count: Int = chain.size
 
   def isValid: Boolean = {
     var errors = 0
@@ -63,6 +61,8 @@ final case class BlockChain[T](genesisBlock: Block[T]) extends Entity {
     }
     errors == 0
   }
+
+  def toMap: Map[Hash, Block[T]] = chain.toMap
 
   private def toHashBlock(tuple: (Hash, Block[T])): HashBlock[T] = HashBlock( tuple._1, tuple._2 )
 }
