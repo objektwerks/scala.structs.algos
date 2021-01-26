@@ -56,8 +56,8 @@ final case class BlockChain[T](genesisBlock: Block[T]) extends Entity {
   def isValid: Boolean = {
     var errors = 0
     if ( chain.head._2 != genesisBlock ) errors += 1
-    for ( hash <- chain.keys.tail ) {
-      if ( !chain.contains(hash) ) errors += 1
+    for ( block <- chain.values.tail ) {
+      if ( chain.keys.count(hash => hash == block.previousHash) != 1 ) errors += 1
     }
     errors == 0
   }
