@@ -29,7 +29,7 @@ object Block {
 
 final case class HashBlock[T](hash: Hash, block: Block[T]) extends Entity
 
-final case class Chain[T](timestamp: Long = dateTimeInMillis) extends Entity {
+final case class BlockChain[T](timestamp: Long = dateTimeInMillis) extends Entity {
   import scala.collection.mutable
 
   private val chain = mutable.LinkedHashMap.empty[Hash, Block[T]]
