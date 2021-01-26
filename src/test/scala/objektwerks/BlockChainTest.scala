@@ -14,13 +14,12 @@ class BlockChainTest extends AnyFunSuite with Matchers {
     val genesisHash = genesis.hash
     genesis.timestamp should be > 0L
     genesisHash.nonEmpty shouldBe true
+    chain.add(genesis) shouldBe true
 
-    val first = Block[String](previousHash = genesis.previousHash, value = "first")
+    val first = Block[String](previousHash = chain.last.hash, value = "first")
     val firstHash = first.hash
     first.timestamp should be > 0L
     firstHash.nonEmpty shouldBe true
-
-    chain.add(genesis) shouldBe true
     chain.add(first) shouldBe true
 
     chain.get(genesisHash) shouldBe Some(genesis)
@@ -32,12 +31,12 @@ class BlockChainTest extends AnyFunSuite with Matchers {
     chain.list.size shouldBe 2
     (chain.hash == chainHash) shouldBe false
 
-    val ( genesisKey, genesisValue ) = chain.genesis
-    genesisKey shouldBe genesis.hash
-    genesisValue shouldBe genesis
+    val genensisHashBlock = chain.genesis
+    genensisHashBlock.hash shouldBe genesis.hash
+    genensisHashBlock.block shouldBe genesis
 
-    val ( firstKey, firstValue ) = chain.last
-    firstKey shouldBe first.hash
-    firstValue shouldBe first
+    val firstHashBlock = chain.last
+    firstHashBlock.hash shouldBe first.hash
+    firstHashBlock.block shouldBe first
   }
 }

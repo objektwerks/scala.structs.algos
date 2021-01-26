@@ -27,6 +27,8 @@ object Block {
   }
 }
 
+final case class HashBlock[T](hash: Hash, block: Block[T]) extends Entity
+
 final case class Chain[T](timestamp: Long = dateTimeInMillis) extends Entity {
   import scala.collection.mutable
 
@@ -34,9 +36,9 @@ final case class Chain[T](timestamp: Long = dateTimeInMillis) extends Entity {
 
   def hash: String = Hash.sha3256( chain.keys.fold( dateTimeInMillis.toString )(_ + _) )
 
-  def genesis: (Hash, Block[T]) = chain.head
+  def genesis: HashBlock[T] = toHashBlock( chain.head )
 
-  def last: (Hash, Block[T]) = chain.last
+  def last: HashBlock[T] = toHashBlock( chain.last )
 
   def add(block: Block[T]): Boolean =
     if ( chain.contains(block.hash) ) {
@@ -49,4 +51,6 @@ final case class Chain[T](timestamp: Long = dateTimeInMillis) extends Entity {
   def get(hash: Hash): Option[Block[T]] = chain.get(hash)
 
   def list: Map[Hash, Block[T]] = chain.toMap
+
+  private def toHashBlock(tuple: (Hash, Block[T])): HashBlock[T] = HashBlock( tuple._1, tuple._2 )
 }
