@@ -21,7 +21,7 @@ final case class Block[T](timestamp: Long,
 object Block {
   def apply[T](previousHash: Hash, value: T): Block[T] = {
     val timestamp = dateTimeInMillis
-    val hash = Hash.sha3256( timestamp.toString + value.toString )
+    val hash = Hash.sha3256( timestamp.toString + previousHash + value.toString )
     val proofOfWork = ProofOfWork.solve(hash)
     Block[T](timestamp, hash, previousHash, proofOfWork, value)
   }
