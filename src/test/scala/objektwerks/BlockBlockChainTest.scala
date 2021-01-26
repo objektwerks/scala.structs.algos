@@ -9,21 +9,21 @@ class BlockBlockChainTest extends AnyFunSuite with Matchers {
     blockChain.count shouldBe 1
     val blockChainHash = blockChain.hash
 
-    val firstBlock = Block[String](blockChain = blockChain, value = "first")
-    firstBlock.previousHash shouldBe blockChain.genesisBlock.hash
-    blockChain.add(firstBlock) shouldBe true
-    blockChain.count shouldBe 2
+    testBlock(blockChain, "first")
     (blockChainHash != blockChain.hash) shouldBe true
-    blockChain.get(firstBlock.hash) shouldBe Some(firstBlock)
-    blockChain.last.hash shouldBe firstBlock.hash
-    blockChain.last.block shouldBe firstBlock
+    blockChain.count shouldBe 2
 
-    val secondBlock = Block[String](blockChain = blockChain, value = "second")
-    secondBlock.previousHash shouldBe firstBlock.hash
-    blockChain.add(secondBlock) shouldBe true
+    testBlock(blockChain, "second")
     blockChain.count shouldBe 3
-    blockChain.get(secondBlock.hash) shouldBe Some(secondBlock)
-    blockChain.last.hash shouldBe secondBlock.hash
-    blockChain.last.block shouldBe secondBlock
+  }
+
+  def testBlock(blockChain: BlockChain[String], value: String): Unit = {
+    val block = Block[String](blockChain = blockChain, value = value)
+    blockChain.add(block) shouldBe true
+    blockChain.get(block.hash) shouldBe Some(block)
+    blockChain.last.block.previousHash shouldBe block.previousHash
+    blockChain.last.hash shouldBe block.hash
+    blockChain.last.block shouldBe block
+    ()
   }
 }
