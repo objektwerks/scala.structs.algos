@@ -5,14 +5,12 @@ import org.scalatest.matchers.should.Matchers
 
 class BlockBlockChainTest extends AnyFunSuite with Matchers {
   test("blockchain") {
-    val genesisBlock = Block[String](previousHash = "0", value = "0")
-
-    val blockChain = new BlockChain[String](genesisBlock)
+    val blockChain = new BlockChain[String]( genesisBlock = Block[String](value = "0") )
     blockChain.list.size shouldBe 1
     val blockChainHash = blockChain.hash
 
-    val firstBlock = Block[String](previousHash = blockChain.last.hash, value = "first")
-    firstBlock.previousHash shouldBe genesisBlock.hash
+    val firstBlock = Block[String](blockChain = blockChain, value = "first")
+    firstBlock.previousHash shouldBe blockChain.genesisBlock.hash
     blockChain.add(firstBlock) shouldBe true
     blockChain.list.size shouldBe 2
     (blockChainHash != blockChain.hash) shouldBe true
@@ -20,7 +18,7 @@ class BlockBlockChainTest extends AnyFunSuite with Matchers {
     blockChain.last.hash shouldBe firstBlock.hash
     blockChain.last.block shouldBe firstBlock
 
-    val secondBlock = Block[String](previousHash = blockChain.last.hash, value = "second")
+    val secondBlock = Block[String](blockChain = blockChain, value = "second")
     secondBlock.previousHash shouldBe firstBlock.hash
     blockChain.add(secondBlock) shouldBe true
     blockChain.list.size shouldBe 3

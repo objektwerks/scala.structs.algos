@@ -13,17 +13,22 @@ object Entity {
 }
 
 final case class Block[T](timestamp: Long,
-                          hash: Hash,
                           previousHash: Hash,
+                          hash: Hash,
                           proofOfWork: ProofOfWork,
                           value: T) extends Entity
 
 object Block {
-  def apply[T](previousHash: Hash, value: T): Block[T] = {
+  def apply[T](value: T): Block[T] = {
+    Block[T]( dateTimeMillis, "0", "0", 0L, value )
+  }
+  
+  def apply[T](blockChain: BlockChain[T], value: T): Block[T] = {
     val timestamp = dateTimeMillis
+    val previousHash = blockChain.last.hash
     val hash = Hash.sha3256( timestamp.toString + previousHash + value.toString )
     val proofOfWork = ProofOfWork.solve(hash)
-    Block[T](timestamp, hash, previousHash, proofOfWork, value)
+    Block[T](timestamp, previousHash, hash, proofOfWork, value)
   }
 }
 
