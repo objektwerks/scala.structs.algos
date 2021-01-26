@@ -16,5 +16,6 @@ class BlockBlockChainTest extends AnyFunSuite with Matchers {
       blockChain.last.block shouldBe block
       blockChain.count shouldBe i + 1
     }
+    blockChain.isValid shouldBe true
   }
 }

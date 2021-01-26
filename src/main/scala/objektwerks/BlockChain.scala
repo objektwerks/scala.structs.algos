@@ -55,5 +55,14 @@ final case class BlockChain[T](genesisBlock: Block[T]) extends Entity {
 
   def count: Int = chain.size
 
+  def isValid: Boolean = {
+    var errors = 0
+    if ( chain.head._2 != genesisBlock ) errors += 1
+    for ( hash <- chain.keys.tail ) {
+      if ( !chain.contains(hash) ) errors += 1
+    }
+    errors == 0
+  }
+
   private def toHashBlock(tuple: (Hash, Block[T])): HashBlock[T] = HashBlock( tuple._1, tuple._2 )
 }
