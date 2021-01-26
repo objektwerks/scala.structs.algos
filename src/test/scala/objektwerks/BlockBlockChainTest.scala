@@ -22,6 +22,8 @@ class BlockBlockChainTest extends AnyFunSuite with Matchers {
     firstHash.nonEmpty shouldBe true
     blockChain.add(firstBlock) shouldBe true
 
+    firstBlock.previousHash shouldBe genesisBlock.hash
+
     blockChain.get(genesisHash) shouldBe Some(genesisBlock)
     blockChain.get(genesisHash).get.hash shouldBe genesisHash
 
