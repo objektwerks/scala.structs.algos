@@ -29,12 +29,12 @@ object Block {
 
 final case class HashBlock[T](hash: Hash, block: Block[T]) extends Entity
 
-final case class BlockChain[T](genesis: Block[T]) extends Entity {
+final case class BlockChain[T](genesisBlock: Block[T]) extends Entity {
   import scala.collection.mutable
-  
+
   val timestamp: Long = dateTimeMillis
   private val chain = mutable.LinkedHashMap.empty[Hash, Block[T]]
-  chain += genesis.hash -> genesis
+  chain += genesisBlock.hash -> genesisBlock
 
   def hash: String = Hash.sha3256( chain.keys.fold( dateTimeMillis.toString )(_ + _) )
 
