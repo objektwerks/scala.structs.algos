@@ -28,9 +28,9 @@ object Block {
 }
 
 final case class Chain[T](timestamp: Long = dateTimeInMillis) extends Entity {
-  import scala.collection.mutable
+  import scala.collection.concurrent.TrieMap
 
-  private val chain = mutable.Map.empty[Hash, Block[T]]
+  private val chain = TrieMap.empty[Hash, Block[T]]
 
   def hash: String = Hash.sha3256( chain.keys.fold( dateTimeInMillis.toString )(_ + _) )
 
