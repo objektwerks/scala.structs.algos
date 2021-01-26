@@ -22,7 +22,7 @@ object Block {
   def apply[T](value: T): Block[T] = {
     Block[T]( dateTimeMillis, "0", "0", 0L, value )
   }
-  
+
   def apply[T](blockChain: BlockChain[T], value: T): Block[T] = {
     val timestamp = dateTimeMillis
     val previousHash = blockChain.last.hash
@@ -54,6 +54,8 @@ final case class BlockChain[T](genesisBlock: Block[T]) extends Entity {
   def get(hash: Hash): Option[Block[T]] = chain.get(hash)
 
   def list: Map[Hash, Block[T]] = chain.toMap
+
+  def count: Int = chain.size
 
   private def toHashBlock(tuple: (Hash, Block[T])): HashBlock[T] = HashBlock( tuple._1, tuple._2 )
 }
