@@ -9,7 +9,7 @@ object Entity {
   import java.sql.Timestamp
   import java.util.Date
 
-  def dateTimeInMillis: Long = new Timestamp(new Date().getTime).getTime
+  def dateTimeInMillis: Long = new Timestamp( new Date().getTime ).getTime
 }
 
 final case class Block[T](timestamp: Long,
