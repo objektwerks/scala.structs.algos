@@ -5,19 +5,16 @@ object ProofOfWork {
 
   import scala.annotation.tailrec
 
-  def solve(lastHash: String, difficulty: Int = 4): ProofOfWork = {
+  def mine(blockHash: String, difficulty: Int = 4): ProofOfWork = {
     @tailrec
-    def loop(lastHash: String, proof: Long): ProofOfWork = {
-      if ( isValid(lastHash, proof, difficulty) )
-        proof
-      else
-        loop(lastHash, proof + 1)
+    def loop(hash: String, proof: Long): ProofOfWork = {
+      if ( isValid(hash, proof, difficulty) ) proof else loop(hash, proof + 1)
     }
-    loop(lastHash, 0)
+    loop(blockHash, 0L)
   }
 
-  private def isValid(lastHash: String, proof: Long, difficulty: Int): Boolean = {
-    val guess = lastHash ++ proof.toString
+  private def isValid(hash: String, proof: Long, difficulty: Int): Boolean = {
+    val guess = hash ++ proof.toString
     val guessHash = Hash.sha3256(guess)
     ( guessHash take difficulty ) == ( "0" * difficulty )
   }

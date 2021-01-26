@@ -25,7 +25,7 @@ object Block {
     val timestamp = dateTimeMillis
     val previousHash = blockChain.last.hash
     val hash = Hash.sha3256( timestamp.toString + previousHash + value.toString )
-    val proofOfWork = ProofOfWork.solve(hash)
+    val proofOfWork = ProofOfWork.mine(hash)
     Block[T](timestamp, previousHash, hash, proofOfWork, value)
   }
 }
