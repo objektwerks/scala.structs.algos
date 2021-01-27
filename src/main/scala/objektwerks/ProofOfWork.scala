@@ -7,9 +7,10 @@ object ProofOfWork {
 
   def mine(blockHash: String, difficulty: Int = 4): ProofOfWork = {
     @tailrec
-    def loop(hash: String, proof: Long): ProofOfWork = {
-      if ( isValid(hash, proof, difficulty) ) proof else loop(hash, proof + 1)
-    }
+    def loop(hash: String, proof: Long): ProofOfWork =
+      if ( isValid(hash, proof, difficulty) ) proof
+      else loop(hash, proof + 1)
+
     loop(blockHash, 0L)
   }
 
