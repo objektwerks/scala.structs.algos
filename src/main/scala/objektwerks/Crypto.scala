@@ -10,18 +10,19 @@ object Crypto {
 
   import scala.util.Try
 
-  def encrypt(value: String,
-              secret: String,
-              salt: String): Option[String] =
+  def encrypt(encryptionTarget: String,
+              sharedSecret: String,
+              sharedSalt: String): Option[String] =
     Try {
       val iv = Array[Byte](0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-      val ivspec = new IvParameterSpec(iv)
-      val factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256")
-      val spec = new PBEKeySpec(secret.toCharArray, salt.getBytes, 65536, 256)
-      val tmp = factory.generateSecret(spec)
-      val secretKey = new SecretKeySpec(tmp.getEncoded, "AES")
+      val ivParamSpec = new IvParameterSpec(iv)
+      val keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256")
+      val keySpec = new PBEKeySpec(sharedSecret.toCharArray, sharedSalt.getBytes, 65536, 256)
+      val secret = keyFactory.generateSecret(keySpec)
+      val secretKey = new SecretKeySpec(secret.getEncoded, "AES")
       val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
-      cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivspec)
-      Base64.getEncoder.encodeToString(cipher.doFinal(value.getBytes("UTF-8"))).mkString
+      cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivParamSpec)
+      val encryptedBytes = cipher.doFinal(encryptionTarget.getBytes("UTF-8"))
+      Base64.getEncoder.encodeToString(encryptedBytes).mkString
     }.toOption
 }
