@@ -16,13 +16,13 @@ object Crypto {
               sharedSalt: Array[Byte],
               text: String): Either[Throwable, String] =
     Try {
-      val iv = Array[Byte](0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-      val ivParamSpec = new IvParameterSpec(iv)
       val keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256")
       val keySpec = new PBEKeySpec(sharedSecret.toCharArray, sharedSalt, 65536, 256)
       val secret = keyFactory.generateSecret(keySpec)
       val secretKey = new SecretKeySpec(secret.getEncoded, "AES")
       val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
+      val buffer = Array[Byte](0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+      val ivParamSpec = new IvParameterSpec(buffer)
       cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivParamSpec)
       val encryptedBytes = cipher.doFinal( text.getBytes("UTF-8") )
       Base64.getEncoder.encodeToString(encryptedBytes)
@@ -32,13 +32,13 @@ object Crypto {
               sharedSalt: Array[Byte],
               encryptedText: String): Either[Throwable, String] =
     Try {
-      val iv = Array[Byte](0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-      val ivParamSpec = new IvParameterSpec(iv)
       val keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256")
       val keySpec = new PBEKeySpec(sharedSecret.toCharArray, sharedSalt, 65536, 256)
       val secret = keyFactory.generateSecret(keySpec)
       val secretKey = new SecretKeySpec(secret.getEncoded, "AES")
       val cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING")
+      val buffer = Array[Byte](0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+      val ivParamSpec = new IvParameterSpec(buffer)
       cipher.init(Cipher.DECRYPT_MODE, secretKey, ivParamSpec)
       val decodedBytes = Base64.getDecoder.decode(encryptedText)
       val decryptedBytes = cipher.doFinal(decodedBytes)
