@@ -5,8 +5,8 @@ import org.scalatest.matchers.should.Matchers
 
 class CryptoTest extends AnyFunSuite with Matchers {
   test("encrypt > decrypt") {
-    val sharedSecret = Crypto.randomByteArray.mkString
-    val sharedSalt = Crypto.randomByteArray
+    val sharedSecret = Crypto.secureRandomByteArray.mkString
+    val sharedSalt = Crypto.secureRandomByteArray
     val text = "Dogfishhead 60' IPA is the best IPA in the world!"
 
     println(s"shared secret: $sharedSecret")
