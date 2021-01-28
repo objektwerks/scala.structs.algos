@@ -1,13 +1,12 @@
 package objektwerks
 
-import java.security.SecureRandom
-
 object Crypto {
   import javax.crypto.Cipher
   import javax.crypto.SecretKeyFactory
   import javax.crypto.spec.IvParameterSpec
   import javax.crypto.spec.PBEKeySpec
   import javax.crypto.spec.SecretKeySpec
+  import java.security.SecureRandom
   import java.util.Base64
 
   import scala.util.Try
