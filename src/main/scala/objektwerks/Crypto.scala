@@ -25,4 +25,21 @@ object Crypto {
       val encryptedBytes = cipher.doFinal(encryptionTarget.getBytes("UTF-8"))
       Base64.getEncoder.encodeToString(encryptedBytes).mkString
     }.toOption
+
+  def decrypt(decryptionTarget: String,
+              sharedSecret: String,
+              sharedSalt: String): Option[String] =
+    Try {
+      val iv = Array[Byte](0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+      val ivParamSpec = new IvParameterSpec(iv)
+      val keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256")
+      val keySpec = new PBEKeySpec(sharedSecret.toCharArray, sharedSalt.getBytes, 65536, 256)
+      val secret = keyFactory.generateSecret(keySpec)
+      val secretKey = new SecretKeySpec(secret.getEncoded, "AES")
+      val cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING")
+      cipher.init(Cipher.DECRYPT_MODE, secretKey, ivParamSpec)
+      val decodedBytes = Base64.getDecoder.decode(decryptionTarget)
+      val decryptedBytes = cipher.doFinal(decodedBytes)
+      decryptedBytes.mkString
+    }.toOption
 }
