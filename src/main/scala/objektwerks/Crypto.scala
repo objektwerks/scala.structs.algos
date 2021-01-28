@@ -14,7 +14,7 @@ object Crypto {
 
   def encrypt(sharedSecret: String,
               sharedSalt: Array[Byte],
-              text: String): Option[String] =
+              text: String): Either[Throwable, String] =
     Try {
       val iv = Array[Byte](0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
       val ivParamSpec = new IvParameterSpec(iv)
@@ -26,11 +26,11 @@ object Crypto {
       cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivParamSpec)
       val encryptedBytes = cipher.doFinal( text.getBytes("UTF-8") )
       Base64.getEncoder.encodeToString(encryptedBytes)
-    }.toOption
+    }.toEither
 
   def decrypt(sharedSecret: String,
               sharedSalt: Array[Byte],
-              encryptedText: String): Option[String] =
+              encryptedText: String): Either[Throwable, String] =
     Try {
       val iv = Array[Byte](0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
       val ivParamSpec = new IvParameterSpec(iv)
@@ -43,7 +43,7 @@ object Crypto {
       val decodedBytes = Base64.getDecoder.decode(encryptedText)
       val decryptedBytes = cipher.doFinal(decodedBytes)
       new String(decryptedBytes)
-    }.toOption
+    }.toEither
 
   def randomByteArray: Array[Byte] = {
     val random = new SecureRandom()
