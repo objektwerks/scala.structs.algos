@@ -10,9 +10,9 @@ object Crypto {
 
   import scala.util.Try
 
-  def encrypt(encryptionTarget: String,
-              sharedSecret: String,
-              sharedSalt: String): Option[String] =
+  def encrypt(sharedSecret: String,
+              sharedSalt: String,
+              text: String): Option[String] =
     Try {
       val iv = Array[Byte](0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
       val ivParamSpec = new IvParameterSpec(iv)
@@ -22,13 +22,12 @@ object Crypto {
       val secretKey = new SecretKeySpec(secret.getEncoded, "AES")
       val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
       cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivParamSpec)
-      val encryptedBytes = cipher.doFinal(encryptionTarget.getBytes("UTF-8"))
-      Base64.getEncoder.encodeToString(encryptedBytes).mkString
+      Base64.getEncoder.encodeToString( cipher.doFinal(text.getBytes("UTF-8")) )
     }.toOption
 
-  def decrypt(decryptionTarget: String,
-              sharedSecret: String,
-              sharedSalt: String): Option[String] =
+  def decrypt(sharedSecret: String,
+              sharedSalt: String,
+              encryptedText: String): Option[String] =
     Try {
       val iv = Array[Byte](0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
       val ivParamSpec = new IvParameterSpec(iv)
@@ -38,8 +37,6 @@ object Crypto {
       val secretKey = new SecretKeySpec(secret.getEncoded, "AES")
       val cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING")
       cipher.init(Cipher.DECRYPT_MODE, secretKey, ivParamSpec)
-      val decodedBytes = Base64.getDecoder.decode(decryptionTarget)
-      val decryptedBytes = cipher.doFinal(decodedBytes)
-      decryptedBytes.mkString
+      cipher.doFinal( Base64.getDecoder.decode(encryptedText) ).mkString
     }.toOption
 }
