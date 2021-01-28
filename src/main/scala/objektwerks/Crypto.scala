@@ -15,9 +15,9 @@ object Crypto {
               sharedSalt: Array[Byte],
               text: String): Either[Throwable, String] =
     Try {
-      val keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256")
       val keySpec = new PBEKeySpec(sharedSecret.toCharArray, sharedSalt, 65536, 256)
-      val secretKey = keyFactory.generateSecret(keySpec)
+      val secretKeyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256")
+      val secretKey = secretKeyFactory.generateSecret(keySpec)
       val secretKeySpec = new SecretKeySpec(secretKey.getEncoded, "AES")
       val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
       val buffer = Array[Byte](0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
@@ -31,9 +31,9 @@ object Crypto {
               sharedSalt: Array[Byte],
               encryptedText: String): Either[Throwable, String] =
     Try {
-      val keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256")
       val keySpec = new PBEKeySpec(sharedSecret.toCharArray, sharedSalt, 65536, 256)
-      val secretKey = keyFactory.generateSecret(keySpec)
+      val secretKeyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256")
+      val secretKey = secretKeyFactory.generateSecret(keySpec)
       val secretKeySpec = new SecretKeySpec(secretKey.getEncoded, "AES")
       val cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING")
       val buffer = Array[Byte](0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
