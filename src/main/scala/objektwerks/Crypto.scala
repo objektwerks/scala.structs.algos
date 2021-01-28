@@ -45,7 +45,7 @@ object Crypto {
       new String(decryptedBytes)
     }.toOption
 
-  def secureRandom: Array[Byte] = {
+  def randomByteArray: Array[Byte] = {
     val random = new SecureRandom()
     val bytes = new Array[Byte](16)
     random.nextBytes(bytes)
