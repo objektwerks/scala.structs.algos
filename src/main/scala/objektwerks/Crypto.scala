@@ -10,12 +10,13 @@ object Crypto {
 
   import scala.util.Try
 
+  private val iv = Array[Byte](0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+  private val ivParamSpec = new IvParameterSpec(iv)
+
   def encrypt(sharedSecret: String,
               sharedSalt: String,
               text: String): Option[String] =
     Try {
-      val iv = Array[Byte](0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-      val ivParamSpec = new IvParameterSpec(iv)
       val keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256")
       val keySpec = new PBEKeySpec(sharedSecret.toCharArray, sharedSalt.getBytes, 65536, 256)
       val secret = keyFactory.generateSecret(keySpec)
@@ -29,8 +30,6 @@ object Crypto {
               sharedSalt: String,
               encryptedText: String): Option[String] =
     Try {
-      val iv = Array[Byte](0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-      val ivParamSpec = new IvParameterSpec(iv)
       val keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256")
       val keySpec = new PBEKeySpec(sharedSecret.toCharArray, sharedSalt.getBytes, 65536, 256)
       val secret = keyFactory.generateSecret(keySpec)
