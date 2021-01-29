@@ -5,7 +5,7 @@ object ProofOfWork {
 
   import scala.annotation.tailrec
 
-  def mine(blockHash: String, difficulty: Int = 4): ProofOfWork = {
+  def mine(blockHash: String, difficulty: Int = 5): ProofOfWork = {
     @tailrec
     def loop(hash: String, proof: Long): ProofOfWork =
       if ( isValid(hash, proof, difficulty) ) proof
