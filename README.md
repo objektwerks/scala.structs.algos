@@ -1,6 +1,6 @@
 Scala Structs and Algos
 -----------------------
->Scala structs and algos. Includes:
+>Scala structs and algos, to include:
 1. BigO
 2. BlockChain
 3. Crypto
