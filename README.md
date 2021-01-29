@@ -13,8 +13,9 @@ Scala Structs and Algos
 10. RList
 11. Sierpinski   
 12. Strings
-13. Trees
-14. Factorial, Fibonacci, etc
+13. Text    
+14. Trees
+15. Factorial, Fibonacci, etc
 
 Test
 ----
