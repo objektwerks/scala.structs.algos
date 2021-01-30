@@ -9,9 +9,9 @@ class SymmetricCryptoTest extends AnyFunSuite with Matchers {
     val sharedSalt = SymmetricCrypto.secureRandomByteArray
     val text = "Dogfishhead 60' IPA is the best IPA in the world!"
 
-    println(s"shared secret: $sharedSecret")
-    println(s"shared salt: ${sharedSalt.mkString}")
-    println(s"text: $text")
+    println(s"symmetric shared secret: $sharedSecret")
+    println(s"symmetric shared salt: ${sharedSalt.mkString}")
+    println(s"symmetric text: $text")
 
     for {
       encryptedText <- SymmetricCrypto.encrypt(sharedSecret, sharedSalt, text)

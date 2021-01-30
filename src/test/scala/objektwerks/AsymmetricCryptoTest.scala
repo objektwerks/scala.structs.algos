@@ -6,7 +6,7 @@ import org.scalatest.matchers.should.Matchers
 class AsymmetricCryptoTest extends AnyFunSuite with Matchers {
   test("encrypt > decrypt") {
     val text = "Dogfishhead 60' IPA is the best IPA in the world!"
-    println(s"text: $text")
+    println(s"asymmetric text: $text")
 
     for {
       keyPair <- AsymmetricCrypto.generateKeyPair
