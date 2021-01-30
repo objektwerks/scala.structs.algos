@@ -17,8 +17,8 @@ class SymmetricCryptoTest extends AnyFunSuite with Matchers {
       encryptedText <- SymmetricCrypto.encrypt(sharedSecret, sharedSalt, text)
       decryptedText <- SymmetricCrypto.decrypt(sharedSecret, sharedSalt, encryptedText)
     } yield {
-      println(s"encrypted text: $encryptedText")
-      println(s"decrypted text: $decryptedText")
+      println(s"symmetric encrypted text: $encryptedText")
+      println(s"symmetric decrypted text: $decryptedText")
       text shouldBe decryptedText
     }
   }
