@@ -8,18 +8,18 @@ object AsymmetricCrypto {
   import scala.util.Try
 
 
-  def encrypt(privateKey: PrivateKey, text: String): Either[Throwable, String] =
+  def encrypt(publicKey: PublicKey, text: String): Either[Throwable, String] =
     Try {
       val cipher = Cipher.getInstance("RSA")
-      cipher.init(Cipher.ENCRYPT_MODE, privateKey)
+      cipher.init(Cipher.ENCRYPT_MODE, publicKey)
       val encryptedBytes = cipher.doFinal( text.getBytes("UTF-8") )
       Base64.getEncoder.encodeToString(encryptedBytes)
     }.toEither
 
-  def decrypt(publicKey: PublicKey, encryptedText: String): Either[Throwable, String] =
+  def decrypt(privateKey: PrivateKey, encryptedText: String): Either[Throwable, String] =
     Try {
       val cipher = Cipher.getInstance("RSA")
-      cipher.init(Cipher.DECRYPT_MODE, publicKey)
+      cipher.init(Cipher.DECRYPT_MODE, privateKey)
       val decodedBytes = Base64.getDecoder.decode(encryptedText)
       val decryptedBytes = cipher.doFinal(decodedBytes)
       new String(decryptedBytes)

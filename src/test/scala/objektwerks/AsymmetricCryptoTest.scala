@@ -10,8 +10,8 @@ class AsymmetricCryptoTest extends AnyFunSuite with Matchers {
 
     for {
       keyPair <- AsymmetricCrypto.generateKeyPair
-      encryptedText <- AsymmetricCrypto.encrypt(keyPair.getPrivate, text)
-      decryptedText <- AsymmetricCrypto.decrypt(keyPair.getPublic, encryptedText)
+      encryptedText <- AsymmetricCrypto.encrypt(keyPair.getPublic, text)
+      decryptedText <- AsymmetricCrypto.decrypt(keyPair.getPrivate, encryptedText)
     } yield {
       println(s"asymmetric encrypted text: $encryptedText")
       println(s"asymmetric decrypted text: $decryptedText")
