@@ -1,6 +1,6 @@
 package objektwerks
 
-object Crypto {
+object SymmetricCrypto {
   import javax.crypto.Cipher
   import javax.crypto.SecretKeyFactory
   import javax.crypto.spec.IvParameterSpec

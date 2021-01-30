@@ -3,10 +3,10 @@ package objektwerks
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-class CryptoTest extends AnyFunSuite with Matchers {
+class SymmetricCryptoTest extends AnyFunSuite with Matchers {
   test("encrypt > decrypt") {
-    val sharedSecret = Crypto.secureRandomByteArray.mkString
-    val sharedSalt = Crypto.secureRandomByteArray
+    val sharedSecret = SymmetricCrypto.secureRandomByteArray.mkString
+    val sharedSalt = SymmetricCrypto.secureRandomByteArray
     val text = "Dogfishhead 60' IPA is the best IPA in the world!"
 
     println(s"shared secret: $sharedSecret")
@@ -14,8 +14,8 @@ class CryptoTest extends AnyFunSuite with Matchers {
     println(s"text: $text")
 
     for {
-      encryptedText <- Crypto.encrypt(sharedSecret, sharedSalt, text)
-      decryptedText <- Crypto.decrypt(sharedSecret, sharedSalt, encryptedText)
+      encryptedText <- SymmetricCrypto.encrypt(sharedSecret, sharedSalt, text)
+      decryptedText <- SymmetricCrypto.decrypt(sharedSecret, sharedSalt, encryptedText)
     } yield {
       println(s"encrypted text: $encryptedText")
       println(s"decrypted text: $decryptedText")
