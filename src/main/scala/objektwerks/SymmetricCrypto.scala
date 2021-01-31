@@ -1,13 +1,10 @@
 package objektwerks
 
 object SymmetricCrypto {
-  import javax.crypto.Cipher
-  import javax.crypto.SecretKeyFactory
-  import javax.crypto.spec.IvParameterSpec
-  import javax.crypto.spec.PBEKeySpec
-  import javax.crypto.spec.SecretKeySpec
   import java.security.SecureRandom
   import java.util.Base64
+  import javax.crypto.{Cipher, SecretKeyFactory}
+  import javax.crypto.spec.{IvParameterSpec, PBEKeySpec, SecretKeySpec}
 
   import scala.util.Try
 
