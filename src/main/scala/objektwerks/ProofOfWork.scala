@@ -1,9 +1,9 @@
 package objektwerks
 
 object ProofOfWork {
-  type ProofOfWork = Long
-
   import scala.annotation.tailrec
+
+  type ProofOfWork = Long
 
   def mine(blockHash: String, difficulty: Int = 4): ProofOfWork = {
     @tailrec

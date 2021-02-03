@@ -1,10 +1,10 @@
 package objektwerks
 
 object Hash {
-  type Hash = String
-
   import java.nio.charset.StandardCharsets
   import java.security.MessageDigest
+
+  type Hash = String
 
   def sha3256(value: String): Hash = {
     val digest = MessageDigest.getInstance("SHA3-256")

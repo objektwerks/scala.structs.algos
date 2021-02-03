@@ -2,6 +2,7 @@ package objektwerks
 
 object Numbers {
   import Math._
+
   import scala.annotation.tailrec
   import scala.util.Random
 
