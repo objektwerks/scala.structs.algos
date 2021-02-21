@@ -5,7 +5,7 @@ import org.scalatest.matchers.should.Matchers
 
 class BlockChainTest extends AnyFunSuite with Matchers {
   test("blockchain") {
-    val blockChain = new BlockChain[String]( genesisBlock = Block[String](value = "0") )
+    val blockChain = BlockChain[String]( genesisBlock = Block[String](value = "0") )
     blockChain.count shouldBe 1
     for (i <- 1 until 10) {
       val block = Block[String](blockChain = blockChain, value = i.toString)
