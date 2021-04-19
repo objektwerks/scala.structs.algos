@@ -53,6 +53,8 @@ class NumbersTest extends AnyFunSuite with Matchers {
     reverseInteger(0) shouldBe 0
     reverseInteger(3) shouldBe 3
     reverseInteger(36) shouldBe 63
-
+    reverseInteger(540) shouldBe 45
+    reverseInteger(-9) shouldBe -9
+    reverseInteger(-53) shouldBe -35
   }
 }
