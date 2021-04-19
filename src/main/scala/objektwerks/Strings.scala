@@ -3,6 +3,8 @@ package objektwerks
 object Strings {
   import scala.annotation.tailrec
 
+  def reverseWords(words: String): String = words.split(" ").filter(_.nonEmpty).reverse.mkString(" ")
+
   def countChars(s: String): Map[Char, Int] = {
     @tailrec
     def loop(string: String, acc: Map[Char, Int]): Map[Char, Int] = {
