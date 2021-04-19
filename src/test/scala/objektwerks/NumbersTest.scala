@@ -62,6 +62,8 @@ class NumbersTest extends AnyFunSuite with Matchers {
     parseInteger("") shouldBe 0
     parseInteger("s") shouldBe 0
     parseInteger("1") shouldBe 1
-
+    parseInteger("-1") -1
+    parseInteger("   369") shouldBe 369
+    parseInteger("   -963") shouldBe -963
   }
 }
