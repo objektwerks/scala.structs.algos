@@ -69,14 +69,14 @@ object Numbers {
     fractionToDecimal(numerator, denominator)
   }
 
-  def largestNumber(numbers: List[Int]): String = {
+  def largestNumber(numbers: List[Int]): Int = {
     implicit val newOrdering: Ordering[Int] = Ordering.fromLessThan { (a, b) =>
       val aString = a.toString
       val bString = b.toString
       (aString + bString).compareTo(bString + aString) >= 0
     }
     val largest = numbers.sorted.mkString("")
-    if (numbers.isEmpty || largest.charAt(0) == '0') "0"
-    else largest
+    if (numbers.isEmpty || largest.charAt(0) == '0') 0
+    else largest.toInt
   }
 }
