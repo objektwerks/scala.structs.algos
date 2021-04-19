@@ -3,7 +3,7 @@ Scala Structs and Algos
 >Scala structs and algos, to include:
 1. BigO
 2. BlockChain
-3. Crypto - Asymmetric, Symmetrics
+3. Crypto - Asymmetric, Symmetric
 4. Expression Eval
 5. Graphs
 6. Hash
