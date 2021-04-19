@@ -6,6 +6,10 @@ import org.scalatest.matchers.should.Matchers
 import Strings._
 
 class StringsTest extends AnyFunSuite with Matchers {
+  test("reverse words") {
+    reverseWords("scala hello") shouldBe "hello scala"
+  }
+
   test("countChars") {
     countChars("scala") shouldBe Map('a' -> 2, 'c' -> 1, 'l' -> 1, 's' -> 1)
   }
