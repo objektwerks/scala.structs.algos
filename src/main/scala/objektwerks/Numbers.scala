@@ -44,13 +44,13 @@ object Numbers {
         else findStart(digit, digits.tail, rem, remainders.tail, currentIndex + 1)
       }
       @tailrec
-      def loop(num: Long, denom: Long, digits: List[Long], remainders: List[Long]): String = {
-        val quot = (num * 10) / denom
-        val rem = (num * 10) % denom
+      def loop(num: Long, denominator: Long, digits: List[Long], remainders: List[Long]): String = {
+        val quot = (num * 10) / denominator
+        val rem = (num * 10) % denominator
         if (rem == 0) (digits :+ quot).mkString("")
         else {
           val recurrenceStartIndex = findStart(quot, digits, rem, remainders, 0)
-          if (recurrenceStartIndex == -1) loop(rem, denom, digits :+ quot, remainders :+ rem)
+          if (recurrenceStartIndex == -1) loop(rem, denominator, digits :+ quot, remainders :+ rem)
           else {
             val (beforeRecurrence, recurrence) = digits.splitAt(recurrenceStartIndex)
             s"${beforeRecurrence.mkString("")}(${recurrence.mkString("")})"
@@ -93,5 +93,32 @@ object Numbers {
     if (number == Int.MinValue) 0
     else if (number >= 0) loop(number, 0)
     else -loop(-number, 0)
+  }
+
+  @tailrec
+  def parseInteger(string: String): Int = {
+    val WHITESPACE = ' '
+    val PLUS = '+'
+    val MINUS = '-'
+    val DIGITS = "0123456789".toSet
+
+    def integerRangeEnd(sign: Int): Int = if (sign >= 0) Int.MaxValue else Int. MinValue
+
+    @tailrec
+    def loop(remainder: String, sign: Int, acc: Int = 0): Int =
+      if (remainder.isEmpty || !DIGITS.contains(remainder.charAt(0))) acc
+      else {
+        val newDigit = remainder.charAt(0) - '0'
+        val tentativeResult = acc * 10 + newDigit * sign
+
+        if ((sign >= 0) != (tentativeResult >= 0)) integerRangeEnd(sign)
+        else loop(remainder.substring(1), sign, tentativeResult)
+      }
+
+    if (string.isEmpty) 0
+    else if (string.charAt(0) == WHITESPACE) parseInteger(string.substring(1))
+    else if (string.charAt(0) == PLUS) loop(string.substring(1), sign = 1)
+    else if (string.charAt(0) == MINUS) loop(string.substring(1), sign = -1)
+    else loop(string, sign = 1)
   }
 }
