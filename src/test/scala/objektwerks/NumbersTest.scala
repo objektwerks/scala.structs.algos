@@ -45,5 +45,7 @@ class NumbersTest extends AnyFunSuite with Matchers {
   test("largest number") {
     largestNumber(List()) shouldBe 0
     largestNumber(List(1)) shouldBe 1
+    largestNumber(List(11, 1)) shouldBe 111
+
   }
 }
