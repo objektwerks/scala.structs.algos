@@ -57,4 +57,11 @@ class NumbersTest extends AnyFunSuite with Matchers {
     reverseInteger(-9) shouldBe -9
     reverseInteger(-53) shouldBe -35
   }
+
+  test("parse integer") {
+    parseInteger("") shouldBe 0
+    parseInteger("s") shouldBe 0
+    parseInteger("1") shouldBe 1
+
+  }
 }
