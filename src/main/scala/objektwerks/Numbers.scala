@@ -79,4 +79,19 @@ object Numbers {
     if (numbers.isEmpty || largest.charAt(0) == '0') 0
     else largest.toInt
   }
+
+  def reverseInteger(number: Int): Int = {
+    @tailrec
+    def reverseTailrec(remaining: Int, acc: Int): Int =
+      if (remaining == 0) acc
+      else {
+        val digit = remaining % 10
+        val tentativeResult = acc * 10 + digit
+        if ((acc >= 0) != (tentativeResult >= 0)) 0
+        else reverseTailrec(remaining / 10, tentativeResult)
+      }
+    if (number == Int.MinValue) 0
+    else if (number >= 0) reverseTailrec(number, 0)
+    else -reverseTailrec(-number, 0)
+  }
 }
