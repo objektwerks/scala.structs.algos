@@ -41,4 +41,9 @@ class NumbersTest extends AnyFunSuite with Matchers {
     eval("9 / 3") shouldBe 3
     eval("1 + 2 * 3 + 4 / 5 + 6 * 7 - 8") shouldBe 41
   }
+
+  test("largest number") {
+    largestNumber(List()) shouldBe 0
+    largestNumber(List(1)) shouldBe 1
+  }
 }
