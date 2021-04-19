@@ -97,16 +97,16 @@ object Numbers {
 
   @tailrec
   def parseInteger(string: String): Int = {
-    val WHITESPACE = ' '
-    val PLUS = '+'
-    val MINUS = '-'
-    val DIGITS = "0123456789".toSet
+    val whitespace = ' '
+    val plus = '+'
+    val minus = '-'
+    val digits = "0123456789".toSet
 
     def integerRangeEnd(sign: Int): Int = if (sign >= 0) Int.MaxValue else Int. MinValue
 
     @tailrec
     def loop(remainder: String, sign: Int, acc: Int = 0): Int =
-      if (remainder.isEmpty || !DIGITS.contains(remainder.charAt(0))) acc
+      if (remainder.isEmpty || !digits.contains(remainder.charAt(0))) acc
       else {
         val newDigit = remainder.charAt(0) - '0'
         val tentativeResult = acc * 10 + newDigit * sign
@@ -116,9 +116,9 @@ object Numbers {
       }
 
     if (string.isEmpty) 0
-    else if (string.charAt(0) == WHITESPACE) parseInteger(string.substring(1))
-    else if (string.charAt(0) == PLUS) loop(string.substring(1), sign = 1)
-    else if (string.charAt(0) == MINUS) loop(string.substring(1), sign = -1)
+    else if (string.charAt(0) == whitespace) parseInteger(string.substring(1))
+    else if (string.charAt(0) == plus) loop(string.substring(1), sign = 1)
+    else if (string.charAt(0) == minus) loop(string.substring(1), sign = -1)
     else loop(string, sign = 1)
   }
 }
