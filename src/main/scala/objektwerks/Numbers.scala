@@ -70,7 +70,7 @@ object Numbers {
   }
 
   def largestNumber(numbers: List[Int]): Int = {
-    implicit val newOrdering: Ordering[Int] = Ordering.fromLessThan { (a, b) =>
+    implicit val ordering: Ordering[Int] = Ordering.fromLessThan { (a, b) =>
       val aString = a.toString
       val bString = b.toString
       (aString + bString).compareTo(bString + aString) >= 0
@@ -82,16 +82,16 @@ object Numbers {
 
   def reverseInteger(number: Int): Int = {
     @tailrec
-    def reverseTailrec(remaining: Int, acc: Int): Int =
+    def loop(remaining: Int, acc: Int): Int =
       if (remaining == 0) acc
       else {
         val digit = remaining % 10
         val tentativeResult = acc * 10 + digit
         if ((acc >= 0) != (tentativeResult >= 0)) 0
-        else reverseTailrec(remaining / 10, tentativeResult)
+        else loop(remaining / 10, tentativeResult)
       }
     if (number == Int.MinValue) 0
-    else if (number >= 0) reverseTailrec(number, 0)
-    else -reverseTailrec(-number, 0)
+    else if (number >= 0) loop(number, 0)
+    else -loop(-number, 0)
   }
 }
