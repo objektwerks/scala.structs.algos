@@ -81,4 +81,10 @@ class TreesTest extends AnyFunSuite with Matchers {
     tree.isSymmetrical shouldBe false
     tree.mirror.isSymmetrical shouldBe false
   }
+
+  test("toList") {
+    tree.toList shouldBe List(1, 2, 6, 3, 4, 7, 8, 5)
+    xtree.toList shouldBe List(10, 20, 60, 30, 40, 70, 80, 50)
+    symmetricalTree.toList shouldBe List(1, 2, 6, 3, 4, 7, 8)
+  }
 }
