@@ -2,6 +2,7 @@ package objektwerks
 
 object Trees {
   import scala.annotation.tailrec
+  import scala.collection.immutable.Queue
 
   sealed abstract class BTree[+T] {
     def value: T
@@ -16,6 +17,7 @@ object Trees {
     def mirror: BTree[T]
     def sameShapeAs[S >: T](other: BTree[S]): Boolean
     def isSymmetrical: Boolean
+    def toList: List[T]
   }
 
   case object BEnd extends BTree[Nothing] {
@@ -31,6 +33,7 @@ object Trees {
     override def mirror: BTree[Nothing] = BEnd
     override def sameShapeAs[S >: Nothing](other: BTree[S]): Boolean = false
     override def isSymmetrical: Boolean = true
+    override def toList: List[Nothing] = List()
   }
 
   case class BNode[+T](override val value: T,
@@ -107,5 +110,15 @@ object Trees {
       loop(List(this), List(other))
     }
     override def isSymmetrical: Boolean = sameShapeAs(this.mirror)
+    override def toList: List[T] = {
+      @tailrec
+      def perLevelTailrec(level: List[BTree[T]], finalQueue: Queue[BTree[T]] = Queue()): List[T] =
+        if (level.isEmpty) finalQueue.map(_.value).toList
+        else perLevelTailrec(
+          level.flatMap(node => List(node.left, node.right).filter(!_.isEmpty)),
+          finalQueue ++ level
+        )
+      perLevelTailrec(List(this))
+    }
   }
 }
