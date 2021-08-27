@@ -1,5 +1,7 @@
 package objektwerks
 
+import scala.annotation.tailrec
+
 /**
  * Encoding for single letter occurences includes a 1 so that decode works consistently.
  * Decoding won't work for char counts beyond 9.
@@ -41,5 +43,22 @@ object RLE {
       }
     }
     result.mkString
+  }
+
+  def decodex(value: String): String = {
+    @tailrec
+    def loop(chars: List[Char], acc: StringBuilder ): String = {
+      chars match {
+        case Nil => acc.mkString
+        case head :: tail =>
+          if (head.isDigit) {
+            if (tail.head.isDigit) {
+              val times = head.asDigit.toString + tail.head.asDigit.toString
+              loop(tail.tail, acc.append( acc.last.toString * ( times.toInt - 1) ) )
+            } else loop(tail, acc.append(head.asDigit))
+          } else loop(tail, acc.append(head))
+      }
+    }
+    loop(value.toCharArray.toList, new StringBuilder())
   }
 }

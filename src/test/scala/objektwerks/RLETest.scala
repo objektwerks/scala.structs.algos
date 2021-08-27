@@ -14,5 +14,7 @@ class RLETest extends AnyFunSuite with Matchers {
     println( s" *** Run Length Decoding: ${ RLE.decode("a4b2c3a1e5") }" )
     RLE.decode("a4b2c3a1e5") shouldBe "aaaabbcccaeeeee"
     RLE.decode("") shouldBe ""
+    println( s"*** Run Length Decoding: ${ RLE.decodex("a17") }" )
+    RLE.decodex("a17").length shouldBe 17
   }
 }
