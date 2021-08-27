@@ -36,7 +36,7 @@ object RLE {
       if ( char.isDigit ) {
         count = char.asDigit
         result.append( decoded * count )
-      } else {
+      } else if ( char.isLetter ) {
         decoded = char.toString
       }
     }
