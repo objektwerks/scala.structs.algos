@@ -17,11 +17,15 @@ object RLE {
       }
     }
     val valueAsChars = value.toCharArray.toList
-    val encodings = group(valueAsChars) map { chars => Encoding(chars.head, chars.length) }
-    val encodedValues = encodings map { group =>
-      group.char.toString + group.count.toString
+    valueAsChars match {
+      case Nil => ""
+      case _ =>
+        val encodings = group(valueAsChars) map { chars => Encoding(chars.head, chars.length) }
+        val encodedValues = encodings map { group =>
+          group.char.toString + group.count.toString
+        }
+        encodedValues.mkString
     }
-    encodedValues.mkString
   }
 
   def decode(value: String): String = {
