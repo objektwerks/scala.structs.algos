@@ -10,6 +10,7 @@ class RLETest extends AnyFunSuite with Matchers {
     RLE.encode("") shouldBe ""
     println( s"*** RLE of aaaaaaaaaaaaaaaaa : ${ RLE.encode("aaaaaaaaaaaaaaaaa") }" )
     RLE.encode("aaaaaaaaaaaaaaaaa") shouldBe "a17"
+    println( s"*** RLE of 123 : ${ RLE.encode("123") }" )
   }
 
   test("decode") {
@@ -18,5 +19,6 @@ class RLETest extends AnyFunSuite with Matchers {
     RLE.decode("") shouldBe ""
     println( s"*** RLD of a17 : ${ RLE.decode("a17") }" )
     RLE.decode("a17").length shouldBe 17
+    println( s"*** RLD of 112131 : ${ RLE.decode("112131") }" )
   }
 }
