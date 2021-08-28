@@ -31,21 +31,6 @@ object RLE {
   }
 
   def decode(value: String): String = {
-    var decoded: String = ""
-    var count: Int = 0
-    val result = new StringBuilder()
-    value.toCharArray.toList.foreach { char =>
-      if ( char.isDigit ) {
-        count = char.asDigit
-        result.append( decoded * count )
-      } else if ( char.isLetter ) {
-        decoded = char.toString
-      }
-    }
-    result.mkString
-  }
-
-  def decodex(value: String): String = {
     @tailrec
     def loop(chars: List[Char], acc: StringBuilder ): String = {
       chars match {
@@ -55,7 +40,7 @@ object RLE {
             if (tail.headOption.nonEmpty && tail.head.isDigit) {
               val times = head.asDigit.toString + tail.head.asDigit.toString
               loop(tail.tail, acc.append( acc.last.toString * ( times.toInt - 1) ) )
-            } else loop(tail, acc.append(head.asDigit))
+            } else loop(tail, acc.append( acc.last.toString * ( head.asDigit - 1 ) ) )
           } else loop(tail, acc.append(head))
       }
     }
