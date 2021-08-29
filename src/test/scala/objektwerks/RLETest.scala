@@ -3,6 +3,8 @@ package objektwerks
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
+import scala.util.Random
+
 class RLETest extends AnyFunSuite with Matchers {
   test("encode") {
     println( s"*** RLE of aaaabbcccaeeeee : ${ RLE.encode("aaaabbcccaeeeee") }" )
@@ -30,5 +32,26 @@ class RLETest extends AnyFunSuite with Matchers {
 
     println( s"*** RLD of 112131 : ${ RLE.decode("112131") }" )
     RLE.decode("112131") shouldBe ""
+  }
+
+  test("encode > decode letters") {
+    for( i <- 1 to 5 ) {
+      val random = Random.alphanumeric.filter(_.isLetter).map(_.toString * i).take(i).mkString
+      val encoded = RLE.encode(random)
+      val decoded = RLE.decode(encoded)
+      println(s"$i random: $random - encoded: $encoded - decoded: $decoded")
+      random shouldBe decoded
+    }
+  }
+
+  test("encode > decode digits") {
+    for( i <- 1 to 5 ) {
+      val random = Random.alphanumeric.filter(_.isDigit).map(_.toString * i).take(i).mkString
+      val encoded = RLE.encode(random)
+      val decoded = RLE.decode(encoded)
+      println(s"$i random: $random - encoded: $encoded - decoded: $decoded")
+      encoded shouldBe ""
+      decoded shouldBe ""
+    }
   }
 }
