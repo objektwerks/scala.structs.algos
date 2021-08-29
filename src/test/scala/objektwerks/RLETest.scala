@@ -15,7 +15,7 @@ class RLETest extends AnyFunSuite with Matchers {
     RLE.encode("aaaaaaaaaaaaaaaaa") shouldBe "a17"
 
     println( s"*** RLE of 123 : ${ RLE.encode("123") }" )
-    RLE.encode("123") shouldBe "112131"
+    RLE.encode("123") shouldBe ""
   }
 
   test("decode") {
