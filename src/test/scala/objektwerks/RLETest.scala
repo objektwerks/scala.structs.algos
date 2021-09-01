@@ -55,7 +55,7 @@ class RLETest extends AnyFunSuite with Matchers {
     }
   }
 
-  test("pipe > tap > pipe") {
+  test("pipe > tap > pipe > tap") {
     import scala.util.chaining._
     "aaaabbcccaeeeee"
       .pipe(RLE.encode)
