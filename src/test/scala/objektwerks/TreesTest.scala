@@ -5,7 +5,7 @@ import org.scalatest.matchers.should.Matchers
 
 import Trees._
 
-class TreesTest extends AnyFunSuite with Matchers {
+class TreesTest extends AnyFunSuite with Matchers:
   val tree = BNode(1,
     BNode(2,
       BNode(3, BEnd, BEnd),
@@ -87,4 +87,3 @@ class TreesTest extends AnyFunSuite with Matchers {
     xtree.toList shouldBe List(10, 20, 60, 30, 40, 70, 80, 50)
     symmetricalTree.toList shouldBe List(1, 2, 6, 3, 4, 7, 8)
   }
-}
