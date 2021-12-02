@@ -5,7 +5,7 @@ import org.scalatest.matchers.should.Matchers
 
 import Graphs._
 
-class GraphsTest extends AnyFunSuite with Matchers {
+class GraphsTest extends AnyFunSuite with Matchers:
   test("outDegree") {
     outDegree(socialGraph, "Alice") shouldBe 3
     outDegree(socialGraph, "Bob") shouldBe 0
@@ -47,4 +47,3 @@ class GraphsTest extends AnyFunSuite with Matchers {
     val unidirectedSocialGraph = toUndirected(socialGraph)
     color(unidirectedSocialGraph) shouldBe Map("Bob" -> 1, "Alice" -> 2, "Charlie" -> 1, "Mary" -> 2, "David" -> 0)
   }
-}
