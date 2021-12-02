@@ -5,7 +5,7 @@ import org.scalatest.matchers.should.Matchers
 
 import Algos._
 
-class AlgosTest extends AnyFunSuite with Matchers {
+class AlgosTest extends AnyFunSuite with Matchers:
   test("sum") {
     sum( Nil ) shouldBe 0
     sum( List(1, 2, 3) ) shouldBe 6
@@ -57,4 +57,3 @@ class AlgosTest extends AnyFunSuite with Matchers {
     Triangle(3, 6, 3).kind shouldEqual Triangle.isoceles
     Triangle(3, 3, 3).kind shouldEqual Triangle.equilateral
   }
-}
