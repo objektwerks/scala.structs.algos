@@ -5,7 +5,7 @@ import org.scalatest.matchers.should.Matchers
 
 import RList._
 
-class RListTest extends AnyFunSuite with Matchers {
+class RListTest extends AnyFunSuite with Matchers:
   test("cons :: > prepend ::") {
     val cons = 1 :: 2 :: 3 :: RNil
     val prepend = 0 :: cons
@@ -120,4 +120,3 @@ class RListTest extends AnyFunSuite with Matchers {
     val rlistIntersection = RList.iterable(5 to 10)
     rlistA.intersect(rlistB) shouldBe rlistIntersection
   }
-}
