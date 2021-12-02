@@ -5,7 +5,7 @@ import org.scalatest.matchers.should.Matchers
 
 import Strings._
 
-class StringsTest extends AnyFunSuite with Matchers {
+class StringsTest extends AnyFunSuite with Matchers:
   test("reverse words") {
     reverseWords("scala hello") shouldBe "hello scala"
   }
@@ -38,4 +38,3 @@ class StringsTest extends AnyFunSuite with Matchers {
   test("justifyText") {
     justify(app.JustifyTextApp.text, 40).nonEmpty shouldBe true
   }
-}
