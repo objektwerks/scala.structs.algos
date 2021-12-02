@@ -5,9 +5,9 @@ import org.scalatest.matchers.should.Matchers
 
 import scala.collection.mutable.ArrayBuffer
 
-class BigOTest extends AnyFunSuite with Matchers:
-  import BigO._
+import BigO._
 
+class BigOTest extends AnyFunSuite with Matchers:
   test("constant time - O(1)") {
     constantTimeGetByIndex((1 to 10).toArray[Int], 3) shouldBe 4
   }
