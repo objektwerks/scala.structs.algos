@@ -5,7 +5,7 @@ import org.scalatest.matchers.should.Matchers
 
 import scala.util.Random
 
-class RLETest extends AnyFunSuite with Matchers {
+class RLETest extends AnyFunSuite with Matchers:
   test("encode") {
     println( s"*** RLE of aaaabbcccaeeeee : ${ RLE.encode("aaaabbcccaeeeee") }" )
     RLE.encode("aaaabbcccaeeeee") shouldBe "a4b2c3a1e5"
@@ -63,4 +63,3 @@ class RLETest extends AnyFunSuite with Matchers {
       .pipe(RLE.decode)
       .tap(decoded => decoded shouldBe "aaaabbcccaeeeee")
   }
-}
