@@ -3,10 +3,10 @@ package objektwerks
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-import Numbers._
 import Eval._
+import Numbers._
 
-class NumbersTest extends AnyFunSuite with Matchers {
+class NumbersTest extends AnyFunSuite with Matchers:
   test("is prime") {
     isPrime(11) shouldBe true
     isPrime(15) shouldBe false
@@ -66,4 +66,3 @@ class NumbersTest extends AnyFunSuite with Matchers {
     parseInteger("   369") shouldBe 369
     parseInteger("   -963") shouldBe -963
   }
-}
