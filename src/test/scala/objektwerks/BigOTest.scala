@@ -5,7 +5,7 @@ import org.scalatest.matchers.should.Matchers
 
 import scala.collection.mutable.ArrayBuffer
 
-class BigOTest extends AnyFunSuite with Matchers {
+class BigOTest extends AnyFunSuite with Matchers:
   import BigO._
 
   test("constant time - O(1)") {
@@ -37,4 +37,3 @@ class BigOTest extends AnyFunSuite with Matchers {
     val intersectSdkResult = listA intersect listB
     intersectListsResult shouldEqual intersectSdkResult
   }
-}
