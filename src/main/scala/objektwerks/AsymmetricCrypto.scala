@@ -1,6 +1,6 @@
 package objektwerks
 
-object AsymmetricCrypto {
+object AsymmetricCrypto:
   import java.security.{KeyPair, KeyPairGenerator, PrivateKey, PublicKey}
   import java.util.Base64
   import javax.crypto.Cipher
@@ -31,4 +31,3 @@ object AsymmetricCrypto {
       keyPairGenerator.initialize(1024)
       keyPairGenerator.generateKeyPair
     }.toEither
-}
