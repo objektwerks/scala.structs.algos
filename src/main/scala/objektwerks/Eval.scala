@@ -1,9 +1,9 @@
 package objektwerks
 
-object Eval {
+object Eval:
   import scala.annotation.tailrec
 
-  def eval(expr: String): Int = {
+  def eval(expr: String): Int =
     val operators = Set("+", "-", "*", "/")
 
     def getOperators: List[String] = expr.split(" ").filter(operators.contains).toList
@@ -55,5 +55,3 @@ object Eval {
       }
     }
     loop(getNumbers, getOperators, List(), List())
-  }
-}
