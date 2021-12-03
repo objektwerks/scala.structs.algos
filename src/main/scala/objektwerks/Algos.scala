@@ -53,7 +53,7 @@ object Algos:
     listA match
       case Nil => acc
       case head :: tail =>
-        if (listB.contains(head)) intersectLists(tail, listB, acc :+ head)
+        if listB.contains(head) then intersectLists(tail, listB, acc :+ head)
         else intersectLists(tail, listB, acc)
 
   def nQueens(n: Int = 8): List[String] =
