@@ -1,8 +1,9 @@
 package objektwerks
 
-object SymmetricCrypto {
+object SymmetricCrypto:
   import java.security.SecureRandom
   import java.util.Base64
+  
   import javax.crypto.spec.{IvParameterSpec, PBEKeySpec, SecretKeySpec}
   import javax.crypto.{Cipher, SecretKeyFactory}
 
@@ -41,10 +42,8 @@ object SymmetricCrypto {
       new String(decryptedBytes)
     }.toEither
 
-  def secureRandomByteArray: Array[Byte] = {
+  def secureRandomByteArray: Array[Byte] =
     val random = new SecureRandom()
     val bytes = new Array[Byte](16)
     random.nextBytes(bytes)
     bytes
-  }
-}
