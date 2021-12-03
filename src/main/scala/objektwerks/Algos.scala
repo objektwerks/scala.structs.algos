@@ -5,38 +5,44 @@ object Algos:
   import scala.util.Try
 
   @tailrec
-  def sum(xs: List[Int], acc: Int = 0): Int = xs match
-    case Nil => acc
-    case head :: tail => sum(tail, acc + head)
+  def sum(xs: List[Int], acc: Int = 0): Int =
+    xs match
+      case Nil => acc
+      case head :: tail => sum(tail, acc + head)
 
   @tailrec
-  def product(xs: List[Int], acc: Int = 1): Int = xs match
-    case Nil => acc
-    case head :: tail => product(tail, acc * head)
+  def product(xs: List[Int], acc: Int = 1): Int =
+    xs match
+      case Nil => acc
+      case head :: tail => product(tail, acc * head)
 
   @tailrec
-  def reverse[A](list: List[A], acc: List[A] = List.empty[A]): List[A] = list match
-    case Nil => acc
-    case head :: tail => reverse(tail, head :: acc)
+  def reverse[A](list: List[A], acc: List[A] = List.empty[A]): List[A] =
+    list match
+      case Nil => acc
+      case head :: tail => reverse(tail, head :: acc)
 
   def findNthElementFromRight[A](list: List[A], nthElement: Int): Option[A] =
     @tailrec
-    def reverse(list: List[A], acc: List[A] = List.empty[A]): List[A] = list match
-      case Nil => acc
-      case head :: tail => reverse(tail, head :: acc)
+    def reverse(list: List[A], acc: List[A] = List.empty[A]): List[A] =
+      list match
+        case Nil => acc
+        case head :: tail => reverse(tail, head :: acc)
 
     Try { reverse(list)(nthElement - 1) }.toOption
 
   @tailrec
-  def factorial(n: Int, acc: Int = 1): Int = n match
-    case i if i < 1 => acc
-    case _ => factorial(n - 1, acc * n)
+  def factorial(n: Int, acc: Int = 1): Int =
+    n match
+      case i if i < 1 => acc
+      case _ => factorial(n - 1, acc * n)
 
   def fibonacci(n: Long): BigInt =
     @tailrec
-    def loop(n: Long, a: Long, b: Long): BigInt = n match
-      case 0 => a
-      case _ => loop(n - 1, b, a + b)
+    def loop(n: Long, a: Long, b: Long): BigInt =
+      n match
+        case 0 => a
+        case _ => loop(n - 1, b, a + b)
 
     loop(n, 0, 1)
 
@@ -112,7 +118,8 @@ object Algos:
 
   case class Triangle(a: Int, b: Int, c: Int):
     import Triangle._
-    def kind: Kind = (a, b, c) match
-      case (x, y, z) if x == y && y == z => equilateral
-      case (x, y, z) if x == y || y == z || z == x => isoceles
-      case _ => scalene
+    def kind: Kind =
+      (a, b, c) match
+        case (x, y, z) if x == y && y == z => equilateral
+        case (x, y, z) if x == y || y == z || z == x => isoceles
+        case _ => scalene
