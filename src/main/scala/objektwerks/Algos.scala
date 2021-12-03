@@ -64,21 +64,20 @@ object Algos:
              currentQueens: List[Int], 
              solutions: List[List[Int]]): List[List[Int]] =
       // I'm out of options
-      if (currentPosition >= n && currentQueens.isEmpty) solutions
-      else if (currentPosition >= n) {
+      if currentPosition >= n && currentQueens.isEmpty then solutions
+      else if currentPosition >= n then
         // I'm out of options on THIS row; move the previous queen by 1
         loop(currentQueens.head + 1, currentQueens.tail, solutions)
-      } else if (conflict(currentPosition, currentQueens)) {
+      else if conflict(currentPosition, currentQueens) then
         // conflict with the other queens, try next position
         loop(currentPosition + 1, currentQueens, solutions)
-      } else if (currentQueens.length == n-1) {
+      else if currentQueens.length == n-1 then
         // I've just built a solution
         val newSolution = currentPosition :: currentQueens
         loop(currentPosition + 1, currentQueens, newSolution :: solutions)
-      } else {
+      else
         // try next queen on the next row, as this one is valid
         loop(0, currentPosition :: currentQueens, solutions)
-      }
 
     def prettyPrint(solution: List[Int]): String =
       val topEdge = (1 to n).map(_ => "_").mkString(".", ".", ".") // ._._._._.
@@ -96,13 +95,12 @@ object Algos:
   def sierpinski(n: Int): String =
     @tailrec
     def loop(currentLevel: Int, currentTriangle: List[String]): List[String] =
-      if (currentLevel >= n) currentTriangle
-      else {
+      if currentLevel >= n then currentTriangle
+      else
         val spaces = " " * (1 << currentLevel) // 2 ^ (n - 1) spaces
         val topTriangle = currentTriangle.map(spaces + _ + spaces)
         val bottomTriangles = currentTriangle.map(row => row + " " + row)
         loop(currentLevel + 1, topTriangle ++ bottomTriangles)
-      }
 
     loop(0, List("*")).mkString("\n")
 
