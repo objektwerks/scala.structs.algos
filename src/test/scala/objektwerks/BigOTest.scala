@@ -18,7 +18,10 @@ class BigOTest extends AnyFunSuite with Matchers:
 
   test("binary search - O(log N)") {
     val buffer = ArrayBuffer[Value]()
-    for ( i <- 0 to 9 ) buffer.addOne( Value(i) )
+    for 
+      i <- 0 to 9 
+    do 
+      buffer.addOne( Value(i) )
     binarySearch(buffer, Value(3)) shouldBe 3
   }
 
