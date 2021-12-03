@@ -46,8 +46,7 @@ object BigO:
     listA match
       case Nil => acc
       case head :: tail =>
-        if (listB.contains(head)) {
+        if listB.contains(head) then
           factorialTimeIntersectLists(tail, listB, acc :+ head)
-        } else {
+        else
           factorialTimeIntersectLists(tail, listB, acc)
-        }
