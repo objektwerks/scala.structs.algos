@@ -8,7 +8,9 @@ class BlockChainTest extends AnyFunSuite with Matchers:
     val blockChain = BlockChain[String]( genesisBlock = Block[String](value = "0") )
     blockChain.count shouldBe 1
 
-    for (i <- 1 until 10) {
+    for 
+      i <- 1 until 10 
+    do
       val block = Block[String](blockChain = blockChain, value = i.toString)
       blockChain.add(block) shouldBe true
       blockChain.get(block.hash) shouldBe Some(block)
@@ -16,6 +18,6 @@ class BlockChainTest extends AnyFunSuite with Matchers:
       blockChain.last.hash shouldBe block.hash
       blockChain.last.block shouldBe block
       blockChain.count shouldBe i + 1
-    }
+
     blockChain.isValid shouldBe true
   }
