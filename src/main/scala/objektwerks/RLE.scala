@@ -2,11 +2,11 @@ package objektwerks
 
 import scala.annotation.tailrec
 
-object RLE {
+object RLE:
   case class Encoding(char: Char, count: Int) extends Product with Serializable
 
   // Only encodes letters.
-  def encode(string: String): String = {
+  def encode(string: String): String =
     def group(chars: List[Char]): List[List[Char]] = {
       if (chars.isEmpty) List(List())
       else {
@@ -23,12 +23,11 @@ object RLE {
         val encodedStrings = encodings map { encoding => encoding.char.toString + encoding.count.toString }
         encodedStrings.mkString
     }
-  }
 
   // Only decodes letter-number pairs, multiplying letters by 1-2 digit numbers ( 1 - 99 ).
-  def decode(string: String): String = {
+  def decode(string: String): String =
     @tailrec
-    def loop(chars: List[Char], acc: StringBuilder): String = {
+    def loop(chars: List[Char], acc: StringBuilder): String =
       chars match {
         case Nil => acc.mkString
         case head :: tail =>
@@ -39,7 +38,4 @@ object RLE {
             } else loop(tail, acc.append( acc.lastOption.getOrElse("").toString * ( head.asDigit - 1 ) ) )
           } else loop(tail, acc.append(head))
       }
-    }
     loop(string.toCharArray.toList, new StringBuilder())
-  }
-}
