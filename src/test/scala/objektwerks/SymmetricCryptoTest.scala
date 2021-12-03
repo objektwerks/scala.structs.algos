@@ -13,12 +13,11 @@ class SymmetricCryptoTest extends AnyFunSuite with Matchers:
     println(s"symmetric shared salt: ${sharedSalt.mkString}")
     println(s"symmetric text: $text")
 
-    for {
+    for
       encryptedText <- SymmetricCrypto.encrypt(sharedSecret, sharedSalt, text)
       decryptedText <- SymmetricCrypto.decrypt(sharedSecret, sharedSalt, encryptedText)
-    } yield {
+    yield
       println(s"symmetric encrypted text: $encryptedText")
       println(s"symmetric decrypted text: $decryptedText")
       text shouldBe decryptedText
-    }
   }
