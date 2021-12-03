@@ -8,7 +8,6 @@ object AsymmetricCrypto:
 
   import scala.util.Try
 
-
   def encrypt(publicKey: PublicKey, text: String): Either[Throwable, String] =
     Try {
       val cipher = Cipher.getInstance("RSA")
