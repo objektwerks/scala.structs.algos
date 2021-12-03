@@ -5,12 +5,11 @@ import Hash.Hash
 import ProofOfWork.ProofOfWork
 
 sealed trait Entity extends Product with Serializable
-object Entity {
+object Entity:
   import java.sql.Timestamp
   import java.util.Date
 
   def dateTimeMillis: Long = new Timestamp( new Date().getTime ).getTime
-}
 
 final case class Block[T](timestamp: Long,
                           previousHash: Hash,
@@ -18,21 +17,19 @@ final case class Block[T](timestamp: Long,
                           proofOfWork: ProofOfWork,
                           value: T) extends Entity
 
-object Block {
+object Block:
   def apply[T](value: T): Block[T] = Block[T]( dateTimeMillis, "0", "0", 0L, value )
 
-  def apply[T](blockChain: BlockChain[T], value: T): Block[T] = {
+  def apply[T](blockChain: BlockChain[T], value: T): Block[T] =
     val timestamp = dateTimeMillis
     val previousHash = blockChain.last.hash
     val hash = Hash.sha3256( timestamp.toString + previousHash + value.toString )
     val proofOfWork = ProofOfWork.mine(hash)
     Block[T](timestamp, previousHash, hash, proofOfWork, value)
-  }
-}
 
 final case class HashBlock[T](hash: Hash, block: Block[T]) extends Entity
 
-final case class BlockChain[T](genesisBlock: Block[T]) extends Entity {
+final case class BlockChain[T](genesisBlock: Block[T]) extends Entity:
   import scala.collection.mutable
 
   val timestamp: Long = dateTimeMillis
@@ -53,16 +50,14 @@ final case class BlockChain[T](genesisBlock: Block[T]) extends Entity {
 
   def get(hash: Hash): Option[Block[T]] = chain.get(hash)
 
-  def isValid: Boolean = {
+  def isValid: Boolean =
     var errors = 0
     if ( chain.head._2 != genesisBlock ) errors += 1
     for ( block <- chain.values.tail ) {
       if ( chain.keys.count(hash => hash == block.previousHash) != 1 ) errors += 1
     }
     errors == 0
-  }
 
   def toMap: Map[Hash, Block[T]] = chain.toMap
 
   private def toHashBlock(tuple: (Hash, Block[T])): HashBlock[T] = HashBlock( tuple._1, tuple._2 )
-}
