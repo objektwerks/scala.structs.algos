@@ -1,9 +1,7 @@
 package objektwerks.app
 
-object SierpinskiApp {
+object SierpinskiApp:
   import objektwerks.Algos._
 
-  def main(args: Array[String]): Unit = {
+  @main def runSierpinski(): Unit =
     println(sierpinski(3))
-  }
-}
