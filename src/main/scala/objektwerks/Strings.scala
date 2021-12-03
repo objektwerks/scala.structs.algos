@@ -41,6 +41,7 @@ object Strings:
         yield
           val (before, after) = string.splitAt(index)
           s"$before()$after"
+
         loop(remainingParens - 1, newStrings)
       
     if n < 1 then List()
