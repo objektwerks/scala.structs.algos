@@ -10,25 +10,23 @@ object Eval:
 
     def getNumbers: List[Int] = expr.split(" ").filter(!operators.contains(_)).map(_.toInt).toList
 
-    def evalSimpleOperation(op1: Int, op2: Int, operator: String) = operator match {
+    def evalSimpleOperation(op1: Int, op2: Int, operator: String) = operator match
       case "+" => op1 + op2
       case "-" => op1 - op2
       case "*" => op1 * op2
       case "/" => op1 / op2
       case _ => throw new IllegalArgumentException(s"Invalid operator: $operator")
-    }
 
-    def prioritizeOperator(operator: String): Int = operator match {
+    def prioritizeOperator(operator: String): Int = operator match
       case "+" | "-" => 1
       case "*" | "/" => 2
       case _ => 0
-    }
 
     @tailrec
     def loop(remainingOperands: List[Int],
              remainingOperators: List[String],
              operandStack: List[Int],
-             operatorStack: List[String]): Int = {
+             operatorStack: List[String]): Int =
       if (remainingOperands.isEmpty) {
         if (operatorStack.isEmpty) operandStack.head // final result
         else {
@@ -53,5 +51,5 @@ object Eval:
         val simpleResult = evalSimpleOperation(op1, op2, operator)
         loop(remainingOperands, remainingOperators, simpleResult :: operandStack.drop(2), operatorStack.tail)
       }
-    }
+
     loop(getNumbers, getOperators, List(), List())
