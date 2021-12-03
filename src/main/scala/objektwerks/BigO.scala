@@ -15,7 +15,9 @@ object BigO:
 
   // O(log N) - Binary Search
   case class Value(number: Int)
+
   implicit def ordering: Ordering[Value] = Ordering.by(_.number)
+  
   def binarySearch(buffer: ArrayBuffer[Value], value: Value): Int = buffer.search(value).insertionPoint
 
   // O(n^2) - Quadratic Time
@@ -31,10 +33,10 @@ object BigO:
   // O(2^N) - Exponential Time
   def exponentialTimeFibonacci(n: Long): BigInt =
     @tailrec
-    def loop(n: Long, a: Long, b: Long): BigInt = n match {
+    def loop(n: Long, a: Long, b: Long): BigInt = n match
       case 0 => a
       case _ => loop(n - 1, b, a + b)
-    }
+
     loop(n, 0, 1)
 
   // O(N!) - Factorial Time
@@ -42,7 +44,7 @@ object BigO:
   final def factorialTimeIntersectLists[A](listA: List[A],
                                            listB: List[A],
                                            acc: List[A] = List.empty[A]): List[A] =
-    listA match {
+    listA match
       case Nil => acc
       case head :: tail =>
         if (listB.contains(head)) {
@@ -50,4 +52,3 @@ object BigO:
         } else {
           factorialTimeIntersectLists(tail, listB, acc)
         }
-    }
