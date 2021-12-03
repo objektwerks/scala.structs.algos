@@ -44,66 +44,62 @@ object Trees:
     override def collectLeaves: List[BTree[T]] =
       @tailrec
       def loop(todos: List[BTree[T]], leaves: List[BTree[T]]): List[BTree[T]] =
-        if (todos.isEmpty) leaves
-        else if (todos.head.isEmpty) loop(todos.tail, leaves)
-        else if (todos.head.isLeaf) loop(todos.tail, todos.head :: leaves)
-        else {
+        if todos.isEmpty then leaves
+        else if todos.head.isEmpty then loop(todos.tail, leaves)
+        else if todos.head.isLeaf then loop(todos.tail, todos.head :: leaves)
+        else
           val node = todos.head
           loop(node.left :: node.right :: todos.tail, leaves)
-        }
 
       loop(List(this), List())
 
     override def collectNodes(level: Int): List[BTree[T]] =
       @tailrec
       def loop(currentLevel: Int, currentNodes: List[BTree[T]]): List[BTree[T]] =
-        if (currentNodes.isEmpty) List()
-        else if (currentLevel == level) currentNodes
-        else {
-          val expandedNodes = for {
+        if currentNodes.isEmpty then List()
+        else if currentLevel == level then currentNodes
+        else
+          val expandedNodes = for
             node <- currentNodes
             child <- List(node.left, node.right) if !child.isEmpty
-          } yield child
+          yield child
           loop(currentLevel + 1, expandedNodes)
-        }
 
-      if (level < 0) List() else loop(0, List(this))
+      if level < 0 then List()
+      else loop(0, List(this))
 
     override def mirror: BTree[T] =
       @tailrec
       def loop(todos: List[BTree[T]], expanded: Set[BTree[T]], acc: List[BTree[T]]): BTree[T] =
-        if (todos.isEmpty) acc.head
-        else {
+        if todos.isEmpty then acc.head
+        else
           val node = todos.head
-          if (node.isEmpty || node.isLeaf) {
+          if node.isEmpty || node.isLeaf then
             loop(todos.tail, expanded, node :: acc)
-          } else if (!expanded.contains(node)) {
+          else if !expanded.contains(node) then
             loop(node.left :: node.right :: todos, expanded + node, acc)
-          } else {
+          else
             val newLeft = acc.head
             val newRight = acc.tail.head
             val newNode = BNode(node.value, newLeft, newRight)
             loop(todos.tail, expanded, newNode :: acc.drop(2))
-          }
-        }
 
       loop(List(this), Set(), List())
 
     override def sameShapeAs[S >: T](other: BTree[S]): Boolean =
       @tailrec
       def loop(thisTree: List[BTree[S]], otherTree: List[BTree[S]]): Boolean =
-        if (thisTree.isEmpty) otherTree.isEmpty
-        else if (otherTree.isEmpty) thisTree.isEmpty
-        else {
+        if thisTree.isEmpty then otherTree.isEmpty
+        else if otherTree.isEmpty then thisTree.isEmpty
+        else
           val thisNode = thisTree.head
           val thatNode = otherTree.head
-          if (thisNode.isEmpty) thatNode.isEmpty && loop(thisTree.tail, otherTree.tail)
-          else if (thisNode.isLeaf) thatNode.isLeaf && loop(thisTree.tail, otherTree.tail)
+          if thisNode.isEmpty then thatNode.isEmpty && loop(thisTree.tail, otherTree.tail)
+          else if thisNode.isLeaf then thatNode.isLeaf && loop(thisTree.tail, otherTree.tail)
           else loop(
             thisNode.left :: thisNode.right :: thisTree.tail,
             thatNode.left :: thatNode.right :: otherTree.tail
           )
-        }
 
       loop(List(this), List(other))
 
@@ -112,7 +108,7 @@ object Trees:
     override def toList: List[T] =
       @tailrec
       def loopPerLevel(level: List[BTree[T]], finalQueue: Queue[BTree[T]] = Queue()): List[T] =
-        if (level.isEmpty) finalQueue.map(_.value).toList
+        if level.isEmpty then finalQueue.map(_.value).toList
         else loopPerLevel(
           level.flatMap(node => List(node.left, node.right).filter(!_.isEmpty)),
           finalQueue ++ level
