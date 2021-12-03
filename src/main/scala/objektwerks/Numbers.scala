@@ -71,7 +71,7 @@ object Numbers:
     fractionToDecimal(numerator, denominator)
 
   def largestNumber(numbers: List[Int]): Int =
-    implicit val ordering: Ordering[Int] = Ordering.fromLessThan { (a, b) =>
+    given ordering: Ordering[Int] = Ordering.fromLessThan { (a, b) =>
       val aString = a.toString
       val bString = b.toString
       (aString + bString).compareTo(bString + aString) >= 0
