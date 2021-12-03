@@ -43,10 +43,10 @@ final case class BlockChain[T](genesisBlock: Block[T]) extends Entity:
   def count: Int = chain.size
 
   def add(block: Block[T]): Boolean =
-    if ( !chain.contains(block.hash) && ( block.previousHash == last.hash ) ) {
+    if !chain.contains(block.hash) && block.previousHash == last.hash then
       chain += block.hash -> block
       true
-    } else false
+    else false
 
   def get(hash: Hash): Option[Block[T]] = chain.get(hash)
 
