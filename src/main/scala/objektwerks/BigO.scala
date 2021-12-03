@@ -10,7 +10,7 @@ object BigO:
   // O(n) - Linear Time
   def linearTimeSum(array: Array[Int]): Int =
     var sum = 0
-    for (i <- array) { sum = sum + i }
+    for i <- array do sum = sum + i
     sum
 
   // O(log N) - Binary Search
@@ -23,19 +23,18 @@ object BigO:
   // O(n^2) - Quadratic Time
   def quadraticTimeBuildMatrix(): Array[Array[Int]] =
     val matrix = Array.ofDim[Int](3, 3)
-    for (i <- 0 until matrix.length - 1) {
-      for (j <- 0 until matrix.length - 1) {
+    for i <- 0 until matrix.length - 1 do
+      for j <- 0 until matrix.length - 1 do
         matrix(i)(j) = j
-      }
-    }
     matrix
 
   // O(2^N) - Exponential Time
   def exponentialTimeFibonacci(n: Long): BigInt =
     @tailrec
-    def loop(n: Long, a: Long, b: Long): BigInt = n match
-      case 0 => a
-      case _ => loop(n - 1, b, a + b)
+    def loop(n: Long, a: Long, b: Long): BigInt =
+      n match
+        case 0 => a
+        case _ => loop(n - 1, b, a + b)
 
     loop(n, 0, 1)
 
