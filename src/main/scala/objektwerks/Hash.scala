@@ -13,9 +13,10 @@ object Hash:
 
   private def bytesToHexString(hashBytes: Array[Byte]): String =
     val hexStringBuilder = new StringBuilder(2 * hashBytes.length)
-    for (i <- hashBytes.indices) {
+    for 
+      i <- hashBytes.indices
+    do
       val hexString = Integer.toHexString(0xff & hashBytes(i))
       if (hexString.length == 1) hexStringBuilder.append('0')
       hexStringBuilder.append(hexString)
-    }
     hexStringBuilder.toString
