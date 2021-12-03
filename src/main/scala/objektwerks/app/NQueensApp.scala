@@ -1,11 +1,9 @@
 package objektwerks.app
 
-object NQueensApp {
+object NQueensApp:
   import objektwerks.Algos._
 
-  def main(args: Array[String]): Unit = {
+  @main def runNQueens(): Unit =
     val solutions = nQueens()
     println(solutions.mkString("\n\n"))
     println(s"Total solutions: ${solutions.length}")
-  }
-}
