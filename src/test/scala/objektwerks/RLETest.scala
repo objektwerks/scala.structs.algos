@@ -35,24 +35,26 @@ class RLETest extends AnyFunSuite with Matchers:
   }
 
   test("encode > decode letters") {
-    for( i <- 1 to 5 ) {
+    for 
+      i <- 1 to 5
+    do
       val random = Random.alphanumeric.filter(_.isLetter).map(_.toString * i).take(i).mkString
       val encoded = RLE.encode(random)
       val decoded = RLE.decode(encoded)
       println(s"$i random: $random - encoded: $encoded - decoded: $decoded")
       random shouldBe decoded
-    }
   }
 
   test("encode > decode digits") {
-    for( i <- 1 to 5 ) {
+    for
+      i <- 1 to 5
+    do
       val random = Random.alphanumeric.filter(_.isDigit).map(_.toString * i).take(i).mkString
       val encoded = RLE.encode(random)
       val decoded = RLE.decode(encoded)
       println(s"$i random: $random - encoded: $encoded - decoded: $decoded")
       encoded shouldBe ""
       decoded shouldBe ""
-    }
   }
 
   test("pipe > tap > pipe > tap") {
