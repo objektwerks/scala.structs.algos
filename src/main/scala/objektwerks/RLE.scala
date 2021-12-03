@@ -8,12 +8,11 @@ object RLE:
   // Only encodes letters.
   def encode(string: String): String =
     def group(chars: List[Char]): List[List[Char]] =
-      if (chars.isEmpty) List(List())
-      else {
+      if chars.isEmpty then List(List())
+      else
         val (matchingChars, remainingChars) = chars span { char => char == chars.head }
-        if (remainingChars == Nil) List(matchingChars)
+        if remainingChars == Nil then List(matchingChars)
         else matchingChars :: group(remainingChars) // not tail-recursive
-      }
 
     val letters = string.toCharArray.toList.filter(char => char.isLetter )
     letters match
@@ -30,11 +29,11 @@ object RLE:
       chars match
         case Nil => acc.mkString
         case head :: tail =>
-          if (head.isDigit) {
-            if (tail.headOption.nonEmpty && tail.head.isDigit) {
+          if head.isDigit then
+            if tail.headOption.nonEmpty && tail.head.isDigit then
               val times = head.asDigit.toString + tail.head.asDigit.toString
               loop(tail.tail, acc.append( acc.lastOption.getOrElse("").toString * ( times.toInt - 1 ) ) )
-            } else loop(tail, acc.append( acc.lastOption.getOrElse("").toString * ( head.asDigit - 1 ) ) )
-          } else loop(tail, acc.append(head))
+            else loop(tail, acc.append( acc.lastOption.getOrElse("").toString * ( head.asDigit - 1 ) ) )
+          else loop(tail, acc.append(head))
 
     loop(string.toCharArray.toList, new StringBuilder())
