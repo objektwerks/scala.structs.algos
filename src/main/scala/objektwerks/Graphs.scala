@@ -32,6 +32,7 @@ object Graphs:
         else if (visited.contains(node)) loop(list.tail, visited)
         else loop(list.tail ++ graph(node), visited + node)
       }
+
     loop(List(start), Set())
 
   def findPath[T](graph: Graph[T], start: T, end: T): List[T] =
@@ -48,6 +49,7 @@ object Graphs:
           loop(list.tail ++ tuples, visited + node)
         }
       }
+
     loop(
       list = graph(start).map(n => (n, n :: List(start))).toList,
       visited = Set(start)
@@ -73,6 +75,7 @@ object Graphs:
         val newGraph = neighbors.foldLeft(acc)((graph, neighbor) => addEdge(graph, neighbor, node))
         addOpposingEdges(list.tail, newGraph)
       }
+
     addOpposingEdges(graph.keySet, graph)
 
   def color[T](undirectedGraph: Graph[T]): Map[T, Int] =
@@ -92,7 +95,9 @@ object Graphs:
           loop(list.tail, current + 1, acc ++ newColoredNodes)
         }
       }
+
     val orderedNodes = undirectedGraph.keySet.toList.sortWith((a, b) =>
       outDegree(undirectedGraph, a) > outDegree(undirectedGraph, b)
     )
+    
     loop(orderedNodes, 0, Map())
