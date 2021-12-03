@@ -1,21 +1,20 @@
 package objektwerks
 
-object Numbers {
+object Numbers:
   import Math._
 
   import scala.annotation.tailrec
   import scala.util.Random
 
-  def isPrime(n: Int): Boolean = {
+  def isPrime(n: Int): Boolean =
     @tailrec
     def loop(current: Int): Boolean = {
       if (current > sqrt(abs(n.toDouble))) true
       else n % current != 0 && loop(current + 1)
     }
     if (n == -1 || n == 0 || n == 1) false else loop(2)
-  }
 
-  def listFactors(n: Int): List[Int] = {
+  def listFactors(n: Int): List[Int] =
     @tailrec
     def loop(remaining: Int, currentDivisor: Int, acc: List[Int]): List[Int] = {
       if (currentDivisor > sqrt(remaining.toDouble)) remaining :: acc
@@ -23,9 +22,8 @@ object Numbers {
       else loop(remaining, currentDivisor + 1, acc)
     }
     if (n < 1) List.empty[Int] else loop(n, 2, List())
-  }
 
-  def approximatePi(points: Int): Double = {
+  def approximatePi(points: Int): Double =
     val random = new Random(System.currentTimeMillis())
     val pointInCircle = (1 to points).map { _ =>
       val x = random.nextDouble()
@@ -33,9 +31,8 @@ object Numbers {
       x * x + y * y
     }.count(distance => distance < 1)
     pointInCircle * 4.0 / points
-  }
 
-  def fractionToRecurringDecimals(numerator: Long, denominator: Long): String = {
+  def fractionToRecurringDecimals(numerator: Long, denominator: Long): String =
     def fractionToDecimal(n: Long, d: Long): String = {
       @tailrec
       def findStart(digit: Long, digits: List[Long], rem: Long, remainders: List[Long], currentIndex: Int): Int = {
@@ -67,9 +64,8 @@ object Numbers {
       }
     }
     fractionToDecimal(numerator, denominator)
-  }
 
-  def largestNumber(numbers: List[Int]): Int = {
+  def largestNumber(numbers: List[Int]): Int =
     implicit val ordering: Ordering[Int] = Ordering.fromLessThan { (a, b) =>
       val aString = a.toString
       val bString = b.toString
@@ -78,9 +74,8 @@ object Numbers {
     val largest = numbers.sorted.mkString("")
     if (numbers.isEmpty || largest.charAt(0) == '0') 0
     else largest.toInt
-  }
 
-  def reverseInteger(number: Int): Int = {
+  def reverseInteger(number: Int): Int =
     @tailrec
     def loop(remaining: Int, acc: Int): Int =
       if (remaining == 0) acc
@@ -93,10 +88,9 @@ object Numbers {
     if (number == Int.MinValue) 0
     else if (number >= 0) loop(number, 0)
     else -loop(-number, 0)
-  }
 
   @tailrec
-  def parseInteger(string: String): Int = {
+  def parseInteger(string: String): Int =
     val whitespace = ' '
     val plus = '+'
     val minus = '-'
@@ -120,5 +114,3 @@ object Numbers {
     else if (string.charAt(0) == plus) loop(string.substring(1), sign = 1)
     else if (string.charAt(0) == minus) loop(string.substring(1), sign = -1)
     else loop(string, sign = 1)
-  }
-}
