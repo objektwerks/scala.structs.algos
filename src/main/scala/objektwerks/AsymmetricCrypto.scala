@@ -3,6 +3,7 @@ package objektwerks
 object AsymmetricCrypto:
   import java.security.{KeyPair, KeyPairGenerator, PrivateKey, PublicKey}
   import java.util.Base64
+  
   import javax.crypto.Cipher
 
   import scala.util.Try
