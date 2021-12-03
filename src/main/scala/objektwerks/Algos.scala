@@ -5,55 +5,50 @@ object Algos:
   import scala.util.Try
 
   @tailrec
-  def sum(xs: List[Int], acc: Int = 0): Int = xs match {
+  def sum(xs: List[Int], acc: Int = 0): Int = xs match
     case Nil => acc
     case head :: tail => sum(tail, acc + head)
-  }
 
   @tailrec
-  def product(xs: List[Int], acc: Int = 1): Int = xs match {
+  def product(xs: List[Int], acc: Int = 1): Int = xs match
     case Nil => acc
     case head :: tail => product(tail, acc * head)
-  }
 
   @tailrec
-  def reverse[A](list: List[A], acc: List[A] = List.empty[A]): List[A] = list match {
+  def reverse[A](list: List[A], acc: List[A] = List.empty[A]): List[A] = list match
     case Nil => acc
     case head :: tail => reverse(tail, head :: acc)
-  }
 
   def findNthElementFromRight[A](list: List[A], nthElement: Int): Option[A] =
     @tailrec
-    def reverse(list: List[A], acc: List[A] = List.empty[A]): List[A] = list match {
+    def reverse(list: List[A], acc: List[A] = List.empty[A]): List[A] = list match
       case Nil => acc
       case head :: tail => reverse(tail, head :: acc)
-    }
+
     Try { reverse(list)(nthElement - 1) }.toOption
 
   @tailrec
-  def factorial(n: Int, acc: Int = 1): Int = n match {
+  def factorial(n: Int, acc: Int = 1): Int = n match
     case i if i < 1 => acc
     case _ => factorial(n - 1, acc * n)
-  }
 
   def fibonacci(n: Long): BigInt =
     @tailrec
-    def loop(n: Long, a: Long, b: Long): BigInt = n match {
+    def loop(n: Long, a: Long, b: Long): BigInt = n match
       case 0 => a
       case _ => loop(n - 1, b, a + b)
-    }
+
     loop(n, 0, 1)
 
   @tailrec
   def intersectLists[A](listA: List[A],
                         listB: List[A],
                         acc: List[A] = List.empty[A]): List[A] =
-    listA match {
+    listA match
       case Nil => acc
       case head :: tail =>
         if (listB.contains(head)) intersectLists(tail, listB, acc :+ head)
         else intersectLists(tail, listB, acc)
-    }
 
   def nQueens(n: Int = 8): List[String] =
     def conflict(position: Int, queens: List[Int]): Boolean =
@@ -65,7 +60,9 @@ object Algos:
       }
 
     @tailrec
-    def loop(currentPosition: Int, currentQueens: List[Int], solutions: List[List[Int]]): List[List[Int]] =
+    def loop(currentPosition: Int,
+             currentQueens: List[Int], 
+             solutions: List[List[Int]]): List[List[Int]] =
       // I'm out of options
       if (currentPosition >= n && currentQueens.isEmpty) solutions
       else if (currentPosition >= n) {
@@ -93,6 +90,7 @@ object Algos:
         beforeString + "x" + afterString
       }
       s"$topEdge\n${rows.mkString("\n")}"
+      
     loop(0, List(), List()).map(prettyPrint)
 
   def sierpinski(n: Int): String =
@@ -105,6 +103,7 @@ object Algos:
         val bottomTriangles = currentTriangle.map(row => row + " " + row)
         loop(currentLevel + 1, topTriangle ++ bottomTriangles)
       }
+
     loop(0, List("*")).mkString("\n")
 
   object Triangle:
@@ -115,8 +114,7 @@ object Algos:
 
   case class Triangle(a: Int, b: Int, c: Int):
     import Triangle._
-    def kind: Kind = (a, b, c) match {
+    def kind: Kind = (a, b, c) match
       case (x, y, z) if x == y && y == z => equilateral
       case (x, y, z) if x == y || y == z || z == x => isoceles
       case _ => scalene
-    }
