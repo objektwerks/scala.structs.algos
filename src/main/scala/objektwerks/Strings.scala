@@ -13,6 +13,7 @@ object Strings:
         val current = acc(string.head)
         loop(string.tail, acc + (string.head -> (current + 1)))
       } else loop(string.tail, acc + (string.head -> 1))
+
     loop(s, Map.empty[Char, Int])
 
   def checkAnagrams(first: String, second: String): Boolean = countChars(first) == countChars(second)
@@ -27,11 +28,12 @@ object Strings:
       else if (remaining.head == '(') loop(remaining.tail, openParens + 1)
       else loop(remaining.tail, openParens - 1)
     }
+
     loop(string, 0)
 
   def buildListOfAllValidParens(n: Int): List[String] =
     @tailrec
-    def loop(remainingParens: Int, currentStrings: Set[String]): Set[String] = {
+    def loop(remainingParens: Int, currentStrings: Set[String]): Set[String] =
       if (remainingParens == 0) currentStrings
       else {
         val newStrings = for {
@@ -43,7 +45,7 @@ object Strings:
         }
         loop(remainingParens - 1, newStrings)
       }
-    }
+      
     if (n < 1) List() else loop(n - 1, Set("()")).toList
 
   def justify(text: String, width: Int): String =
