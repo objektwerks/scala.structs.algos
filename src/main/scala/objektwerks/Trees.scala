@@ -51,6 +51,7 @@ object Trees:
           val node = todos.head
           loop(node.left :: node.right :: todos.tail, leaves)
         }
+
       loop(List(this), List())
 
     override def collectNodes(level: Int): List[BTree[T]] =
@@ -65,6 +66,7 @@ object Trees:
           } yield child
           loop(currentLevel + 1, expandedNodes)
         }
+
       if (level < 0) List() else loop(0, List(this))
 
     override def mirror: BTree[T] =
@@ -84,6 +86,7 @@ object Trees:
             loop(todos.tail, expanded, newNode :: acc.drop(2))
           }
         }
+
       loop(List(this), Set(), List())
 
     override def sameShapeAs[S >: T](other: BTree[S]): Boolean =
@@ -101,16 +104,18 @@ object Trees:
             thatNode.left :: thatNode.right :: otherTree.tail
           )
         }
+
       loop(List(this), List(other))
 
     override def isSymmetrical: Boolean = sameShapeAs(this.mirror)
     
     override def toList: List[T] =
       @tailrec
-      def perLevelTailrec(level: List[BTree[T]], finalQueue: Queue[BTree[T]] = Queue()): List[T] =
+      def loopPerLevel(level: List[BTree[T]], finalQueue: Queue[BTree[T]] = Queue()): List[T] =
         if (level.isEmpty) finalQueue.map(_.value).toList
-        else perLevelTailrec(
+        else loopPerLevel(
           level.flatMap(node => List(node.left, node.right).filter(!_.isEmpty)),
           finalQueue ++ level
         )
-      perLevelTailrec(List(this))
+
+      loopPerLevel(List(this))
