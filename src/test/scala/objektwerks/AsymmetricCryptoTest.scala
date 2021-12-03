@@ -8,13 +8,12 @@ class AsymmetricCryptoTest extends AnyFunSuite with Matchers:
     val text = "Dogfishhead 60' IPA is the best IPA in the world!"
     println(s"asymmetric text: $text")
 
-    for {
+    for
       keyPair <- AsymmetricCrypto.generateKeyPair
       encryptedText <- AsymmetricCrypto.encrypt(keyPair.getPublic, text)
       decryptedText <- AsymmetricCrypto.decrypt(keyPair.getPrivate, encryptedText)
-    } yield {
+    yield
       println(s"asymmetric encrypted text: $encryptedText")
       println(s"asymmetric decrypted text: $decryptedText")
       text shouldBe decryptedText
-    }
   }
