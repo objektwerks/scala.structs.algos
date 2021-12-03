@@ -52,10 +52,9 @@ final case class BlockChain[T](genesisBlock: Block[T]) extends Entity:
 
   def isValid: Boolean =
     var errors = 0
-    if ( chain.head._2 != genesisBlock ) errors += 1
-    for ( block <- chain.values.tail ) {
-      if ( chain.keys.count(hash => hash == block.previousHash) != 1 ) errors += 1
-    }
+    if chain.head._2 != genesisBlock then errors += 1
+    for block <- chain.values.tail do
+      if chain.keys.count(hash => hash == block.previousHash) != 1 then errors += 1
     errors == 0
 
   def toMap: Map[Hash, Block[T]] = chain.toMap
