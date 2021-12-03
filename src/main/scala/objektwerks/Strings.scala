@@ -1,26 +1,25 @@
 package objektwerks
 
-object Strings {
+object Strings:
   import scala.annotation.tailrec
 
   def reverseWords(words: String): String = words.split(" ").filter(_.nonEmpty).reverse.mkString(" ")
 
-  def countChars(s: String): Map[Char, Int] = {
+  def countChars(s: String): Map[Char, Int] =
     @tailrec
-    def loop(string: String, acc: Map[Char, Int]): Map[Char, Int] = {
+    def loop(string: String, acc: Map[Char, Int]): Map[Char, Int] =
       if (string.isEmpty) acc
       else if (acc.contains(string.head)) {
         val current = acc(string.head)
         loop(string.tail, acc + (string.head -> (current + 1)))
       } else loop(string.tail, acc + (string.head -> 1))
-    }
     loop(s, Map.empty[Char, Int])
-  }
 
   def checkAnagrams(first: String, second: String): Boolean = countChars(first) == countChars(second)
+
   def checkSortedAnagrams(first: String, second: String): Boolean = first.sorted == second.sorted
 
-  def containsBalancedParens(string: String): Boolean = {
+  def containsBalancedParens(string: String): Boolean =
     @tailrec
     def loop(remaining: String, openParens: Int): Boolean = {
       if (remaining.isEmpty) openParens == 0
@@ -29,9 +28,8 @@ object Strings {
       else loop(remaining.tail, openParens - 1)
     }
     loop(string, 0)
-  }
 
-  def buildListOfAllValidParens(n: Int): List[String] = {
+  def buildListOfAllValidParens(n: Int): List[String] =
     @tailrec
     def loop(remainingParens: Int, currentStrings: Set[String]): Set[String] = {
       if (remainingParens == 0) currentStrings
@@ -47,13 +45,15 @@ object Strings {
       }
     }
     if (n < 1) List() else loop(n - 1, Set("()")).toList
-  }
 
-  def justify(text: String, width: Int): String = {
+  def justify(text: String, width: Int): String =
     def createSpaces(n: Int): String = (1 to n).map(_ => " ").mkString("")
 
     @tailrec
-    def pack(words: List[String], currentRow: List[String], currentCharCount: Int, result: List[List[String]]): List[List[String]] = {
+    def pack(words: List[String],
+             currentRow: List[String], 
+             currentCharCount: Int, 
+             result: List[List[String]]): List[List[String]] =
       if (words.isEmpty && currentRow.isEmpty) {
         // nothing else to add
         result
@@ -71,9 +71,8 @@ object Strings {
         // put the word into the current row
         pack(words.tail, currentRow :+ words.head, currentCharCount + 1 + words.head.length, result)
       }
-    }
 
-    def justifyRow(row: List[String]): String = {
+    def justifyRow(row: List[String]): String =
       if (row.length == 1) row.head
       else {
         val nSpacesAvailable = width - row.map(_.length).sum
@@ -91,11 +90,9 @@ object Strings {
           firstPart + regularSpace + secondPart
         }
       }
-    }
+
     assert(width > 2) // split text into words
     val words = text.split(" ").toList // pack the words into rows
     val unjustifiedRows = pack(words, List(), 0, List()) // justify the rows
     val justifiedRows = unjustifiedRows.init.map(justifyRow) :+ unjustifiedRows.last.mkString(" ") // rebuild the justified text
     justifiedRows.mkString("\n")
-  }
-}
