@@ -7,17 +7,18 @@ Scala Structs and Algos
 4. Expression Eval
 5. Graphs
 6. Hash
-7. nQueens   
-8. Numbers
-9. ProofOfWork
-10. RList
-11. Sierpinski   
-12. Strings
-13. Text    
-14. Trees
-15. Factorial, Fibonacci, etc
-16. MAC
-17. Pin
+7. nQueens
+8. MAC
+9. Numbers
+10. Pin
+11. ProofOfWork
+12. RLE
+13. RList
+14. Sierpinski   
+15. Strings
+16. Text    
+17. Trees
+18. Factorial, Fibonacci, etc
 
 Test
 ----
