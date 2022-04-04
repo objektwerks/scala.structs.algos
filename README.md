@@ -16,6 +16,8 @@ Scala Structs and Algos
 13. Text    
 14. Trees
 15. Factorial, Fibonacci, etc
+16. MAC
+17. Pin
 
 Test
 ----
