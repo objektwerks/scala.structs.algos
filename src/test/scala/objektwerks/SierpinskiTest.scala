@@ -3,7 +3,7 @@ package objektwerks
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-import Sierpinski._
+import Sierpinski.*
 
 class SierpinskiTest extends AnyFunSuite with Matchers:
   test("sierpinski") {
