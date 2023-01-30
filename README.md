@@ -18,7 +18,7 @@ Scala Structs and Algos
 15. Strings
 16. Text    
 17. Trees
-18. Factorial, Fibonacci, etc
+18. Recursion - Factorial, Fibonacci, Find Nth Element From Right, Intersect Lists, Reverse, Sum, Product, etc
 
 Test
 ----
