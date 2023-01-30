@@ -3,8 +3,8 @@ package objektwerks
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-import Eval._
-import Numbers._
+import Eval.*
+import Numbers.*
 
 class NumbersTest extends AnyFunSuite with Matchers:
   test("is prime") {
