@@ -1,9 +1,9 @@
 package objektwerks
 
-object Hash:
-  import java.nio.charset.StandardCharsets
-  import java.security.MessageDigest
+import java.nio.charset.StandardCharsets
+import java.security.MessageDigest
 
+object Hash:
   type Hash = String
 
   def sha3256(value: String): Hash =
@@ -11,7 +11,7 @@ object Hash:
     val hashBytes = digest.digest(value.getBytes(StandardCharsets.UTF_8))
     bytesToHexString(hashBytes)
 
-  private def bytesToHexString(hashBytes: Array[Byte]): String =
+  def bytesToHexString(hashBytes: Array[Byte]): String =
     val hexStringBuilder = new StringBuilder(2 * hashBytes.length)
     for 
       i <- hashBytes.indices
