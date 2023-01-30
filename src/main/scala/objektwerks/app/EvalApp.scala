@@ -1,8 +1,8 @@
 package objektwerks.app
 
-object EvalApp:
-  import objektwerks.Eval._
+import objektwerks.Eval.*
 
+object EvalApp:
   @main def runEval(): Unit =
     println(s"1 + 2 = ${eval("1 + 2")}")
     println(s"4 - 1 = ${eval("4 - 1")}")
