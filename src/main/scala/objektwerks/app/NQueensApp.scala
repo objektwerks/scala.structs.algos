@@ -1,8 +1,8 @@
 package objektwerks.app
 
-object NQueensApp:
-  import objektwerks.Algos._
+  import objektwerks.NQueens.*
 
+object NQueensApp:
   @main def runNQueens(): Unit =
     val solutions = nQueens()
     println(solutions.mkString("\n\n"))
