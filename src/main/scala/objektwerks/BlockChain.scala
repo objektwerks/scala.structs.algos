@@ -1,14 +1,14 @@
 package objektwerks
 
+import java.sql.Timestamp
+import java.util.Date
+
 import Entity.dateTimeMillis
 import Hash.Hash
 import ProofOfWork.ProofOfWork
 
-sealed trait Entity extends Product with Serializable
+sealed trait Entity
 object Entity:
-  import java.sql.Timestamp
-  import java.util.Date
-
   def dateTimeMillis: Long = new Timestamp( new Date().getTime ).getTime
 
 final case class Block[T](timestamp: Long,
