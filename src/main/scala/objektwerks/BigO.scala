@@ -1,9 +1,9 @@
 package objektwerks
 
-object BigO:
-  import scala.annotation.tailrec
-  import scala.collection.mutable.ArrayBuffer
+import scala.annotation.tailrec
+import scala.collection.mutable.ArrayBuffer
 
+object BigO:
   // O(1) - Constant Time
   def constantTimeGetByIndex(array: Array[Int], index: Int): Int = array(index)
 
