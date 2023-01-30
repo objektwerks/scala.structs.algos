@@ -1,9 +1,9 @@
 package objektwerks
 
-object Trees:
-  import scala.annotation.tailrec
-  import scala.collection.immutable.Queue
+import scala.annotation.tailrec
+import scala.collection.immutable.Queue
 
+object Trees:
   sealed abstract class BTree[+T]:
     def value: T
     def left: BTree[T]
