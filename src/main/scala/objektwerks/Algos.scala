@@ -1,9 +1,9 @@
 package objektwerks
 
-object Algos:
-  import scala.annotation.tailrec
-  import scala.util.Try
+import scala.annotation.tailrec
+import scala.util.Try
 
+object Algos:
   @tailrec
   def sum(xs: List[Int], acc: Int = 0): Int =
     xs match
