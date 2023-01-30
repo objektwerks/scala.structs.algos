@@ -3,7 +3,7 @@ package objektwerks
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-import Graphs._
+import Graphs.*
 
 class GraphsTest extends AnyFunSuite with Matchers:
   test("outDegree") {
