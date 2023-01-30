@@ -3,7 +3,7 @@ package objektwerks
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-import Trees._
+import Trees.*
 
 class TreesTest extends AnyFunSuite with Matchers:
   val tree = BNode(1,
