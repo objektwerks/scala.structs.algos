@@ -1,6 +1,6 @@
 package objektwerks.app
 
-  import objektwerks.NQueens.*
+import objektwerks.NQueens.*
 
 object NQueensApp:
   @main def runNQueens(): Unit =
