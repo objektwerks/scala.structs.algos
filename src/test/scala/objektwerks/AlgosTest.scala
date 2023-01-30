@@ -51,9 +51,3 @@ class AlgosTest extends AnyFunSuite with Matchers:
     sierpinski(2).length shouldBe 31
     sierpinski(3).length shouldBe 127
   }
-
-  test("triangles") {
-    Triangle(3, 6, 9).kind shouldEqual Triangle.scalene
-    Triangle(3, 6, 3).kind shouldEqual Triangle.isoceles
-    Triangle(3, 3, 3).kind shouldEqual Triangle.equilateral
-  }
