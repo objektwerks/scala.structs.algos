@@ -1,8 +1,8 @@
 package objektwerks
 
-object Graphs:
-  import scala.annotation.tailrec
+import scala.annotation.tailrec
 
+object Graphs:
   type Graph[T] = Map[T, Set[T]]
 
   val socialGraph: Graph[String] = Map(
