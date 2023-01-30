@@ -2,7 +2,7 @@ package objektwerks
 
 import scala.annotation.tailrec
 
-class Sierpinski:
+object Sierpinski:
   def sierpinski(n: Int): String =
     @tailrec
     def loop(currentLevel: Int, currentTriangle: List[String]): List[String] =
