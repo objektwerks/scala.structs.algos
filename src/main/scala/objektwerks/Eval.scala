@@ -1,8 +1,8 @@
 package objektwerks
 
-object Eval:
-  import scala.annotation.tailrec
+import scala.annotation.tailrec
 
+object Eval:
   def eval(expr: String): Int =
     val operators = Set("+", "-", "*", "/")
 
