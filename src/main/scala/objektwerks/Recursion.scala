@@ -3,7 +3,7 @@ package objektwerks
 import scala.annotation.tailrec
 import scala.util.Try
 
-object Algos:
+object Recursion:
   @tailrec
   def sum(xs: List[Int], acc: Int = 0): Int =
     xs match

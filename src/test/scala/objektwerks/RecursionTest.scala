@@ -3,9 +3,9 @@ package objektwerks
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-import Algos._
+import Recursion.*
 
-class AlgosTest extends AnyFunSuite with Matchers:
+class RecursionTest extends AnyFunSuite with Matchers:
   test("sum") {
     sum( Nil ) shouldBe 0
     sum( List(1, 2, 3) ) shouldBe 6
