@@ -3,7 +3,7 @@ package objektwerks
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-import Triangle._
+import Triangle.*
 
 class TriangleTest extends AnyFunSuite with Matchers:
   test("triangles") {
