@@ -1,11 +1,11 @@
 package objektwerks
 
+import Math.*
+
+import scala.annotation.tailrec
+import scala.util.Random
+
 object Numbers:
-  import Math._
-
-  import scala.annotation.tailrec
-  import scala.util.Random
-
   def isPrime(n: Int): Boolean =
     @tailrec
     def loop(current: Int): Boolean =
