@@ -3,8 +3,8 @@ package objektwerks
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-import Strings._
-
+import Strings.*
+e
 class StringsTest extends AnyFunSuite with Matchers:
   test("reverse words") {
     reverseWords("scala hello") shouldBe "hello scala"
