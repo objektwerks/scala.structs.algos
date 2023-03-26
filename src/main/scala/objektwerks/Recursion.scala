@@ -55,3 +55,9 @@ object Recursion:
       case head :: tail =>
         if listB.contains(head) then intersectLists(tail, listB, acc :+ head)
         else intersectLists(tail, listB, acc)
+
+  def findUnpairedItem[T](list: List[T]): Option[T] =
+    list.foldLeft[Set[T]](Set.empty)({
+      case (set, t) if set.contains(t) => set - t
+      case (set, t) => set + t
+    }).headOption
