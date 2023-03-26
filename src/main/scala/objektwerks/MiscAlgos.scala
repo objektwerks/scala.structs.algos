@@ -9,7 +9,7 @@ object MiscAlgos:
       }
       .headOption
 
-  def findMaxProfit(stockPrices: Array[Int]): Option[Int] =
+  def findMaxProfit(stockPrices: List[Int]): Option[Int] =
     val maxSellPricesFromIonward = stockPrices
       .scanRight(0) {
         case (maxPriceSoFar, dayPrice) => Math.max(maxPriceSoFar, dayPrice)
