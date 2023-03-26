@@ -57,7 +57,7 @@ object Recursion:
         else intersectLists(tail, listB, acc)
 
   def findUnpairedItem[T](list: List[T]): Option[T] =
-    list.foldLeft[Set[T]](Set.empty){
+    list.foldLeft[Set[T]](Set.empty) {
       case (set, t) if set.contains(t) => set - t
       case (set, t) => set + t
     }
@@ -65,7 +65,7 @@ object Recursion:
 
   def findMaxProfit(stockPrices: Array[Int]): Option[Int] =
     val maxSellPricesFromIonward = stockPrices
-      .scanRight(0){
+      .scanRight(0) {
         case (maximumPriceSoFar, dayPrice) => Math.max(maximumPriceSoFar, dayPrice)
       }
       .toArray
