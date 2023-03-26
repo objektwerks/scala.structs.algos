@@ -8,4 +8,5 @@ class PalindromeTest extends AnyFunSuite with Matchers:
     import Palindrome.*
 
     isPalindrome( List('a', 'a', 'b', 'b')) shouldBe false
+    isPalindrome( List('a', 'b', 'a')) shouldBe true
   }
