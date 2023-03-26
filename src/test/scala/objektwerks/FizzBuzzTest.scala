@@ -10,4 +10,5 @@ class FizzBuzzTest extends AnyFunSuite with Matchers:
     fizzbuzz(9) shouldBe "fizz"
     fizzbuzz(10) shouldBe "buzz"
     fizzbuzz(15) shouldBe "fizzbuzz"
+    fizzbuzz(7) shouldBe "7"
   }
