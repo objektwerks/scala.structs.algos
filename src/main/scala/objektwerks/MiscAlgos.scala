@@ -21,10 +21,6 @@ object MiscAlgos:
       stockPrices
         .zip(maxSellPrices)
         .map {
-          case (buyPrice, sellPrice) => getPotentialProfit(buyPrice, sellPrice)
+          case (buyPrice, sellPrice) => if sellPrice > buyPrice then Some(sellPrice - buyPrice) else None
         }
         .max
-
-  private def getPotentialProfit(buyPrice: Int, sellPrice: Int): Option[Int] =
-    if sellPrice > buyPrice then Some(sellPrice - buyPrice)
-    else None
