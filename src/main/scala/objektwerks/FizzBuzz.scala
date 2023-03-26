@@ -10,7 +10,7 @@ package objektwerks
 object FizzBuzz:
   def fizzbuzz(n: Int): String =
     n match 
-      case i if i % 3 == 0 => "fizz"
-      case j if j % 5 == 0 => "buzz"
-      case k if k % 15 == 0 => "fizzbuzz"
+      case i if i % 15 == 0 => "fizzbuzz"
+      case j if j % 3 == 0 => "fizz"
+      case k if k % 5 == 0 => "buzz"
       case _ => s"$n"
