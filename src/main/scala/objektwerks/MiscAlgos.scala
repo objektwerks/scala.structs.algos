@@ -12,7 +12,7 @@ object MiscAlgos:
   def findMaxProfit(prices: List[Int]): Option[Int] =
     val maxSellPrices = prices
       .scanRight(0) {
-        case (maxPrice, dayPrice) => Math.max(maxPrice, dayPrice)
+        (maxPrice, dayPrice) => Math.max(maxPrice, dayPrice)
       }
       .drop(1)
 
@@ -21,6 +21,6 @@ object MiscAlgos:
       prices
         .zip(maxSellPrices)
         .map {
-          case (buyPrice, sellPrice) => if sellPrice > buyPrice then Some(sellPrice - buyPrice) else None
+          (buyPrice, sellPrice) => if sellPrice > buyPrice then Some(sellPrice - buyPrice) else None
         }
         .max
