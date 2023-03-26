@@ -11,6 +11,7 @@ Scala Structs and Algos
 * nQueens
 * MAC
 * Numbers
+* Palindrome
 * Pin
 * ProofOfWork
 * RLE
