@@ -4,9 +4,10 @@ import scala.util.Random
 
 object Pin:
   private val specialChars = "~!@#$%^&*-+=<>?/:;".toList
+  private val limit = specialChars.length
   private val random = new Random
 
-  private def newSpecialChar: Char = specialChars(random.nextInt(specialChars.length))
+  private def newSpecialChar: Char = specialChars(random.nextInt(limit))
 
   /**
    * 26 letters + 10 numbers + 18 special characters = 54 combinations
