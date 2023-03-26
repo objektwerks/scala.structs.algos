@@ -8,4 +8,5 @@ class FizzBuzzTest extends AnyFunSuite with Matchers:
     import FizzBuzz.*
 
     fizzbuzz(9) shouldBe "fizz"
+    fizzbuzz(10) shouldBe "buzz"
   }
