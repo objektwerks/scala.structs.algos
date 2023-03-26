@@ -8,7 +8,7 @@ package objektwerks
   * 4. else return input number
   */
 object FizzBuzz:
-  def apply(n: Int): String =
+  def fizzbuzz(n: Int): String =
     n match 
       case i if i % 3 == 0 => "fizz"
       case j if j % 5 == 0 => "buzz"
