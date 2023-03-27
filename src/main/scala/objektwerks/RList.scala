@@ -149,6 +149,16 @@ object RList:
 
       loop(this, RNil)
 
+    override def rle: RList[(T, Int)] =
+      @tailrec
+      def loop(remaining: RList[T], currentTuple: (T, Int), accumulator: RList[(T, Int)]): RList[(T, Int)] = {
+        if remaining.isEmpty then currentTuple :: accumulator
+        else if (remaining.head == currentTuple._1) then loop(remaining.tail, currentTuple.copy(_2 = currentTuple._2 + 1), accumulator)
+        else loop(remaining.tail, (remaining.head, 1), currentTuple :: accumulator)
+      }
+
+      loop(this.tail, (this.head, 1), RNil).reverse
+
     override def count: RList[(T, Int)] =
       @tailrec
       def loop(list: RList[T], current: (T, Int), acc: RList[(T, Int)]): RList[(T, Int)] =
@@ -261,13 +271,3 @@ object RList:
           else loop(list.tail, other, acc)
           
       loop(this, other, RNil)
-
-    override def rle: RList[(T, Int)] =
-      @tailrec
-      def loop(remaining: RList[T], currentTuple: (T, Int), accumulator: RList[(T, Int)]): RList[(T, Int)] = {
-        if remaining.isEmpty then currentTuple :: accumulator
-        else if (remaining.head == currentTuple._1) then loop(remaining.tail, currentTuple.copy(_2 = currentTuple._2 + 1), accumulator)
-        else loop(remaining.tail, (remaining.head, 1), currentTuple :: accumulator)
-      }
-
-      loop(this.tail, (this.head, 1), RNil).reverse
