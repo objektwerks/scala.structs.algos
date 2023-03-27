@@ -5,7 +5,7 @@ import scala.annotation.tailrec
 object RLE:
   case class Encoding(char: Char, count: Int) extends Product with Serializable
 
-  // Only encodes letters.
+  // Only encodes letters to numbers.
   def encode(string: String): String =
     def group(chars: List[Char]): List[List[Char]] =
       if chars.isEmpty then List(List())
