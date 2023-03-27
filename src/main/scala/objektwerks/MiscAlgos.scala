@@ -11,6 +11,7 @@ object MiscAlgos:
 
   def findMaxProfit(prices: List[Int]): Option[Int] =
     val maxSellPrices = prices
+      .view
       .scanRight(0) {
         (maxPrice, dayPrice) => Math.max(maxPrice, dayPrice)
       }
