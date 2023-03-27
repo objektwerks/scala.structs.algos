@@ -1,13 +1,13 @@
 package objektwerks
 
+import java.security.{KeyPair, KeyPairGenerator, PrivateKey, PublicKey}
+import java.util.Base64
+
+import javax.crypto.Cipher
+
+import scala.util.Try
+
 object AsymmetricCrypto:
-  import java.security.{KeyPair, KeyPairGenerator, PrivateKey, PublicKey}
-  import java.util.Base64
-  
-  import javax.crypto.Cipher
-
-  import scala.util.Try
-
   def encrypt(publicKey: PublicKey, text: String): Either[Throwable, String] =
     Try {
       val cipher = Cipher.getInstance("RSA")
