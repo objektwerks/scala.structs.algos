@@ -157,10 +157,10 @@ object RList:
 
     override def rle: RList[(T, Int)] =
       @tailrec
-      def loop(remainder: RList[T], current: (T, Int), accumulator: RList[(T, Int)]): RList[(T, Int)] = {
-        if remainder.isEmpty then current :: accumulator
-        else if (remainder.head == current._1) then loop(remainder.tail, current.copy(_2 = current._2 + 1), accumulator)
-        else loop(remainder.tail, (remainder.head, 1), current :: accumulator)
+      def loop(remainder: RList[T], current: (T, Int), acc: RList[(T, Int)]): RList[(T, Int)] = {
+        if remainder.isEmpty then current :: acc
+        else if (remainder.head == current._1) then loop(remainder.tail, current.copy(_2 = current._2 + 1), acc)
+        else loop(remainder.tail, (remainder.head, 1), current :: acc)
       }
 
       loop(this.tail, (this.head, 1), RNil).reverse
