@@ -27,6 +27,7 @@ object RList:
     def map[S](func: T => S): RList[S]
     def flatMap[S](func: T => RList[S]): RList[S]
     def filter(predicate: T => Boolean): RList[T]
+    def rle: RList[(T, Int)]
     def count: RList[(T, Int)]
     def duplicate(by: Int): RList[T]
     def rotate(by: Int): RList[T]
@@ -51,6 +52,7 @@ object RList:
     override def map[S](func: Nothing => S): RList[S] = RNil
     override def flatMap[S](func: Nothing => RList[S]): RList[S] = RNil
     override def filter(predicate: Nothing => Boolean): RList[Nothing] = RNil
+    override def rle: RList[(Nothing, Int)] = RNil
     override def count: RList[(Nothing, Int)] = RNil
     override def duplicate(by: Int): RList[Nothing] = RNil
     override def rotate(by: Int): RList[Nothing] = RNil
@@ -259,3 +261,13 @@ object RList:
           else loop(list.tail, other, acc)
           
       loop(this, other, RNil)
+
+    override def rle: RList[(T, Int)] =
+      @tailrec
+      def loop(remaining: RList[T], currentTuple: (T, Int), accumulator: RList[(T, Int)]): RList[(T, Int)] = {
+        if remaining.isEmpty then currentTuple :: accumulator
+        else if (remaining.head == currentTuple._1) then loop(remaining.tail, currentTuple.copy(_2 = currentTuple._2 + 1), accumulator)
+        else loop(remaining.tail, (remaining.head, 1), currentTuple :: accumulator)
+      }
+
+      loop(this.tail, (this.head, 1), RNil).reverse
