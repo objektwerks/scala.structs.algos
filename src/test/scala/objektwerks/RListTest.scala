@@ -75,7 +75,10 @@ class RListTest extends AnyFunSuite with Matchers:
 
   test("rle") {
     val rlist = "a" :: "a" :: "b" :: "b" :: "c" :: "c" :: RNil
-    rlist.rle shouldBe ("a", 2) :: ("b", 2) :: ("c", 2) :: RNil
+    val rle = ("a", 2) :: ("b", 2) :: ("c", 2) :: RNil
+    rlist.rle shouldBe rle
+    val rld = RList.rld( rle )
+    rld shouldBe "aabbcc"
   }
 
   test("count") {

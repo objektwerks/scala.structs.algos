@@ -2,6 +2,7 @@ package objektwerks
 
 import scala.annotation.tailrec
 import scala.util.Random
+import scala.collection.mutable
 
 object RList:
   def iterable[T](iterable: Iterable[T]): RList[T] =
@@ -11,6 +12,11 @@ object RList:
       else loop(iterable.tail, iterable.head :: acc)
       
     loop(iterable, RNil)
+
+  def rld(rlist: RList[(String, Int)]): String =
+    val builder = mutable.StringBuilder()
+    rlist.map { (s, i) => builder.append( s * i ) }
+    builder.result()
 
   sealed abstract class RList[+T]:
     def head: T
