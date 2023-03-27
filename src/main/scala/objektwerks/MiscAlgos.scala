@@ -20,6 +20,7 @@ object MiscAlgos:
     if prices.length < 2 then None
     else
       prices
+        .view
         .zip(maxSellPrices)
         .map {
           (buyPrice, sellPrice) => if sellPrice > buyPrice then Some(sellPrice - buyPrice) else None
