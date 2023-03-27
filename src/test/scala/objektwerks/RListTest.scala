@@ -73,6 +73,11 @@ class RListTest extends AnyFunSuite with Matchers:
     rlist.filter(x => x % 2 == 0) shouldBe 2 :: RNil
   }
 
+  test("rle") {
+    val rlist = "a" :: "a" :: "b" :: "b" :: "c" :: "c" :: RNil
+    rlist.rle shouldBe ("a",2) :: ("b",2) :: ("c",2) :: RNil
+  }
+
   test("count") {
     val rlist = 1 :: 2 :: 2 :: 3 :: 3 :: 3 :: RNil
     rlist.count shouldBe (1, 1) :: (2, 2) :: (3, 3) :: RNil
