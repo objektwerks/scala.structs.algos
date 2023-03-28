@@ -1,4 +1,5 @@
 package objektwerks
 
 object Gematria:
-  val ordinalMap = Map( 'a' -> 1 )
+  val alphabet = "abcdefghijklmnopqrstuvwxyz".toList
+  val ordinalMap = alphabet.zipWithIndex(1)
