@@ -21,3 +21,7 @@ class GematriaTest extends AnyFunSuite with Matchers:
   test("reverse reduction") {
     deciper( reverseReductionMap, "hello world") shouldBe 47
   }
+
+  test("standard") {
+    deciper( standardMap, "hello world") shouldBe 817
+  }
