@@ -19,16 +19,10 @@ object Gematria:
                           'j' -> 1,'k' -> 2,'l' -> 3, 'm' -> 4, 'n' -> 5, 'o' -> 6, 'p' -> 7, 'q' -> 8, 'r' -> 9,
                           's' -> 1,'t' -> 2,'u' -> 3, 'v' -> 4, 'w' -> 5, 'x' -> 6, 'y' -> 7, 'z' -> 8
                          )
-
-  /* Reduction
-  a	b	c	d	e	f	g	h	i	j	k	l	m	n	o	p	q	r	s	t	u	v	w	x	y	z
-  1	2	3	4	5	6	7	8	9	1	2	3	4	5	6	7	8	9	1	2	3	4	5	6	7	8
-  */
-
-  /* Reverse Reduction
-  z	y	x	w	v	u	t	s	r	q	p	o	n	m	l	k	j	i	h	g	f	e	d	c	b	a
-  1	2	3	4	5	6	7	8	9	1	2	3	4	5	6	7	8	9	1	2	3	4	5	6	7	8
-  */
+  val reverseReductionMap = Map( 'a' -> 8,'b' -> 7,'c' -> 6, 'd' -> 5, 'e' -> 4, 'f' -> 3, 'g' -> 2, 'h' -> 1, 'i' -> 9,
+                                 'j' -> 8,'k' -> 7,'l' -> 6, 'm' -> 5, 'n' -> 4, 'o' -> 3, 'p' -> 2, 'q' -> 1, 'r' -> 9,
+                                 's' -> 8,'t' -> 7,'u' -> 6, 'v' -> 5, 'w' -> 4, 'x' -> 3, 'y' -> 2, 'z' -> 1
+                                )
 
   def deciper(cipher: SortedMap[Char, Int], string: String): Int =
     string
