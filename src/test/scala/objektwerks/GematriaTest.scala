@@ -6,26 +6,28 @@ import org.scalatest.matchers.should.Matchers
 import Gematria.*
 
 class GematriaTest extends AnyFunSuite with Matchers:
+  val string = "hello world"
+
   test("ordinal") {
-    deciper( ordinalCiper, "hello world") shouldBe 124
+    deciper( ordinalCiper, string) shouldBe 124
   }
 
   test("reverse ordinal") {
-    deciper( reverseOrdinalCipher, "hello world") shouldBe 146
+    deciper( reverseOrdinalCipher, string) shouldBe 146
   }
 
   test("reduction") {
-    deciper( reductionCiper, "hello world") shouldBe 52
+    deciper( reductionCiper, string) shouldBe 52
   }
 
   test("reverse reduction") {
-    deciper( reverseReductionCipher, "hello world") shouldBe 47
+    deciper( reverseReductionCipher, string) shouldBe 47
   }
 
   test("standard") {
-    deciper( standardCipher, "hello world") shouldBe 817
+    deciper( standardCipher, string) shouldBe 817
   }
 
   test("latin") {
-    deciper( latinCipher, "hello world") shouldBe 1157
+    deciper( latinCipher, string) shouldBe 1157
   }
