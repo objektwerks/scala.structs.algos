@@ -15,7 +15,7 @@ class GematriaTest extends AnyFunSuite with Matchers:
   }
 
   test("reduction") {
-    deciper( reductionMap, "hello world") shouldBe 52
+    deciper( reductionCiper, "hello world") shouldBe 52
   }
 
   test("reverse reduction") {
