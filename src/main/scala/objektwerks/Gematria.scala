@@ -9,7 +9,12 @@ object Gematria:
       .zipWithIndex
       .map( (char, index) => char -> (index + 1) )
   )
-  val reverseOrdinalMap = SortedMap.from( alphabet.reverse.zipWithIndex.map( (char, index) => char -> (index + 1) ) )
+  val reverseOrdinalMap = SortedMap.from(
+    alphabet
+      .reverse
+      .zipWithIndex
+      .map( (char, index) => char -> (index + 1) ) 
+  )
 
   def deciper(cipher: SortedMap[Char, Int], string: String): Int =
     string
