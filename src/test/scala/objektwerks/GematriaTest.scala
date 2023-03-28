@@ -7,5 +7,6 @@ import Gematria.*
 
 class GematriaTest extends AnyFunSuite with Matchers:
   test("ordinal") {
+    println( alphabet )
     println( ordinalMap )
   }
