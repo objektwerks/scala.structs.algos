@@ -23,7 +23,7 @@ class GematriaTest extends AnyFunSuite with Matchers:
   }
 
   test("standard") {
-    deciper( standardMap, "hello world") shouldBe 817
+    deciper( standardCipher, "hello world") shouldBe 817
   }
 
   test("latin") {
