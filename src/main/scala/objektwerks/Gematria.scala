@@ -11,7 +11,7 @@ object Gematria:
       .map( (char, index) => char -> (index + 1) )
   )
 
-  val reverseOrdinalMap = SortedMap.from(
+  val reverseOrdinalCipher = SortedMap.from(
     alphabet
       .reverse
       .zipWithIndex
