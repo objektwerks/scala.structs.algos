@@ -7,7 +7,7 @@ import Gematria.*
 
 class GematriaTest extends AnyFunSuite with Matchers:
   test("ordinal") {
-    deciper( ordinalMap, "hello world") shouldBe 124
+    deciper( ordinalCiper, "hello world") shouldBe 124
   }
 
   test("reverse ordinal") {

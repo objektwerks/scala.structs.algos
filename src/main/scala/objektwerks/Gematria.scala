@@ -5,7 +5,7 @@ import scala.collection.immutable.SortedMap
 object Gematria:
   val alphabet = "abcdefghijklmnopqrstuvwxyz".toList
 
-  val ordinalMap = SortedMap.from(
+  val ordinalCiper = SortedMap.from(
     alphabet
       .zipWithIndex
       .map( (char, index) => char -> (index + 1) )
