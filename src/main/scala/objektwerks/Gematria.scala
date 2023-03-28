@@ -24,7 +24,7 @@ object Gematria:
                                  's' -> 8,'t' -> 7,'u' -> 6, 'v' -> 5, 'w' -> 4, 'x' -> 3, 'y' -> 2, 'z' -> 1
                                 )
 
-  def deciper(cipher: SortedMap[Char, Int], string: String): Int =
+  def deciper(cipher: Map[Char, Int], string: String): Int =
     string
       .toCharArray
       .filter(char => char.isLetter)
