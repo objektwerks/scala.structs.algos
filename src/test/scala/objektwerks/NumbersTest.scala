@@ -7,6 +7,11 @@ import Eval.*
 import Numbers.*
 
 class NumbersTest extends AnyFunSuite with Matchers:
+  test("is star") {
+    isStar(37) shouldBe true
+    isStar(73) shouldBe true
+  }
+
   test("is prime") {
     isPrime(11) shouldBe true
     isPrime(15) shouldBe false
