@@ -7,6 +7,7 @@ object Gematria:
 
   val ordinalCiper = SortedMap.from(
     alphabet
+      .view
       .zipWithIndex
       .map( (char, index) => char -> (index + 1) )
   )
