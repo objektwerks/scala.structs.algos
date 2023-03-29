@@ -14,6 +14,7 @@ object Gematria:
 
   val reverseOrdinalCipher = SortedMap.from(
     alphabet
+      .view
       .reverse
       .zipWithIndex
       .map( (char, index) => char -> (index + 1) )
