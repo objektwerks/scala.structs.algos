@@ -28,6 +28,10 @@ class GematriaTest extends AnyFunSuite with Matchers:
     deciper( standardCipher, string) shouldBe 817
   }
 
+  test("reverse standard") {
+    deciper( reverseStandardCipher, string) shouldBe 1253
+  }
+
   test("latin") {
     deciper( latinCipher, string) shouldBe 1157
   }
