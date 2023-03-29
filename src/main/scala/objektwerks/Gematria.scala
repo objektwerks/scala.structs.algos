@@ -47,19 +47,6 @@ object Gematria:
   val reverseSumerianCipher = Map( 'a' -> 156, 'b' -> 150, 'c' -> 144, 'd' -> 138, 'e' -> 132, 'f' -> 126, 'g' -> 120, 'h' -> 114, 'i' -> 108,
                                    'j' -> 102, 'k' -> 96, 'l' -> 90, 'm' -> 84, 'n' -> 78, 'o' -> 72, 'p' -> 66, 'q' -> 60, 'r' -> 54,
                                    's' -> 48, 't' -> 42, 'u' -> 36, 'v' -> 30, 'w' -> 24, 'x' -> 18, 'y' -> 12, 'z' -> 6 )
-  /* Sumerian - 744
-  a	b	 c	d	 e	f	 g	h	 i	j	 k	l	 m
-  6	12 18	24 30	36 42	48 54	60 66	72 78
-  n	 o	p	 q	 r	 s	 t	 u	 v	 w	 x	 y	 z
-  84 90	96 102 108 114 120 126 132 138 144 150 156
-  */
-
-  /* Reverse Sumerian - 876
-  z	y	 x	w	 v	u	 t	s	 r	q	 p	o	 n
-  6	12 18	24 30	36 42	48 54	60 66	72 78
-  m	 l	k	 j	 i	 h	 g	 f	 e	 d	 c	 b	 a
-  84 90	96 102 108 114 120 126 132 138 144 150 156
-  */
 
   def deciper(cipher: Map[Char, Int], string: String): Int =
     string
