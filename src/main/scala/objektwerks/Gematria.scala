@@ -48,9 +48,12 @@ object Gematria:
   */
 
   /* Reverse Sumerian
-  
+  z	y	 x	w	 v	u	 t	s	 r	q	 p	o	 n
+  6	12 18	24 30	36 42	48 54	60 66	72 78
+  m	 l	k	 j	 i	 h	 g	 f	 e	 d	 c	 b	 a
+  84 90	96 102 108 114 120 126 132 138 144 150 156
   */
-  
+
   def deciper(cipher: Map[Char, Int], string: String): Int =
     string
       .toCharArray
