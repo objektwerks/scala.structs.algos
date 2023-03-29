@@ -9,7 +9,14 @@ import Numbers.*
 class NumbersTest extends AnyFunSuite with Matchers:
   test("is star") {
     isStar(37) shouldBe true
-    isStar(73) shouldBe true
+    isStar(10) shouldBe false
+  }
+
+  test("is triangualar") {
+    isTriangular(1) shouldBe true
+    isTriangular(10) shouldBe true
+    isTriangular(0) shouldBe false
+    isTriangular(9) shouldBe false
   }
 
   test("is prime") {
