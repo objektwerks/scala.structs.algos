@@ -6,6 +6,10 @@ import scala.annotation.tailrec
 import scala.util.Random
 
 object Numbers:
+  def isStar(n: Int): Boolean =
+    val s = ( 6 + Math.sqrt( 24 * n + 12 ) ) / 6
+    (n - s.toInt) == 0
+
   def isPrime(n: Int): Boolean =
     @tailrec
     def loop(current: Int): Boolean =
