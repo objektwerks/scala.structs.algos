@@ -9,37 +9,37 @@ class GematriaTest extends AnyFunSuite with Matchers:
   val string = "hello world"
 
   test("ordinal") {
-    deciper( ordinalCiper, string) shouldBe 124
+    encipher( ordinalCiper, string) shouldBe 124
   }
 
   test("reverse ordinal") {
-    deciper( reverseOrdinalCipher, string) shouldBe 146
+    encipher( reverseOrdinalCipher, string) shouldBe 146
   }
 
   test("reduction") {
-    deciper( reductionCiper, string) shouldBe 52
+    encipher( reductionCiper, string) shouldBe 52
   }
 
   test("reverse reduction") {
-    deciper( reverseReductionCipher, string) shouldBe 47
+    encipher( reverseReductionCipher, string) shouldBe 47
   }
 
   test("standard") {
-    deciper( standardCipher, string) shouldBe 817
+    encipher( standardCipher, string) shouldBe 817
   }
 
   test("reverse standard") {
-    deciper( reverseStandardCipher, string) shouldBe 1253
+    encipher( reverseStandardCipher, string) shouldBe 1253
   }
 
   test("latin") {
-    deciper( latinCipher, string) shouldBe 1157
+    encipher( latinCipher, string) shouldBe 1157
   }
 
   test("sumerian") {
-    deciper( sumerianCipher, string) shouldBe 744
+    encipher( sumerianCipher, string) shouldBe 744
   }
 
   test("reverse sumerian") {
-    deciper( reverseSumerianCipher, string) shouldBe 876
+    encipher( reverseSumerianCipher, string) shouldBe 876
   }

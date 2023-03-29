@@ -48,7 +48,7 @@ object Gematria:
                                    'j' -> 102, 'k' -> 96, 'l' -> 90, 'm' -> 84, 'n' -> 78, 'o' -> 72, 'p' -> 66, 'q' -> 60, 'r' -> 54,
                                    's' -> 48, 't' -> 42, 'u' -> 36, 'v' -> 30, 'w' -> 24, 'x' -> 18, 'y' -> 12, 'z' -> 6 )
 
-  def deciper(cipher: Map[Char, Int], string: String): Int =
+  def encipher(cipher: Map[Char, Int], string: String): Int =
     string
       .toCharArray
       .view
