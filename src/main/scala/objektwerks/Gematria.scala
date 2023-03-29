@@ -39,6 +39,7 @@ object Gematria:
   def deciper(cipher: Map[Char, Int], string: String): Int =
     string
       .toCharArray
+      .view
       .filter(char => char.isLetter)
       .map(letter => cipher.getOrElse(letter, 0))
       .sum
