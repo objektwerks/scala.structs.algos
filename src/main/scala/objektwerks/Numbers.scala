@@ -5,10 +5,38 @@ import Math.*
 import scala.annotation.tailrec
 import scala.util.Random
 
+/*
+    static boolean isTriangular(int num)
+    {
+        // Base case
+        if (num < 0)
+            return false;
+     
+        // A Triangular number must be
+        // sum of first n natural numbers
+        int sum = 0;
+         
+        for (int n = 1; sum <= num; n++)
+        {
+            sum = sum + n;
+            if (sum == num)
+                return true;
+        }
+     
+        return false;
+    }
+*/
 object Numbers:
   def isStar(n: Int): Boolean =
     val s = ( 6 + Math.sqrt( (24 * n) + 12 ) ) / 6
     (s - s.toInt) == 0
+
+  @tailrec
+  def isTriangular(n: Int, acc: Int = 0): Boolean =
+    if n == 0 then false
+    else if n == acc then true
+    else if acc > n then false
+    else isTriangular(n, acc + 1)
 
   def isPrime(n: Int): Boolean =
     @tailrec
