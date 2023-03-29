@@ -27,6 +27,11 @@ class NumbersTest extends AnyFunSuite with Matchers:
     isPrime(-1) shouldBe false
   }
 
+  test("find tetrahedral") {
+    findTetrahedral(5) shouldBe 35
+    findTetrahedral(6) shouldBe 56
+  }
+
   test("listFactors") {
     listFactors(11) shouldBe List(11)
     listFactors(15) shouldBe List(5, 3)
