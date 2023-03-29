@@ -39,13 +39,7 @@ object Gematria:
   val latinCipher = Map( 'a' -> 1, 'b' -> 2, 'c' -> 3, 'd' -> 4, 'e' -> 5, 'f' -> 6, 'g' -> 7, 'h' -> 8, 'i' -> 9,
                          'j' -> 600, 'k' -> 10, 'l' -> 20, 'm' -> 30, 'n' -> 40, 'o' -> 50, 'p' -> 60, 'q' -> 70, 'r' -> 80,
                          's' -> 90, 't' -> 100, 'u' -> 200, 'v' -> 700, 'w' -> 900, 'x' -> 300, 'y' -> 400, 'z' -> 500 )
-                         
-  /*
-  z	y	x	w	v	u	t	s	r	q	 p	o	 n
-  1	2	3	4	5	6	7	8	9	10 20	30 40
-  m	 l	k	 j	i	 h	 g	 f	 e	 d	 c	 b	 a
-  50 60	70 80	90 100 200 300 400 500 600 700 800
-  */
+  
   def deciper(cipher: Map[Char, Int], string: String): Int =
     string
       .toCharArray
