@@ -35,3 +35,7 @@ class GematriaTest extends AnyFunSuite with Matchers:
   test("latin") {
     deciper( latinCipher, string) shouldBe 1157
   }
+
+  test("sumerian") {
+    deciper( sumerianCipher, string) shouldBe 744
+  }
