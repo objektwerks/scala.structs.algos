@@ -67,7 +67,7 @@ class StatsTest extends AnyFunSuite with Matchers {
   }
 
   test("permutations") {
-    assert(permutations(10, 3) == 720)
+    permutations(10, 3) shouldBe 720
   }
 
   test("probability") {
