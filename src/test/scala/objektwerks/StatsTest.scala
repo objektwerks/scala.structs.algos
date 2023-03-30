@@ -11,7 +11,7 @@ class StatsTest extends AnyFunSuite with Matchers {
   val outcomesToCount = Vector((1.0, 5.0), (2.0, 10.0), (3.0, 11.0), (4.0, 44.0), (5.0, 38.0))
 
   test("mean") {
-    assert(mean(xs) == 3.142857142857143)
+    mean(xs) shouldBe 3.142857142857143
   }
 
   test("median") {
