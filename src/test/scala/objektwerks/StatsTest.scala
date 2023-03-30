@@ -39,7 +39,7 @@ class StatsTest extends AnyFunSuite with Matchers {
   }
 
   test("standard error") {
-    assert(standardError(xs) == 0.5084322977157767)
+    standardError(xs) shouldBe 0.5084322977157767
   }
 
   test("covariance") {
