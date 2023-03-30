@@ -75,6 +75,6 @@ class StatsTest extends AnyFunSuite with Matchers {
   }
 
   test("expected value") {
-    assert(expectedValue(outcomesToCount) == 3.9259259259259256)
+    expectedValue(outcomesToCount) shouldBe 3.9259259259259256
   }
 }
