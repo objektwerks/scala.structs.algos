@@ -15,7 +15,7 @@ class StatsTest extends AnyFunSuite with Matchers {
   }
 
   test("median") {
-    assert(median(xs) == 3.0)
+    median(xs) shouldBe 3.0
   }
 
   test("mode") {
