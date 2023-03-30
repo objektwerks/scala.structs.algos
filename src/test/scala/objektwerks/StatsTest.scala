@@ -35,7 +35,7 @@ class StatsTest extends AnyFunSuite with Matchers {
   }
 
   test("standard deviation") {
-    assert(standardDeviation(xs) == 1.3451854182690985)
+    standardDeviation(xs) shouldBe 1.3451854182690985
   }
 
   test("standard error") {
