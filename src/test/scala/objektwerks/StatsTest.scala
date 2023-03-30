@@ -63,7 +63,7 @@ class StatsTest extends AnyFunSuite with Matchers {
   }
 
   test("combinations") {
-    assert(combinations(10, 3) == 120)
+    combinations(10, 3) shouldBe 120
   }
 
   test("permutations") {
