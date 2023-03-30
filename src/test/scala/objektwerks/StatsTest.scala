@@ -43,7 +43,7 @@ class StatsTest extends AnyFunSuite with Matchers {
   }
 
   test("covariance") {
-    assert(covariance(xs, ys) == 1.8154761904761905)
+    covariance(xs, ys) shouldBe 1.8154761904761905
   }
 
   test("correlation coefficient") {
