@@ -47,7 +47,7 @@ class StatsTest extends AnyFunSuite with Matchers {
   }
 
   test("correlation coefficient") {
-    assert(correlationCoefficient(xs, ys) == 0.9919341745639146)
+    correlationCoefficient(xs, ys) shouldBe 0.9919341745639146
   }
 
   test("centroid") {
