@@ -19,7 +19,7 @@ class StatsTest extends AnyFunSuite with Matchers {
   }
 
   test("mode") {
-    assert(mode(xs) == Vector(3.0, 4.0))
+    mode(xs) shouldBe Vector(3.0, 4.0)
   }
 
   test("range") {
