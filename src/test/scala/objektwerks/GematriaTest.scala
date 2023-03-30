@@ -43,3 +43,7 @@ class GematriaTest extends AnyFunSuite with Matchers:
   test("reverse sumerian") {
     encipher( reverseSumerianCipher, text) shouldBe 876
   }
+
+  test("encipher to map") {
+    println( encipherToMap( ordinalCiper, text) )
+  }
