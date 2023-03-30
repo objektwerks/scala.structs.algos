@@ -27,7 +27,7 @@ class StatsTest extends AnyFunSuite with Matchers {
   }
 
   test("histogram") {
-    assert(histogram(xs) == Map(1.0 -> 1, 2.0 -> 1, 3.0 -> 2, 4.0 -> 2, 5.0 -> 1))
+    histogram(xs) shouldBe Map(1.0 -> 1, 2.0 -> 1, 3.0 -> 2, 4.0 -> 2, 5.0 -> 1)
   }
 
   test("variance") {
