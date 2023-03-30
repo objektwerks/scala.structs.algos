@@ -1,10 +1,11 @@
 package objektwerks
 
 import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
 
 import Stats.*
 
-class StatsTest extends AnyFunSuite {
+class StatsTest extends AnyFunSuite with Matchers {
   val xs = Vector[Double](1.0, 2.0, 3.0, 3.0, 4.0, 4.0, 5.0)
   val ys = Vector[Double](1.5, 2.5, 3.25, 3.5, 4.25, 4.75, 5.5)
   val outcomesToCount = Vector((1.0, 5.0), (2.0, 10.0), (3.0, 11.0), (4.0, 44.0), (5.0, 38.0))
