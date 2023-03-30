@@ -71,7 +71,7 @@ class StatsTest extends AnyFunSuite with Matchers {
   }
 
   test("probability") {
-    assert(probability(outcomesToCount) == Vector(0.046296296296296294, 0.09259259259259259, 0.10185185185185185, 0.4074074074074074, 0.35185185185185186))
+    probability(outcomesToCount) shouldBe Vector(0.046296296296296294, 0.09259259259259259, 0.10185185185185185, 0.4074074074074074, 0.35185185185185186)
   }
 
   test("expected value") {
