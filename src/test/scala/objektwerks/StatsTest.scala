@@ -23,7 +23,7 @@ class StatsTest extends AnyFunSuite with Matchers {
   }
 
   test("range") {
-    assert(range(xs) == 4.0)
+    range(xs) shouldBe 4.0
   }
 
   test("histogram") {
