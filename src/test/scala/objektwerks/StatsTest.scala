@@ -55,7 +55,7 @@ class StatsTest extends AnyFunSuite with Matchers {
   }
 
   test("factorial") {
-    assert(factorial(9) == 362880)
+    factorial(9) shouldBe 362880
   }
 
   test("fibonacci") {
