@@ -51,7 +51,7 @@ class StatsTest extends AnyFunSuite with Matchers {
   }
 
   test("centroid") {
-    assert((3.142857142857143,3.607142857142857) == centroid(xs, ys))
+    (3.142857142857143, 3.607142857142857) shouldBe centroid(xs, ys)
   }
 
   test("factorial") {
