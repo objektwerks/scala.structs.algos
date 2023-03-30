@@ -59,7 +59,7 @@ class StatsTest extends AnyFunSuite with Matchers {
   }
 
   test("fibonacci") {
-    assert(fibonacci(39) == 63245986)
+    fibonacci(39) shouldBe 63245986
   }
 
   test("combinations") {
