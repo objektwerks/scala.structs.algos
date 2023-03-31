@@ -6,13 +6,14 @@ import org.scalatest.matchers.should.Matchers
 import Gematria.*
 
 class GematriaTest extends AnyFunSuite with Matchers:
+  val dice = "onetwothreefourfivesix"
   val text = "hello world"
 
   test("pi") { // see - https://grahamhancock.com/leedsm1/
     encipher( piCiper, "lord") shouldBe 13
     encipher( piCiper, "god") shouldBe 13
     encipher( piCiper, "lordgod") shouldBe 26
-    encipher( piCiper, "onetwothreefourfivesix") shouldBe 103 // 103 * 2 = 206, number bones in human skeleton
+    encipher( piCiper, dice) shouldBe 103 // 103 * 2 = 206, number bones in human skeleton
     encipher( piCiper, "seven") shouldBe 22 // divided by 7 equals 3.14 pi
  }
 
