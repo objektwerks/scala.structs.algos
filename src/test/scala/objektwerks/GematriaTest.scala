@@ -12,6 +12,7 @@ class GematriaTest extends AnyFunSuite with Matchers:
     encipher( piCiper, "lord") shouldBe 13
     encipher( piCiper, "god") shouldBe 13
     encipher( piCiper, "lordgod") shouldBe 26
+    encipher( piCiper, "onetwothreefourfivesix") shouldBe 103
     encipher( piCiper, "seven") shouldBe 22
  }
 
