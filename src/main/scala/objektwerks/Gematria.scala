@@ -52,6 +52,13 @@ object Gematria:
                                    'j' -> 102, 'k' -> 96, 'l' -> 90, 'm' -> 84, 'n' -> 78, 'o' -> 72, 'p' -> 66, 'q' -> 60, 'r' -> 54,
                                    's' -> 48, 't' -> 42, 'u' -> 36, 'v' -> 30, 'w' -> 24, 'x' -> 18, 'y' -> 12, 'z' -> 6 )
 
+  /* Primes
+  a	b	c	d	e	 f	g	 h	i	 j	k	 l	m
+  2	3	5	7	11 13	17 19	23 29	31 37	41
+  n	 o	p	 q	r	 s	t	 u	v	 w	x	 y	z
+  43 47	53 59	61 67	71 73	79 83	89 97	101
+  */
+
   def encipher(cipher: Map[Char, Int], text: String): Int =
     text
       .toCharArray
