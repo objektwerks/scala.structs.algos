@@ -8,6 +8,12 @@ import Gematria.*
 class GematriaTest extends AnyFunSuite with Matchers:
   val text = "hello world"
 
+  test("pi") {
+    encipher( piCiper, "lord") shouldBe 13
+    encipher( piCiper, "god") shouldBe 13
+    encipher( piCiper, "lordgod") shouldBe 26
+ }
+
   test("ordinal") {
     encipher( ordinalCiper, text) shouldBe 124
   }
