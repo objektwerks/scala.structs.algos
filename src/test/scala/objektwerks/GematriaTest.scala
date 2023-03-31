@@ -13,7 +13,8 @@ class GematriaTest extends AnyFunSuite with Matchers:
     encipher( piCiper, "lord") shouldBe 13
     encipher( piCiper, "god") shouldBe 13
     encipher( piCiper, "lordgod") shouldBe 26
-    encipher( piCiper, dice) shouldBe 103 // 103 * 2 = 206, number bones in human skeleton
+    encipher( piCiper, dice) shouldBe 103 // 103
+    encipher( piCiper, dice + dice) shouldBe 206 // 103 * 2 = 206, number of bones in a human skeleton
     encipher( piCiper, "seven") shouldBe 22 // divided by 7 equals 3.14 pi
  }
 
