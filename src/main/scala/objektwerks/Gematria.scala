@@ -3,6 +3,10 @@ package objektwerks
 import scala.collection.immutable.SortedMap
 
 object Gematria:
+  val piCiper = Map( 'a' -> 1, 'b' -> 2, 'c' -> 3, 'd' -> 4, 'e' -> 5, 'f' -> 6, 'g' -> 7, 'h' -> 6, 'i' -> 5,
+                     'j' -> 4, 'k' -> 3, 'l' -> 2, 'm' -> 1, 'n' -> 1, 'o' -> 2, 'p' -> 3, 'q' -> 4, 'r' -> 5,
+                     's' -> 6, 't' -> 7, 'u' -> 6, 'v' -> 5, 'w' -> 4, 'x' -> 3, 'y' -> 2, 'z' -> 1 )
+
   val alphabet = "abcdefghijklmnopqrstuvwxyz".toList
 
   val ordinalCiper = SortedMap.from(
@@ -19,10 +23,6 @@ object Gematria:
       .zipWithIndex
       .map( (char, index) => char -> (index + 1) )
   )
-
-  val piCiper = Map( 'a' -> 1, 'b' -> 2, 'c' -> 3, 'd' -> 4, 'e' -> 5, 'f' -> 6, 'g' -> 7, 'h' -> 6, 'i' -> 5,
-                     'j' -> 4, 'k' -> 3, 'l' -> 2, 'm' -> 1, 'n' -> 1, 'o' -> 2, 'p' -> 3, 'q' -> 4, 'r' -> 5,
-                     's' -> 6, 't' -> 7, 'u' -> 6, 'v' -> 5, 'w' -> 4, 'x' -> 3, 'y' -> 2, 'z' -> 1 )
 
   val reductionCiper = Map( 'a' -> 1, 'b' -> 2, 'c' -> 3, 'd' -> 4, 'e' -> 5, 'f' -> 6, 'g' -> 7, 'h' -> 8, 'i' -> 9,
                             'j' -> 1, 'k' -> 2, 'l' -> 3, 'm' -> 4, 'n' -> 5, 'o' -> 6, 'p' -> 7, 'q' -> 8, 'r' -> 9,
