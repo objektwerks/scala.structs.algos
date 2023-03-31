@@ -86,9 +86,9 @@ object Gematria:
   */
 
   /* Reverse Trigonal - 1290
-    z	y	x	w	v	u	t	s	r	q	p	o	n
-    1	3	6	10	15	21	28	36	45	55	66	78	91
-    m	l	k	j	i	h	g	f	e	d	c	b	a
+    z	y	x	w	 v	u	 t	s	 r	q	 p	o	 n
+    1	3	6	10 15	21 28	36 45	55 66	78 91
+    m	  l	  k	  j	  i	  h	  g	  f	  e	  d	  c	  b	  a
     105	120	136	153	171	190	210	231	253	276	300	325	351
   */
 
