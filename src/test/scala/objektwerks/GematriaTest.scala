@@ -69,3 +69,7 @@ class GematriaTest extends AnyFunSuite with Matchers:
     encipherToMap( ordinalCiper, text).map( (l, i) => l).mkString shouldBe "helloworld"
     encipherToMap( ordinalCiper, text).map( (l, i) => i).mkString shouldBe "85121215231518124"
   }
+
+  test("primes") {
+    encipher( primesCiper, text) shouldBe 386
+  }
