@@ -92,9 +92,14 @@ object Gematria:
     105	120	136	153	171	190	210	231	253	276	300	325	351
   */
 
-  /* Single Reduction
+  /* Single Reduction - 52
   a	b	c	d	e	f	g	h	i	j	k	l	m	n	o	p	q	r	s	 t u v w x y z
   1	2	3	4	5	6	7	8	9	1	2	3	4	5	6	7	8	9	10 2 3 4 5 6 7 8
+  */
+
+  /* Reverse Single Reduction = 56
+  a	b	c	d	e	f	g	h	 i	j	k	l	m	n	o	p	q	r	s	t	u	v	w	x	y	z
+  8	7	6	5	4	3	2	10 9	8	7	6	5	4	3	2	1	9	8	7	6	5	4	3	2	1
   */
 
   def encipher(cipher: Map[Char, Int], text: String): Int =
