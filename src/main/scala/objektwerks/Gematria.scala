@@ -64,13 +64,6 @@ object Gematria:
                             'j' -> 55, 'k' -> 89, 'l' -> 144, 'm' -> 233, 'n' -> 233, 'o' -> 144, 'p' -> 89, 'q' -> 55, 'r' -> 34,
                             's' -> 21, 't' -> 13, 'u' -> 8, 'v' -> 5, 'w' -> 3, 'x' -> 2, 'y' -> 1, 'z' -> 1 )
 
-  /* Fibonacci - 786
-  a	b	c	d	e	f	g	 h	i	 j	k	 l	 m
-  1	1	2	3	5	8	13 21	34 55	89 144 233
-  n	  o	  p	  q	  r	  s	  t	  u	v	w	x	y	z
-  233	144	89	55	34	21	13	8	5	3	2	1	1
-  */
-
   def encipher(cipher: Map[Char, Int], text: String): Int =
     text
       .toCharArray
