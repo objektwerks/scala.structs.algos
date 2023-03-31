@@ -8,7 +8,7 @@ import Gematria.*
 class GematriaTest extends AnyFunSuite with Matchers:
   val text = "hello world"
 
-  test("pi") {
+  test("pi") { // see - https://grahamhancock.com/leedsm1/
     encipher( piCiper, "lord") shouldBe 13
     encipher( piCiper, "god") shouldBe 13
     encipher( piCiper, "lordgod") shouldBe 26
