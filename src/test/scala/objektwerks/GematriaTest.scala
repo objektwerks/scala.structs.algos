@@ -73,3 +73,7 @@ class GematriaTest extends AnyFunSuite with Matchers:
   test("primes") {
     encipher( primesCiper, text) shouldBe 386
   }
+
+  test("reverse primes") {
+    encipher( reversePrimesCiper, text) shouldBe 474
+  }
