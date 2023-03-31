@@ -64,14 +64,14 @@ object Gematria:
                             'j' -> 55, 'k' -> 89, 'l' -> 144, 'm' -> 233, 'n' -> 233, 'o' -> 144, 'p' -> 89, 'q' -> 55, 'r' -> 34,
                             's' -> 21, 't' -> 13, 'u' -> 8, 'v' -> 5, 'w' -> 3, 'x' -> 2, 'y' -> 1, 'z' -> 1 )
 
-  /* Squares - 1840ed
+  /* Squares - 1840
   a	b	c	d	 e	f	 g	h	 i	j	  k	  l	  m
   1	4	9	16 25	36 49	64 81	100	121	144	169
   n	  o	  p	  q	  r	  s	  t	  u	  v	  w	  x	  y	  z
   196	225	256	289	324	361	400	441	484	529	576	625	676
   */
 
-  /*
+  /* Reverse Squares - 2434
     z	y	x	w	 v	u	 t	s	 r	q	  p	  o	  n
     1	4	9	16 25	36 49	64 81	100	121	144	169
     m	  l	  k	  j	  i	  h	  g	  f	  e	  d	  c	  b	  a
