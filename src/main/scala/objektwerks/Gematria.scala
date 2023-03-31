@@ -60,6 +60,13 @@ object Gematria:
                                 'j' -> 59, 'k' -> 53, 'l' -> 47, 'm' -> 43, 'n' -> 41, 'o' -> 37, 'p' -> 31, 'q' -> 29, 'r' -> 23,
                                 's' -> 19, 't' -> 17, 'u' -> 13, 'v' -> 11, 'w' -> 7, 'x' -> 5, 'y' -> 3, 'z' -> 2 )
 
+  /* Fibonaccia
+  a	b	c	d	e	f	g	 h	i	 j	k	 l	 m
+  1	1	2	3	5	8	13 21	34 55	89 144 233
+  n	  o	  p	  q	  r	  s	  t	  u	v	w	x	y	z
+  233	144	89	55	34	21	13	8	5	3	2	1	1
+  */
+
   def encipher(cipher: Map[Char, Int], text: String): Int =
     text
       .toCharArray
