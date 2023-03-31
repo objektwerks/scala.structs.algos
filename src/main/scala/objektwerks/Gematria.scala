@@ -69,8 +69,15 @@ object Gematria:
   1	4	9	16 25	36 49	64 81	100	121	144	169
   n	  o	  p	  q	  r	  s	  t	  u	  v	  w	  x	  y	  z
   196	225	256	289	324	361	400	441	484	529	576	625	676
-  
   */
+
+  /*
+    z	y	x	w	 v	u	 t	s	 r	q	  p	  o	  n
+    1	4	9	16 25	36 49	64 81	100	121	144	169
+    m	  l	  k	  j	  i	  h	  g	  f	  e	  d	  c	  b	  a
+    196	225	256	289	324	361	400	441	484	529	576	625	676
+  */
+
   def encipher(cipher: Map[Char, Int], text: String): Int =
     text
       .toCharArray
