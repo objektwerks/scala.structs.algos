@@ -78,6 +78,17 @@ object Gematria:
     196	225	256	289	324	361	400	441	484	529	576	625	676
   */
 
+  /* Trigonal
+  a	b	c	d	e	f	g	h	i	j	k	l	m
+  1	3	6	10	15	21	28	36	45	55	66	78	91
+  n	o	p	q	r	s	t	u	v	w	x	y	z
+  105	120	136	153	171	190	210	231	253	276	300	325	351
+  */
+
+  /* Reverse Trigonal
+
+  */
+
   def encipher(cipher: Map[Char, Int], text: String): Int =
     text
       .toCharArray
