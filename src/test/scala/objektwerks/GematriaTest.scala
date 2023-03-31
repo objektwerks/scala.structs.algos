@@ -13,7 +13,7 @@ class GematriaTest extends AnyFunSuite with Matchers:
     encipher( piCiper, "god") shouldBe 13
     encipher( piCiper, "lordgod") shouldBe 26
     encipher( piCiper, "onetwothreefourfivesix") shouldBe 103
-    encipher( piCiper, "seven") shouldBe 22
+    encipher( piCiper, "seven") shouldBe 22 // divided by 7 equals 3.14 pi
  }
 
   test("ordinal") {
