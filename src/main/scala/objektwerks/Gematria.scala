@@ -60,20 +60,6 @@ object Gematria:
                                 'j' -> 59, 'k' -> 53, 'l' -> 47, 'm' -> 43, 'n' -> 41, 'o' -> 37, 'p' -> 31, 'q' -> 29, 'r' -> 23,
                                 's' -> 19, 't' -> 17, 'u' -> 13, 'v' -> 11, 'w' -> 7, 'x' -> 5, 'y' -> 3, 'z' -> 2 )
 
-  /* Primes - 386
-    a	b	c	d	e	 f	g	 h	i	 j	k	 l	m
-    2	3	5	7	11 13	17 19	23 29	31 37	41
-    n	 o	p	 q	r	 s	t	 u	v	 w	x	 y	z
-    43 47	53 59	61 67	71 73	79 83	89 97	101
-  */
-
-  /* Reverse Primes - 474
-    a	  b	 c	d	 e	f	 g	h	 i	 j	k	 l	m
-    101	97 89	83 79 73 71 67 61 59	53 47	43
-    n	 o	p	 q	r	 s	t	 u	v	 w	x	y	z
-    41 37	31 29	23 19	17 13	11 7	5 3	2
-  */
-
   def encipher(cipher: Map[Char, Int], text: String): Int =
     text
       .toCharArray
