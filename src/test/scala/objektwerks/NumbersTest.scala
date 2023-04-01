@@ -7,6 +7,11 @@ import Eval.*
 import Numbers.*
 
 class NumbersTest extends AnyFunSuite with Matchers:
+  test("is square") {
+    isSquare(4) shouldBe true
+    isSquare(3) shouldBe false
+  }
+
   test("is star") {
     isStar(37) shouldBe true
     isStar(10) shouldBe false
