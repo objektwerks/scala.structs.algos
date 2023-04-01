@@ -93,3 +93,7 @@ class GematriaTest extends AnyFunSuite with Matchers:
   test("trigonal") {
     encipher( trigonalCiper, text) shouldBe 982
   }
+
+  test("reverse trigonal") {
+    encipher( reverseTrigonalCiper, text) shouldBe 1290
+  }
