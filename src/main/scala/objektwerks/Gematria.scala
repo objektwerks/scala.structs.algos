@@ -3,10 +3,6 @@ package objektwerks
 import scala.collection.immutable.SortedMap
 
 object Gematria:
-  val septenaryCiper =
-    Map( 'a' -> 1, 'b' -> 2, 'c' -> 3, 'd' -> 4, 'e' -> 5, 'f' -> 6, 'g' -> 7, 'h' -> 6, 'i' -> 5, 'j' -> 4, 'k' -> 3, 'l' -> 2, 'm' -> 1,
-         'n' -> 1, 'o' -> 2, 'p' -> 3, 'q' -> 4, 'r' -> 5, 's' -> 6, 't' -> 7, 'u' -> 6, 'v' -> 5, 'w' -> 4, 'x' -> 3, 'y' -> 2, 'z' -> 1 )
-
   val alphabet = "abcdefghijklmnopqrstuvwxyz".toList
 
   val ordinalCiper = SortedMap.from(
@@ -87,6 +83,10 @@ object Gematria:
   val reverseSingleReductionCiper =
     Map( 'a' -> 8, 'b' -> 7, 'c' -> 6, 'd' -> 5, 'e' -> 4, 'f' -> 3, 'g' -> 2, 'h' -> 10, 'i' -> 9, 'j' -> 8, 'k' -> 7, 'l' -> 6, 'm' -> 5,
          'n' -> 4, 'o' -> 3, 'p' -> 2, 'q' -> 1, 'r' -> 9, 's' -> 8, 't' -> 7, 'u' -> 6, 'v' -> 5, 'w' -> 4, 'x' -> 3, 'y' -> 2, 'z' -> 1 )
+
+  val septenaryCiper =
+    Map( 'a' -> 1, 'b' -> 2, 'c' -> 3, 'd' -> 4, 'e' -> 5, 'f' -> 6, 'g' -> 7, 'h' -> 6, 'i' -> 5, 'j' -> 4, 'k' -> 3, 'l' -> 2, 'm' -> 1,
+         'n' -> 1, 'o' -> 2, 'p' -> 3, 'q' -> 4, 'r' -> 5, 's' -> 6, 't' -> 7, 'u' -> 6, 'v' -> 5, 'w' -> 4, 'x' -> 3, 'y' -> 2, 'z' -> 1 )
 
   def encipher(cipher: Map[Char, Int], text: String): Int =
     text
