@@ -8,26 +8,6 @@ import Gematria.*
 class GematriaTest extends AnyFunSuite with Matchers:
   val text = "hello world"
 
-  test("septenary") { // see - https://grahamhancock.com/leedsm1/
-    encipher( septenaryCiper, "lord") shouldBe 13
-    encipher( septenaryCiper, "god") shouldBe 13
-    encipher( septenaryCiper, "lordgod") shouldBe 26
-
-    val dice = "onetwothreefourfivesix"
-    encipher( septenaryCiper, dice) shouldBe 103 // 103
-    encipher( septenaryCiper, dice + dice) shouldBe 206 // 103 * 2 = 206, number of bones in a human skeleton
-
-    encipher( septenaryCiper, "abcdef") shouldBe 21
-    encipher( septenaryCiper, "g") shouldBe 7
-    encipher( septenaryCiper, "hijklm") shouldBe 21
-
-    encipher( septenaryCiper, "nopqrs") shouldBe 21
-    encipher( septenaryCiper, "t") shouldBe 7
-    encipher( septenaryCiper, "uvwxyz") shouldBe 21
-
-    encipher( septenaryCiper, "seven") shouldBe 22 // divided by 7 equals 3.14 pi
- }
-
   test("ordinal") {
     encipher( ordinalCiper, text) shouldBe 124
   }
@@ -99,6 +79,26 @@ class GematriaTest extends AnyFunSuite with Matchers:
   test("reverse single reduction") {
     encipher( reverseSingleReductionCiper, text) shouldBe 56
   }
+
+  test("septenary") { // see - https://grahamhancock.com/leedsm1/
+    encipher( septenaryCiper, "lord") shouldBe 13
+    encipher( septenaryCiper, "god") shouldBe 13
+    encipher( septenaryCiper, "lordgod") shouldBe 26
+
+    val dice = "onetwothreefourfivesix"
+    encipher( septenaryCiper, dice) shouldBe 103 // 103
+    encipher( septenaryCiper, dice + dice) shouldBe 206 // 103 * 2 = 206, number of bones in a human skeleton
+
+    encipher( septenaryCiper, "abcdef") shouldBe 21
+    encipher( septenaryCiper, "g") shouldBe 7
+    encipher( septenaryCiper, "hijklm") shouldBe 21
+
+    encipher( septenaryCiper, "nopqrs") shouldBe 21
+    encipher( septenaryCiper, "t") shouldBe 7
+    encipher( septenaryCiper, "uvwxyz") shouldBe 21
+
+    encipher( septenaryCiper, "seven") shouldBe 22 // divided by 7 equals 3.14 pi
+ }
 
   test("encipher to map") {
     encipherToMap( ordinalCiper, text) shouldBe List(('h',8), ('e',5), ('l',12), ('l',12), ('o',15), ('w',23), ('o',15), ('r',18), ('l',12), ('d',4))
