@@ -85,3 +85,7 @@ class GematriaTest extends AnyFunSuite with Matchers:
   test("squares") {
     encipher( squaresCiper, text) shouldBe 1840
   }
+
+  test("reversesquares") {
+    encipher( reverseSquaresCiper, text) shouldBe 2434
+  }
