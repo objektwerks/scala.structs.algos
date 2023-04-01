@@ -8,24 +8,24 @@ import Gematria.*
 class GematriaTest extends AnyFunSuite with Matchers:
   val text = "hello world"
 
-  test("pi") { // see - https://grahamhancock.com/leedsm1/
-    encipher( piCiper, "lord") shouldBe 13
-    encipher( piCiper, "god") shouldBe 13
-    encipher( piCiper, "lordgod") shouldBe 26
+  test("septenary") { // see - https://grahamhancock.com/leedsm1/
+    encipher( septenaryCiper, "lord") shouldBe 13
+    encipher( septenaryCiper, "god") shouldBe 13
+    encipher( septenaryCiper, "lordgod") shouldBe 26
 
     val dice = "onetwothreefourfivesix"
-    encipher( piCiper, dice) shouldBe 103 // 103
-    encipher( piCiper, dice + dice) shouldBe 206 // 103 * 2 = 206, number of bones in a human skeleton
+    encipher( septenaryCiper, dice) shouldBe 103 // 103
+    encipher( septenaryCiper, dice + dice) shouldBe 206 // 103 * 2 = 206, number of bones in a human skeleton
 
-    encipher( piCiper, "abcdef") shouldBe 21
-    encipher( piCiper, "g") shouldBe 7
-    encipher( piCiper, "hijklm") shouldBe 21
+    encipher( septenaryCiper, "abcdef") shouldBe 21
+    encipher( septenaryCiper, "g") shouldBe 7
+    encipher( septenaryCiper, "hijklm") shouldBe 21
 
-    encipher( piCiper, "nopqrs") shouldBe 21
-    encipher( piCiper, "t") shouldBe 7
-    encipher( piCiper, "uvwxyz") shouldBe 21
+    encipher( septenaryCiper, "nopqrs") shouldBe 21
+    encipher( septenaryCiper, "t") shouldBe 7
+    encipher( septenaryCiper, "uvwxyz") shouldBe 21
 
-    encipher( piCiper, "seven") shouldBe 22 // divided by 7 equals 3.14 pi
+    encipher( septenaryCiper, "seven") shouldBe 22 // divided by 7 equals 3.14 pi
  }
 
   test("ordinal") {
