@@ -64,12 +64,6 @@ class GematriaTest extends AnyFunSuite with Matchers:
     encipher( reverseSumerianCipher, text) shouldBe 876
   }
 
-  test("encipher to map") {
-    encipherToMap( ordinalCiper, text) shouldBe List(('h',8), ('e',5), ('l',12), ('l',12), ('o',15), ('w',23), ('o',15), ('r',18), ('l',12), ('d',4))
-    encipherToMap( ordinalCiper, text).map( (l, i) => l).mkString shouldBe "helloworld"
-    encipherToMap( ordinalCiper, text).map( (l, i) => i).mkString shouldBe "85121215231518124"
-  }
-
   test("primes") {
     encipher( primesCiper, text) shouldBe 386
   }
@@ -104,4 +98,10 @@ class GematriaTest extends AnyFunSuite with Matchers:
 
   test("reverse single reduction") {
     encipher( reverseSingleReductionCiper, text) shouldBe 56
+  }
+
+  test("encipher to map") {
+    encipherToMap( ordinalCiper, text) shouldBe List(('h',8), ('e',5), ('l',12), ('l',12), ('o',15), ('w',23), ('o',15), ('r',18), ('l',12), ('d',4))
+    encipherToMap( ordinalCiper, text).map( (l, i) => l).mkString shouldBe "helloworld"
+    encipherToMap( ordinalCiper, text).map( (l, i) => i).mkString shouldBe "85121215231518124"
   }
