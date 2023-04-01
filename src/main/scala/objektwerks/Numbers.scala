@@ -5,7 +5,7 @@ import Math.*
 import scala.annotation.tailrec
 import scala.util.Random
 
-object Numbers: // sq - Math.floor(sq)) == 0
+object Numbers:
   def isSquare(n: Int): Boolean =
     val square = Math.sqrt(n)
     square - Math.floor(square) == 0
