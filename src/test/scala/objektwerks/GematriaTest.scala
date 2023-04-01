@@ -101,3 +101,7 @@ class GematriaTest extends AnyFunSuite with Matchers:
   test("single reduction") {
     encipher( singleReductionCiper, text) shouldBe 52
   }
+
+  test("reverse single reduction") {
+    encipher( reverseSingleReductionCiper, text) shouldBe 56
+  }
