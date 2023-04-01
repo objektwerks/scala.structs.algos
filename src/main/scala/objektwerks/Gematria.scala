@@ -88,11 +88,6 @@ object Gematria:
                                          'j' -> 8, 'k' -> 7, 'l' -> 6, 'm' -> 5, 'n' -> 4, 'o' -> 3, 'p' -> 2, 'q' -> 1, 'r' -> 9,
                                          's' -> 8, 't' -> 7, 'u' -> 6, 'v' -> 5, 'w' -> 4, 'x' -> 3, 'y' -> 2, 'z' -> 1 )
 
-  /* Reverse Single Reduction = 56
-  a	b	c	d	e	f	g	h	 i	j	k	l	m	n	o	p	q	r	s	t	u	v	w	x	y	z
-  8	7	6	5	4	3	2	10 9	8	7	6	5	4	3	2	1	9	8	7	6	5	4	3	2	1
-  */
-
   def encipher(cipher: Map[Char, Int], text: String): Int =
     text
       .toCharArray
