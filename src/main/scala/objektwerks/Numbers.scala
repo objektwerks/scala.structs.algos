@@ -5,8 +5,10 @@ import Math.*
 import scala.annotation.tailrec
 import scala.util.Random
 
-object Numbers:
-  def isSquare(n: Int): Boolean = Math.floor( Math.sqrt(n) ) == 0
+object Numbers: // sq - Math.floor(sq)) == 0
+  def isSquare(n: Int): Boolean =
+    val square = Math.sqrt(n)
+    square - Math.floor(square) == 0
 
   def isStar(n: Int): Boolean =
     val s = ( 6 + Math.sqrt( (24 * n) + 12 ) ) / 6
