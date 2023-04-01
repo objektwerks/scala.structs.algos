@@ -10,6 +10,10 @@ object Numbers:
     val square = Math.sqrt(n)
     square - Math.floor(square) == 0
 
+  def isCube(n: Int): Boolean =
+    val cube = Math.round( Math.pow(n, 1.0/3.0) )
+    cube == n * n * n
+
   def isStar(n: Int): Boolean =
     val star = ( 6 + Math.sqrt( (24 * n) + 12 ) ) / 6
     (star - star.toInt) == 0
