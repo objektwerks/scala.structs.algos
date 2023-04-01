@@ -89,6 +89,7 @@ class GematriaTest extends AnyFunSuite with Matchers:
     encipher( septenaryCiper, "god") shouldBe 13
     encipher( septenaryCiper, "lordgod") shouldBe 26
     encipher( septenaryCiper, "adameve") shouldBe 22
+    encipher( septenaryCiper, "jesus") shouldBe 27 // 3 x 3 x 3
 
     val dice = "onetwothreefourfivesix"
     encipher( septenaryCiper, dice) shouldBe 103 // 103
