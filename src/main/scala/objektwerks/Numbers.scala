@@ -6,6 +6,8 @@ import scala.annotation.tailrec
 import scala.util.Random
 
 object Numbers:
+  def isSquare(n: Int): Boolean = Math.floor( Math.sqrt(n) ) == 0
+
   def isStar(n: Int): Boolean =
     val s = ( 6 + Math.sqrt( (24 * n) + 12 ) ) / 6
     (s - s.toInt) == 0
