@@ -84,10 +84,7 @@ object Gematria:
                                   'j' -> 1, 'k' -> 2, 'l' -> 3, 'm' -> 4, 'n' -> 5, 'o' -> 6, 'p' -> 7, 'q' -> 8, 'r' -> 9,
                                   's' -> 10, 't' -> 2, 'u' -> 3, 'v' -> 4, 'w' -> 5, 'x' -> 6, 'y' -> 7, 'z' -> 8 )
 
-  /* Single Reduction - 52
-  a	b	c	d	e	f	g	h	i	j	k	l	m	n	o	p	q	r	s	 t u v w x y z
-  1	2	3	4	5	6	7	8	9	1	2	3	4	5	6	7	8	9	10 2 3 4 5 6 7 8
-  */
+
 
   /* Reverse Single Reduction = 56
   a	b	c	d	e	f	g	h	 i	j	k	l	m	n	o	p	q	r	s	t	u	v	w	x	y	z
