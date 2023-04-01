@@ -11,8 +11,8 @@ object Numbers:
     square - Math.floor(square) == 0
 
   def isStar(n: Int): Boolean =
-    val s = ( 6 + Math.sqrt( (24 * n) + 12 ) ) / 6
-    (s - s.toInt) == 0
+    val star = ( 6 + Math.sqrt( (24 * n) + 12 ) ) / 6
+    (star - star.toInt) == 0
 
   @tailrec
   def isTriangular(n: Int, counter: Int = 1, sum: Int = 0): Boolean =
