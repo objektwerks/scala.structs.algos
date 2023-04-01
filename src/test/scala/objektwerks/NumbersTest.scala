@@ -12,6 +12,11 @@ class NumbersTest extends AnyFunSuite with Matchers:
     isSquare(3) shouldBe false
   }
 
+  test("is cube") {
+    isCube(64) shouldBe true
+    isCube(9) shouldBe false
+  }
+
   test("is star") {
     isStar(37) shouldBe true
     isStar(10) shouldBe false
