@@ -11,8 +11,8 @@ object Numbers:
     square - Math.floor(square) == 0
 
   def isCube(n: Int): Boolean =
-    val cube = Math.round( Math.pow(n, 1.0/3.0) )
-    cube == ( n * n * n )
+    val cubeRoot = Math.cbrt(n)
+    Math.round(cubeRoot) == cubeRoot
 
   def isStar(n: Int): Boolean =
     val star = ( 6 + Math.sqrt( (24 * n) + 12 ) ) / 6
