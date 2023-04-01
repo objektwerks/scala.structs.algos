@@ -80,7 +80,11 @@ class GematriaTest extends AnyFunSuite with Matchers:
     encipher( reverseSingleReductionCiper, text) shouldBe 56
   }
 
-  test("septenary") { // see - https://grahamhancock.com/leedsm1/
+  test("septenary") {
+    /* see:
+      1. https://grahamhancock.com/leedsm1/
+      2. https://truthscrambler.com/2019/03/24/the-predominance-and-occultation-of-the-septenary-cypher-marty-leeds/
+    */
     encipher( septenaryCiper, "lord") shouldBe 13
     encipher( septenaryCiper, "god") shouldBe 13
     encipher( septenaryCiper, "lordgod") shouldBe 26
