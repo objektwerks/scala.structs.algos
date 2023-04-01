@@ -80,12 +80,7 @@ object Gematria:
                                   'j' -> 153, 'k' -> 136, 'l' -> 120, 'm' -> 105, 'n' -> 91, 'o' -> 78, 'p' -> 66, 'q' -> 55, 'r' -> 45,
                                   's' -> 36, 't' -> 28, 'u' -> 21, 'v' -> 15, 'w' -> 10, 'x' -> 6, 'y' -> 3, 'z' -> 1 )
 
-  /* Reverse Trigonal - 1290
-    z	y	x	w	 v	u	 t	s	 r	q	 p	o	 n
-    1	3	6	10 15	21 28	36 45	55 66	78 91
-    m	  l	  k	  j	  i	  h	  g	  f	  e	  d	  c	  b	  a
-    105	120	136	153	171	190	210	231	253	276	300	325	351
-  */
+
 
   /* Single Reduction - 52
   a	b	c	d	e	f	g	h	i	j	k	l	m	n	o	p	q	r	s	 t u v w x y z
