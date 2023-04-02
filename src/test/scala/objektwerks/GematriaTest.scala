@@ -84,6 +84,10 @@ class GematriaTest extends AnyFunSuite with Matchers:
     encipher( keypadCiper, text) shouldBe 53
   }
 
+  test("chaldean") {
+    encipher( chaldeanCiper, text) shouldBe 45
+  }
+
   test("septenary") {
     /* see:
       1. https://grahamhancock.com/leedsm1/
