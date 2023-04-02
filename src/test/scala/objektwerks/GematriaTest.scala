@@ -80,6 +80,10 @@ class GematriaTest extends AnyFunSuite with Matchers:
     encipher( reverseSingleReductionCiper, text) shouldBe 56
   }
 
+  test("keybad") {
+    encipher( keypadCiper, text) shouldBe 53
+  }
+
   test("septenary") {
     /* see:
       1. https://grahamhancock.com/leedsm1/
