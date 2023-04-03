@@ -3,12 +3,14 @@ Scala Structs and Algos
 >Scala 3 structs and algos, to include:
 * BigO
 * BlockChain
+* Ciphers
 * Crypto - Asymmetric, Symmetric
 * Expression Eval
 * FizzBuzz
 * Graphs
 * Hash
 * nQueens
+* Misc Algos
 * MAC
 * Numbers
 * Palindrome
