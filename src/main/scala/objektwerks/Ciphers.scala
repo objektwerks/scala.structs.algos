@@ -2,7 +2,7 @@ package objektwerks
 
 import scala.collection.immutable.SortedMap
 
-object Gematria:
+object Ciphers:
   val alphabet = "abcdefghijklmnopqrstuvwxyz".toList
 
   val ordinalCiper = SortedMap.from(
