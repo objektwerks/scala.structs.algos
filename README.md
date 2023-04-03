@@ -30,4 +30,8 @@ Test
 
 Run
 ---
-1. sbt run
+>Multiple main classes detected. Select one to run:
+1. objektwerks.app.runEval
+2. objektwerks.app.runJustifyText
+3. objektwerks.app.runNQueens
+4. objektwerks.app.runSierpinski
