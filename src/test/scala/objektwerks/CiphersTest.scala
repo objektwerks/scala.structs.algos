@@ -3,9 +3,9 @@ package objektwerks
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-import Gematria.*
+import Ciphers.*
 
-class GematriaTest extends AnyFunSuite with Matchers:
+class CiphersTest extends AnyFunSuite with Matchers:
   val text = "hello world"
 
   test("ordinal") {
