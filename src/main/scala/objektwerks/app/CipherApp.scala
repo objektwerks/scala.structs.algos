@@ -31,3 +31,6 @@ object View:
   val scene = new Scene:
     root = borderPane
     stylesheets = List("/style.css")
+
+object Model:
+  
