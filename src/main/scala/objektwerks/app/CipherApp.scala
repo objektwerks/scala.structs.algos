@@ -8,16 +8,19 @@ import scalafx.scene.layout.BorderPane
 object CipherApp extends JFXApp3:
   override def start(): Unit =
     stage = new JFXApp3.PrimaryStage:
-      scene = View().scene
+      scene = View.scene
       title = "Ciphers"
-      minWidth = 800
-      minHeight = 600
+      minWidth = View.width
+      minHeight = View.height
     stage.show()
 
-class View:
+object View:
+  val width = 800
+  val height = 600
+
   val borderPane = new BorderPane:
-    prefWidth = 800
-    prefHeight = 600
+    prefWidth = View.width
+    prefHeight = View.height
     padding = Insets(6)
   val scene = new Scene:
     root = borderPane
