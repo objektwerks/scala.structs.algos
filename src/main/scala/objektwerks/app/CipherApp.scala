@@ -23,5 +23,8 @@ object View:
     prefHeight = View.height
     padding = Insets(6)
 
+  borderPane.top = ???
+  borderPane.center = ???
+
   val scene = new Scene:
     root = borderPane
