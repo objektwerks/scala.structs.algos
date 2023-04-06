@@ -1,6 +1,7 @@
 package objektwerks.app
 
 import scalafx.application.JFXApp3
+import scalafx.beans.property.ObjectProperty
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.image.Image
@@ -33,4 +34,4 @@ object View:
     stylesheets = List("/style.css")
 
 object Model:
-  
+  val ordinalProperty = ObjectProperty[Int](0)
