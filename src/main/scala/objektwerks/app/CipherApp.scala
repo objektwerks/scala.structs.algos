@@ -3,6 +3,7 @@ package objektwerks.app
 import scalafx.application.JFXApp3
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
+import scalafx.scene.image.Image
 import scalafx.scene.layout.BorderPane
 
 object CipherApp extends JFXApp3:
@@ -12,6 +13,7 @@ object CipherApp extends JFXApp3:
       title = "Ciphers"
       minWidth = View.width
       minHeight = View.height
+      icons.add( new Image(Image.getClass.getResourceAsStream("/cipher.png")) )
     stage.show()
 
 object View:
