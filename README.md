@@ -31,7 +31,8 @@ Test
 Run
 ---
 >Multiple main classes detected. Select one to run:
-1. objektwerks.app.runEval
-2. objektwerks.app.runJustifyText
-3. objektwerks.app.runNQueens
-4. objektwerks.app.runSierpinski
+1. objektwerks.app.CipherApp
+2. objektwerks.app.runEval
+3. objektwerks.app.runJustifyText
+4. objektwerks.app.runNQueens
+5. objektwerks.app.runSierpinski
