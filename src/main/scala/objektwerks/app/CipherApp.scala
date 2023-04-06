@@ -36,3 +36,6 @@ object View:
 object Model:
   val ordinalProperty = ObjectProperty[Int](0)
   val reverseOrdinalProperty = ObjectProperty[Int](0)
+
+  val reductionProperty = ObjectProperty[Int](0)
+  val reverseReductionProperty = ObjectProperty[Int](0)
