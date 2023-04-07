@@ -145,7 +145,8 @@ object Ciphers:
     val primesProperty = ObjectProperty[Int](this, "primes", primes.value)
     val reversePrimesProperty = ObjectProperty[Int](this, "reversePrimes", reversePrimes.value)
     val fibonacciProperty = ObjectProperty[Int](this, "fibonacci", fibonacci.value)
-
+    val squaresProperty = ObjectProperty[Int](this, "squares", squares.value)
+    val reverseSquaresProperty = ObjectProperty[Int](this, "reverseSquares", reverseSquares.value)
 
   def encipher(cipher: Map[Char, Int], text: String): Int =
     text
