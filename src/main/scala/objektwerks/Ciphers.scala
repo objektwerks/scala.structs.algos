@@ -142,7 +142,8 @@ object Ciphers:
     val latinProperty = ObjectProperty[Int](this, "latin", latin.value)
     val sumerianProperty = ObjectProperty[Int](this, "sumerian", sumerian.value)
     val reverseSumerianProperty = ObjectProperty[Int](this, "reverseSumerian", reverseSumerian.value)
-    val primesProperty = ObjectProperty[Int](this, "primies", primes.value)
+    val primesProperty = ObjectProperty[Int](this, "primes", primes.value)
+    val reversePrimesProperty = ObjectProperty[Int](this, "reversePrimes", reversePrimes.value)
 
 
   def encipher(cipher: Map[Char, Int], text: String): Int =
