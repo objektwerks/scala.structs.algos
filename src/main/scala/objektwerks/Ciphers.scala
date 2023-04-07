@@ -134,6 +134,7 @@ object Ciphers:
                              septenary: Septenary):
     val textProperty = ObjectProperty[String](this, "text", text)
     val ordinalProperty = ObjectProperty[Int](this, "ordinal", ordinal.value)
+    val reverseOrdinalProperty = ObjectProperty[Int](this, "reverseOrdinal", reverseOrdinal.value)
 
 
   def encipher(cipher: Map[Char, Int], text: String): Int =
