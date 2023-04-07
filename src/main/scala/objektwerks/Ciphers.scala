@@ -1,6 +1,7 @@
 package objektwerks
 
 import scala.collection.immutable.SortedMap
+import scalafx.beans.property.ObjectProperty
 
 object Ciphers:
   final case class Ordinal(value: Int) extends AnyVal
@@ -129,7 +130,9 @@ object Ciphers:
                              reverseSingleReduction: ReverseSingleReduction,
                              keypad: Keypad,
                              chaldean: Chaldean,
-                             septenary: Septenary)
+                             septenary: Septenary):
+    val nameProperty = ObjectProperty[String](this, "text", text)
+
 
   def encipher(cipher: Map[Char, Int], text: String): Int =
     text
