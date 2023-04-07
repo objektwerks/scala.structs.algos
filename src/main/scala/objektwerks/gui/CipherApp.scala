@@ -29,8 +29,8 @@ object View:
     prefHeight = View.height
     padding = Insets(6)
 
-  // borderPane.top = TODO
-  // borderPane.center = TODO
+  borderPane.top = EncodingsPane()
+  borderPane.center = TextPane()
 
   val scene = new Scene:
     root = borderPane
