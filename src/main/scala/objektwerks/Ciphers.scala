@@ -153,6 +153,7 @@ object Ciphers:
     val reverseSingleReductionProperty = ObjectProperty[Int](this, "reverseSingleReduction", reverseSingleReduction.value)
     val keypadProperty = ObjectProperty[Int](this, "keypad", keypad.value)
     val chaldeanProperty = ObjectProperty[Int](this, "chaldean", chaldean.value)
+    val septenaryProperty = ObjectProperty[Int](this, "septenary", septenary.value)
 
 
   def encipher(cipher: Map[Char, Int], text: String): Int =
