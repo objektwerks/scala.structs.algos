@@ -108,6 +108,29 @@ object Ciphers:
     Map( 'a' -> 1, 'b' -> 2, 'c' -> 3, 'd' -> 4, 'e' -> 5, 'f' -> 6, 'g' -> 7, 'h' -> 6, 'i' -> 5, 'j' -> 4, 'k' -> 3, 'l' -> 2, 'm' -> 1,
          'n' -> 1, 'o' -> 2, 'p' -> 3, 'q' -> 4, 'r' -> 5, 's' -> 6, 't' -> 7, 'u' -> 6, 'v' -> 5, 'w' -> 4, 'x' -> 3, 'y' -> 2, 'z' -> 1 )
 
+  case class Encodings(text: String,
+                       ordinal: Ordinal,
+                       reverseOrdinal: ReverseOrdinal,
+                       reduction: Reduction,
+                       reverseReduction: ReverseReduction,
+                       standard: Standard,
+                       reverseStandard: ReverseStandard,
+                       latin: Latin,
+                       sumerian: Sumerian,
+                       reverseSumerian: ReverseSumerian,
+                       primes: Primes,
+                       reversePrimes: ReversePrimes,
+                       fibonacci: Fibonacci,
+                       squares: Squares,
+                       reverseSquares: ReverseSquares,
+                       trigonal: Trigonal,
+                       reverseTrigonal: ReverseTrigonal,
+                       singleReduction: SingleReduction,
+                       reverseSingleReduction: ReverseSingleReduction,
+                       keypad: Keypad,
+                       chaldean: Chaldean,
+                       septenary: Septenary)
+
   def encipher(cipher: Map[Char, Int], text: String): Int =
     text
       .toCharArray
