@@ -149,6 +149,8 @@ object Ciphers:
     val reverseSquaresProperty = ObjectProperty[Int](this, "reverseSquares", reverseSquares.value)
     val trigonalProperty = ObjectProperty[Int](this, "trigonal", trigonal.value)
     val reverseTrigonalProperty = ObjectProperty[Int](this, "reverseTrigonal", reverseTrigonal.value)
+    val singleReductionProperty = ObjectProperty[Int](this, "singleReduction", singleReduction.value)
+    val reverseSingleReductionProperty = ObjectProperty[Int](this, "reverseSingleReduction", reverseSingleReduction.value)
 
   def encipher(cipher: Map[Char, Int], text: String): Int =
     text
