@@ -6,7 +6,7 @@ import scalafx.collections.ObservableBuffer
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.image.Image
-import scalafx.scene.layout.BorderPane
+import scalafx.scene.layout.{BorderPane, VBox}
 
 import objektwerks.Ciphers.*
 
@@ -38,3 +38,7 @@ object View:
 
 object Model:
   val encodings = ObservableBuffer[Encodings]()
+
+final class EncodingsPane extends VBox:
+  spacing = 6
+  padding = Insets(6)
