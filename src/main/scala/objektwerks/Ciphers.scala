@@ -141,6 +141,7 @@ object Ciphers:
     val reverseStandardProperty = ObjectProperty[Int](this, "reverseStandard", reverseStandard.value)
     val latinProperty = ObjectProperty[Int](this, "latin", latin.value)
     val sumerianProperty = ObjectProperty[Int](this, "sumerian", sumerian.value)
+    val reverseSumerianProperty = ObjectProperty[Int](this, "reverseSumerian", reverseSumerian.value)
 
 
   def encipher(cipher: Map[Char, Int], text: String): Int =
