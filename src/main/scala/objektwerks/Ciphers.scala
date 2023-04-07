@@ -154,7 +154,7 @@ object Ciphers:
     val keypadProperty = ObjectProperty[Int](this, "keypad", keypad.value)
     val chaldeanProperty = ObjectProperty[Int](this, "chaldean", chaldean.value)
     val septenaryProperty = ObjectProperty[Int](this, "septenary", septenary.value)
-
+    val encodings = this
 
   def encipher(cipher: Map[Char, Int], text: String): Int =
     text
