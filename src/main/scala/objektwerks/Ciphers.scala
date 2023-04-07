@@ -137,6 +137,7 @@ object Ciphers:
     val reverseOrdinalProperty = ObjectProperty[Int](this, "reverseOrdinal", reverseOrdinal.value)
     val reductionProperty = ObjectProperty[Int](this, "reduction", reduction.value)
     val reverseReductionProperty = ObjectProperty[Int](this, "reverseReduction", reverseReduction.value)
+    val standardProperty = ObjectProperty[Int](this, "standard", standard.value)
 
 
   def encipher(cipher: Map[Char, Int], text: String): Int =
