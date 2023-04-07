@@ -1,4 +1,4 @@
-package objektwerks.app
+package objektwerks.cli
 
 import objektwerks.Strings.*
 

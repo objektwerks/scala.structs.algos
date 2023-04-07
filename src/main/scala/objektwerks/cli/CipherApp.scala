@@ -1,4 +1,4 @@
-package objektwerks.app
+package objektwerks.cli
 
 import scalafx.application.JFXApp3
 import scalafx.beans.property.ObjectProperty
