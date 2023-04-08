@@ -54,6 +54,11 @@ final class EncodingsPane extends VBox:
       new TableColumn[Encodings, Int]:
         text = "Reverse Ordinal"
         cellValueFactory = _.value.reverseOrdinalProperty
+      ,
+      new TableColumn[Encodings, Int]:
+        text = "Reduction"
+        cellValueFactory = _.value.reductionProperty
+      ,
     )
     items = Model.encodings
 
