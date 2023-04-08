@@ -5,13 +5,11 @@ import scalafx.beans.property.ObjectProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
+import scalafx.scene.control.{TableColumn, TableView}
+import scalafx.scene.layout.{BorderPane, HBox, Priority, VBox}
 import scalafx.scene.image.Image
-import scalafx.scene.layout.{BorderPane, HBox, VBox}
 
 import objektwerks.Ciphers.*
-import scalafx.scene.control.TableView
-import scalafx.scene.control.TableColumn
-import scalafx.scene.layout.Priority
 
 object CipherApp extends JFXApp3:
   override def start(): Unit =
