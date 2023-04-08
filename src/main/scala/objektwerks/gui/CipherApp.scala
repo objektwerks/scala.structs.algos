@@ -9,6 +9,8 @@ import scalafx.scene.image.Image
 import scalafx.scene.layout.{BorderPane, HBox, VBox}
 
 import objektwerks.Ciphers.*
+import scalafx.scene.control.TableView
+import scalafx.scene.control.TableColumn
 
 object CipherApp extends JFXApp3:
   override def start(): Unit =
@@ -42,6 +44,18 @@ object Model:
 final class EncodingsPane extends VBox:
   spacing = 6
   padding = Insets(6)
+
+  val tableView = new TableView[Encodings]():
+    columns ++= List(
+      new TableColumn[Encodings, Int]:
+        text = "Ordinal"
+        cellValueFactory = _.value.ordinalProperty
+      ,
+      new TableColumn[Encodings, Int]:
+        text = "Reverse Ordinal"
+        cellValueFactory = _.value.reverseOrdinalProperty
+    )
+    items = Model.encodings
 
 final class TextPane extends HBox:
   spacing = 6
