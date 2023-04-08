@@ -11,6 +11,7 @@ import scalafx.scene.layout.{BorderPane, HBox, VBox}
 import objektwerks.Ciphers.*
 import scalafx.scene.control.TableView
 import scalafx.scene.control.TableColumn
+import scalafx.scene.layout.Priority
 
 object CipherApp extends JFXApp3:
   override def start(): Unit =
@@ -65,6 +66,9 @@ final class EncodingsPane extends VBox:
       ,
     )
     items = Model.encodings
+
+  children = List(tableView)
+  VBox.setVgrow(tableView, Priority.Always)
 
 final class TextPane extends HBox:
   spacing = 6
