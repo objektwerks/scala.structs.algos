@@ -87,4 +87,5 @@ final class TextPane extends HBox:
     hgap = 6
     vgap = 6
     padding = Insets(top = 6, right = 6, bottom = 6, left = 6)
-  
+    add(label, columnIndex = 0, rowIndex = 0)
+    add(textField, columnIndex = 1, rowIndex = 0)
