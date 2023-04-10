@@ -5,7 +5,7 @@ import scalafx.beans.property.ObjectProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Scene
-import scalafx.scene.control.{Label, TableColumn, TableView}
+import scalafx.scene.control.{Label, TableColumn, TableView, TextField}
 import scalafx.scene.layout.{BorderPane, GridPane, HBox, Priority, VBox}
 import scalafx.scene.image.Image
 
@@ -79,6 +79,9 @@ final class TextPane extends HBox:
   val label = new Label:
     alignment = Pos.CenterLeft
     text = "Enter:"
+
+  val textField = new TextField:
+    maxWidth = 120
 
   val grid = new GridPane:
     hgap = 6
