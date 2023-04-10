@@ -67,6 +67,10 @@ final class EncodingsPane extends VBox:
         cellValueFactory = _.value.latinProperty
       ,
       new TableColumn[Encodings, Int]:
+        text = "Chaldean"
+        cellValueFactory = _.value.chaldeanProperty
+      ,
+      new TableColumn[Encodings, Int]:
         text = "Septenary"
         cellValueFactory = _.value.septenaryProperty
       ,
