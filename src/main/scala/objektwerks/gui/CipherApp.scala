@@ -80,7 +80,8 @@ final class TextPane extends HBox:
     alignment = Pos.CenterLeft
     text = "Enter:"
 
-  val textField = new TextField
+  val textField = new TextField:
+    hgrow = Priority.Always
 
   val grid = new GridPane:
     hgap = 6
@@ -90,4 +91,4 @@ final class TextPane extends HBox:
     add(textField, columnIndex = 1, rowIndex = 0)
 
   children = List(grid)
-  HBox.setHgrow(textField, Priority.Always)
+  HBox.setHgrow(grid, Priority.Always)
