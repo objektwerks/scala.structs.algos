@@ -66,6 +66,10 @@ final class EncodingsPane extends VBox:
         text = "Latin"
         cellValueFactory = _.value.latinProperty
       ,
+      new TableColumn[Encodings, Int]:
+        text = "Septenary"
+        cellValueFactory = _.value.septenaryProperty
+      ,
     )
     items = Model.encodings
 
