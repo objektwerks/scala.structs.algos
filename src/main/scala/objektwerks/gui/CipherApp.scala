@@ -43,7 +43,7 @@ object View:
 object Model:
   val observableEncodings = ObservableBuffer[Encodings]()
 
-  def encode(text: String): Unit = observableEncodings += Encodings(text)
+  def encode(text: String): Unit = observableEncodings += Encodings.encode(text)
 
   def clear(): Unit = observableEncodings.clear()
 
