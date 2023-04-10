@@ -91,3 +91,4 @@ final class TextPane extends HBox:
     add(textField, columnIndex = 1, rowIndex = 0)
 
   children = List(grid)
+  HBox.setHgrow(grid, Priority.Always)
