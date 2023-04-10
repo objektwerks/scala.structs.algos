@@ -156,7 +156,7 @@ object Ciphers:
     val encodings = this
 
   object Encodings:
-    def apply(text: String): Encodings =
+    def encode(text: String): Encodings =
       Encodings(
         text = text,
         ordinal = Ordinal( encipher(ordinalCipher, text) ),
