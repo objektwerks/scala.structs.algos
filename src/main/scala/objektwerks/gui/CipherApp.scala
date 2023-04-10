@@ -41,9 +41,9 @@ object View:
     stylesheets = List("/style.css")
 
 object Model:
-  val encodings = ObservableBuffer[Encodings]()
+  val observableEncodings = ObservableBuffer[Encodings]()
 
-  def add(encodingsToAdd: Encodings): Unit = encodings += encodingsToAdd
+  def add(encodings: Encodings): Unit = observableEncodings += encodings
 
 final class EncodingsPane extends VBox:
   spacing = 6
@@ -85,7 +85,7 @@ final class EncodingsPane extends VBox:
         cellValueFactory = _.value.septenaryProperty
       ,
     )
-    items = Model.encodings
+    items = Model.observableEncodings
 
   children = List(tableView)
   VBox.setVgrow(tableView, Priority.Always)
