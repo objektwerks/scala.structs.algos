@@ -89,3 +89,5 @@ final class TextPane extends HBox:
     padding = Insets(top = 6, right = 6, bottom = 6, left = 6)
     add(label, columnIndex = 0, rowIndex = 0)
     add(textField, columnIndex = 1, rowIndex = 0)
+
+  children = List(grid)
