@@ -22,8 +22,8 @@ object CipherApp extends JFXApp3:
     stage.show()
 
 object View:
-  val width = 800
-  val height = 600
+  val width = 600
+  val height = 400
 
   val borderPane = new BorderPane:
     prefWidth = View.width
@@ -51,7 +51,7 @@ final class EncodingsPane extends VBox:
         cellValueFactory = _.value.ordinalProperty
       ,
       new TableColumn[Encodings, Int]:
-        text = "Reverse Ordinal"
+        text = "Reverse\nOrdinal"
         cellValueFactory = _.value.reverseOrdinalProperty
       ,
       new TableColumn[Encodings, Int]:
@@ -59,7 +59,7 @@ final class EncodingsPane extends VBox:
         cellValueFactory = _.value.reductionProperty
       ,
       new TableColumn[Encodings, Int]:
-        text = "Reverse Reduction"
+        text = "Reverse\nReduction"
         cellValueFactory = _.value.reverseReductionProperty
       ,
       new TableColumn[Encodings, Int]:
@@ -80,8 +80,7 @@ final class TextPane extends HBox:
     alignment = Pos.CenterLeft
     text = "Enter:"
 
-  val textField = new TextField:
-    maxWidth = 120
+  val textField = new TextField
 
   val grid = new GridPane:
     hgap = 6
@@ -91,4 +90,4 @@ final class TextPane extends HBox:
     add(textField, columnIndex = 1, rowIndex = 0)
 
   children = List(grid)
-  HBox.setHgrow(grid, Priority.Always)
+  HBox.setHgrow(textField, Priority.Always)
