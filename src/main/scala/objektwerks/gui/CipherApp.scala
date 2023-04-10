@@ -1,5 +1,6 @@
 package objektwerks.gui
 
+import scalafx.Includes.*
 import scalafx.application.JFXApp3
 import scalafx.beans.property.ObjectProperty
 import scalafx.collections.ObservableBuffer
@@ -94,7 +95,7 @@ final class TextPane extends HBox:
 
   val textField = new TextField:
     hgrow = Priority.Always
-    // onKeyReleased = (event: KeyEvent) => if event.code == KeyCode.Enter then Model.
+    onKeyReleased = (event: KeyEvent) => if event.code == KeyCode.Enter then Model.add( Encodings(text.value) )
 
   val grid = new GridPane:
     hgap = 6
