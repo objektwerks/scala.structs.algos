@@ -76,7 +76,9 @@ final class TextPane extends HBox:
   spacing = 6
   padding = Insets(6)
 
-
+  val label = new Label:
+    alignment = Pos.CenterLeft
+    text = "Enter:"
 
   val grid = new GridPane:
     hgap = 6
