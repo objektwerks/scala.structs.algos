@@ -10,6 +10,8 @@ import scalafx.scene.layout.{BorderPane, GridPane, HBox, Priority, VBox}
 import scalafx.scene.image.Image
 
 import objektwerks.Ciphers.*
+import scalafx.scene.input.KeyEvent
+import scalafx.scene.input.KeyCode
 
 object CipherApp extends JFXApp3:
   override def start(): Unit =
@@ -90,6 +92,7 @@ final class TextPane extends HBox:
 
   val textField = new TextField:
     hgrow = Priority.Always
+    // onKeyReleased = (event: KeyEvent) => if event.code == KeyCode.Enter then Model.
 
   val grid = new GridPane:
     hgap = 6
