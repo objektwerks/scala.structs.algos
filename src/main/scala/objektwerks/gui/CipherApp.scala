@@ -42,6 +42,8 @@ object View:
 object Model:
   val encodings = ObservableBuffer[Encodings]()
 
+  def add(encodingsToAdd: Encodings): Unit = encodings += encodingsToAdd
+
 final class EncodingsPane extends VBox:
   spacing = 6
   padding = Insets(6)
