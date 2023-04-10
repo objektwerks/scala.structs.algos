@@ -7,12 +7,11 @@ import scalafx.collections.ObservableBuffer
 import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Scene
 import scalafx.scene.control.{Button, Label, TableColumn, TableView, TextField}
-import scalafx.scene.layout.{BorderPane, GridPane, HBox, Priority, VBox}
 import scalafx.scene.image.Image
+import scalafx.scene.input.{KeyCode, KeyEvent}
+import scalafx.scene.layout.{BorderPane, GridPane, HBox, Priority, VBox}
 
 import objektwerks.Ciphers.*
-import scalafx.scene.input.KeyEvent
-import scalafx.scene.input.KeyCode
 
 object CipherApp extends JFXApp3:
   override def start(): Unit =
