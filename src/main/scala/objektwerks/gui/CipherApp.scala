@@ -51,6 +51,10 @@ final class EncodingsPane extends VBox:
 
   val tableView = new TableView[Encodings]():
     columns ++= List(
+      new TableColumn[Encodings, String]:
+        text = "Text"
+        cellValueFactory = _.value.textProperty
+      ,
       new TableColumn[Encodings, Int]:
         text = "Ordinal"
         cellValueFactory = _.value.ordinalProperty
