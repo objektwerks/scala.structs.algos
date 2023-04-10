@@ -9,83 +9,83 @@ class CiphersTest extends AnyFunSuite with Matchers:
   val text = "hello world"
 
   test("ordinal") {
-    encipher( ordinalCipher, text) shouldBe 124
+    encipher(ordinalCipher, text) shouldBe 124
   }
 
   test("reverse ordinal") {
-    encipher( reverseOrdinalCipher, text) shouldBe 146
+    encipher(reverseOrdinalCipher, text) shouldBe 146
   }
 
   test("reduction") {
-    encipher( reductionCipher, text) shouldBe 52
+    encipher(reductionCipher, text) shouldBe 52
   }
 
   test("reverse reduction") {
-    encipher( reverseReductionCipher, text) shouldBe 47
+    encipher(reverseReductionCipher, text) shouldBe 47
   }
 
   test("standard") {
-    encipher( standardCipher, text) shouldBe 817
+    encipher(standardCipher, text) shouldBe 817
   }
 
   test("reverse standard") {
-    encipher( reverseStandardCipher, text) shouldBe 1253
+    encipher(reverseStandardCipher, text) shouldBe 1253
   }
 
   test("latin") {
-    encipher( latinCipher, text) shouldBe 1157
+    encipher(latinCipher, text) shouldBe 1157
   }
 
   test("sumerian") {
-    encipher( sumerianCipher, text) shouldBe 744
+    encipher(sumerianCipher, text) shouldBe 744
   }
 
   test("reverse sumerian") {
-    encipher( reverseSumerianCipher, text) shouldBe 876
+    encipher(reverseSumerianCipher, text) shouldBe 876
   }
 
   test("primes") {
-    encipher( primesCipher, text) shouldBe 386
+    encipher(primesCipher, text) shouldBe 386
   }
 
   test("reverse primes") {
-    encipher( reversePrimesCipher, text) shouldBe 474
+    encipher(reversePrimesCipher, text) shouldBe 474
   }
 
   test("fibonacci") {
-    encipher( fibonacciCipher, text) shouldBe 786
+    encipher(fibonacciCipher, text) shouldBe 786
   }
 
   test("squares") {
-    encipher( squaresCipher, text) shouldBe 1840
+    encipher(squaresCipher, text) shouldBe 1840
   }
 
   test("reverse squares") {
-    encipher( reverseSquaresCipher, text) shouldBe 2434
+    encipher(reverseSquaresCipher, text) shouldBe 2434
   }
 
   test("trigonal") {
-    encipher( trigonalCipher, text) shouldBe 982
+    encipher(trigonalCipher, text) shouldBe 982
   }
 
   test("reverse trigonal") {
-    encipher( reverseTrigonalCipher, text) shouldBe 1290
+    encipher(reverseTrigonalCipher, text) shouldBe 1290
   }
 
   test("single reduction") {
-    encipher( singleReductionCipher, text) shouldBe 52
+    encipher(singleReductionCipher, text) shouldBe 52
   }
 
   test("reverse single reduction") {
-    encipher( reverseSingleReductionCipher, text) shouldBe 56
+    encipher(reverseSingleReductionCipher, text) shouldBe 56
   }
 
   test("keypad") {
-    encipher( keypadCipher, text) shouldBe 53
+    encipher(keypadCipher, text) shouldBe 53
   }
 
   test("chaldean") {
-    encipher( chaldeanCipher, text) shouldBe 45
+    encipher(chaldeanCipher, text) shouldBe 45
   }
 
   test("septenary") {
@@ -93,25 +93,25 @@ class CiphersTest extends AnyFunSuite with Matchers:
       1. https://grahamhancock.com/leedsm1/
       2. https://truthscrambler.com/2019/03/24/the-predominance-and-occultation-of-the-septenary-cypher-marty-leeds/
     */
-    encipher( septenaryCipher, "lord") shouldBe 13
-    encipher( septenaryCipher, "god") shouldBe 13
-    encipher( septenaryCipher, "lordgod") shouldBe 26
-    encipher( septenaryCipher, "adameve") shouldBe 22
-    encipher( septenaryCipher, "jesus") shouldBe 27 // 3 x 3 x 3
+    encipher(septenaryCipher, "lord") shouldBe 13
+    encipher(septenaryCipher, "god") shouldBe 13
+    encipher(septenaryCipher, "lordgod") shouldBe 26
+    encipher(septenaryCipher, "adameve") shouldBe 22
+    encipher(septenaryCipher, "jesus") shouldBe 27 // 3 x 3 x 3
 
     val dice = "onetwothreefourfivesix"
-    encipher( septenaryCipher, dice) shouldBe 103 // 103
-    encipher( septenaryCipher, dice + dice) shouldBe 206 // 103 * 2 = 206, number of bones in a human skeleton
+    encipher(septenaryCipher, dice) shouldBe 103 // 103
+    encipher(septenaryCipher, dice + dice) shouldBe 206 // 103 * 2 = 206, number of bones in a human skeleton
 
-    encipher( septenaryCipher, "abcdef") shouldBe 21
-    encipher( septenaryCipher, "g") shouldBe 7
-    encipher( septenaryCipher, "hijklm") shouldBe 21
+    encipher(septenaryCipher, "abcdef") shouldBe 21
+    encipher(septenaryCipher, "g") shouldBe 7
+    encipher(septenaryCipher, "hijklm") shouldBe 21
 
-    encipher( septenaryCipher, "nopqrs") shouldBe 21
-    encipher( septenaryCipher, "t") shouldBe 7
-    encipher( septenaryCipher, "uvwxyz") shouldBe 21
+    encipher(septenaryCipher, "nopqrs") shouldBe 21
+    encipher(septenaryCipher, "t") shouldBe 7
+    encipher(septenaryCipher, "uvwxyz") shouldBe 21
 
-    encipher( septenaryCipher, "seven") shouldBe 22 // divided by 7 equals 3.14 pi
+    encipher(septenaryCipher, "seven") shouldBe 22 // divided by 7 equals 3.14 pi
  }
 
   test("encipher to map") {
