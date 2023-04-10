@@ -43,7 +43,7 @@ object View:
 object Model:
   val observableEncodings = ObservableBuffer[Encodings]()
 
-  def add(encodings: Encodings): Unit = observableEncodings += encodings
+  def encode(text: String): Unit = observableEncodings += Encodings(text)
 
   def clear(): Unit = observableEncodings.clear()
 
@@ -102,7 +102,7 @@ final class TextPane extends HBox:
 
   val textField = new TextField:
     hgrow = Priority.Always
-    onKeyReleased = (event: KeyEvent) => if event.code == KeyCode.Enter then Model.add( Encodings(text.value) )
+    onKeyReleased = (event: KeyEvent) => if event.code == KeyCode.Enter then Model.encode(text.value)
 
   val clearButton = new Button:
     text = "Clear"
