@@ -3,10 +3,10 @@ package objektwerks.gui
 import scalafx.application.JFXApp3
 import scalafx.beans.property.ObjectProperty
 import scalafx.collections.ObservableBuffer
-import scalafx.geometry.Insets
+import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Scene
-import scalafx.scene.control.{TableColumn, TableView}
-import scalafx.scene.layout.{BorderPane, HBox, Priority, VBox}
+import scalafx.scene.control.{Label, TableColumn, TableView}
+import scalafx.scene.layout.{BorderPane, GridPane, HBox, Priority, VBox}
 import scalafx.scene.image.Image
 
 import objektwerks.Ciphers.*
@@ -75,3 +75,11 @@ final class EncodingsPane extends VBox:
 final class TextPane extends HBox:
   spacing = 6
   padding = Insets(6)
+
+
+
+  val grid = new GridPane:
+    hgap = 6
+    vgap = 6
+    padding = Insets(top = 6, right = 6, bottom = 6, left = 6)
+  
