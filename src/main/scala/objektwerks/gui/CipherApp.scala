@@ -6,7 +6,7 @@ import scalafx.beans.property.ObjectProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Scene
-import scalafx.scene.control.{Label, TableColumn, TableView, TextField}
+import scalafx.scene.control.{Button, Label, TableColumn, TableView, TextField}
 import scalafx.scene.layout.{BorderPane, GridPane, HBox, Priority, VBox}
 import scalafx.scene.image.Image
 
@@ -44,6 +44,8 @@ object Model:
   val observableEncodings = ObservableBuffer[Encodings]()
 
   def add(encodings: Encodings): Unit = observableEncodings += encodings
+
+  def clear(): Unit = observableEncodings.clear()
 
 final class EncodingsPane extends VBox:
   spacing = 6
@@ -102,12 +104,20 @@ final class TextPane extends HBox:
     hgrow = Priority.Always
     onKeyReleased = (event: KeyEvent) => if event.code == KeyCode.Enter then Model.add( Encodings(text.value) )
 
+  val clearButton = new Button:
+    text = "Clear"
+    onAction = { _ =>
+      textField.text = ""
+      Model.clear()
+    }
+
   val grid = new GridPane:
     hgap = 6
     vgap = 6
     padding = Insets(top = 6, right = 6, bottom = 6, left = 6)
     add(label, columnIndex = 0, rowIndex = 0)
     add(textField, columnIndex = 1, rowIndex = 0)
+    add(clearButton, columnIndex = 2, rowIndex = 0)
 
   children = List(grid)
   HBox.setHgrow(grid, Priority.Always)
