@@ -25,7 +25,7 @@ object CipherApp extends JFXApp3:
     stage.show()
 
 object View:
-  val width = 600
+  val width = 800
   val height = 400
 
   val borderPane = new BorderPane:
@@ -53,6 +53,7 @@ final class EncodingsPane extends VBox:
     columns ++= List(
       new TableColumn[Encodings, String]:
         text = "Text"
+        prefWidth = 200
         cellValueFactory = _.value.textProperty
       ,
       new TableColumn[Encodings, Int]:
