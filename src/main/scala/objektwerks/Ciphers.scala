@@ -2,7 +2,6 @@ package objektwerks
 
 import scala.collection.immutable.SortedMap
 import scalafx.beans.property.ObjectProperty
-import java.lang.foreign.ValueLayout.OfInt
 
 object Ciphers:
   final case class Ordinal(value: Int) extends AnyVal
@@ -155,6 +154,33 @@ object Ciphers:
     val chaldeanProperty = ObjectProperty[Int](this, "chaldean", chaldean.value)
     val septenaryProperty = ObjectProperty[Int](this, "septenary", septenary.value)
     val encodings = this
+
+  object Encodings:
+    def apply(text: String): Encodings =
+      Encodings(
+        text = text,
+        ordinal = Ordinal( encipher(ordinalCipher, text) ),
+        reverseOrdinal = ReverseOrdinal( encipher(reverseOrdinalCipher, text) ),
+        reduction = Reduction( encipher(reductionCipher, text) ),
+        reverseReduction = ReverseReduction( encipher(reverseReductionCipher, text) ),
+        standard = Standard( encipher(standardCipher, text) ),
+        reverseStandard = ReverseStandard( encipher(reverseStandardCipher, text) ),
+        latin = Latin( encipher(latinCipher, text) ),
+        sumerian = Sumerian( encipher(sumerianCipher, text) ),
+        reverseSumerian = ReverseSumerian( encipher(reverseSumerianCipher, text) ),
+        primes = Primes( encipher(primesCipher, text) ),
+        reversePrimes = ReversePrimes( encipher(reversePrimesCipher, text) ),
+        fibonacci = Fibonacci( encipher(fibonacciCipher, text) ),
+        squares = Squares( encipher(squaresCipher, text) ),
+        reverseSquares = ReverseSquares( encipher(reverseSquaresCipher, text) ),
+        trigonal = Trigonal( encipher(trigonalCipher, text) ),
+        reverseTrigonal = ReverseTrigonal( encipher(reverseTrigonalCipher, text) ),
+        singleReduction = SingleReduction( encipher(singleReductionCipher, text) ),
+        reverseSingleReduction = ReverseSingleReduction( encipher(reverseSingleReductionCipher, text) ),
+        keypad = Keypad( encipher(keypadCipher, text) ),
+        chaldean = Chaldean( encipher(chaldeanCipher, text) ),
+        septenary = Septenary( encipher(septenaryCipher, text) )
+      )
 
   def encipher(cipher: Map[Char, Int], text: String): Int =
     text
