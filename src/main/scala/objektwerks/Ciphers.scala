@@ -109,6 +109,12 @@ object Ciphers:
     Map( 'a' -> 1, 'b' -> 2, 'c' -> 3, 'd' -> 4, 'e' -> 5, 'f' -> 6, 'g' -> 7, 'h' -> 6, 'i' -> 5, 'j' -> 4, 'k' -> 3, 'l' -> 2, 'm' -> 1,
          'n' -> 1, 'o' -> 2, 'p' -> 3, 'q' -> 4, 'r' -> 5, 's' -> 6, 't' -> 7, 'u' -> 6, 'v' -> 5, 'w' -> 4, 'x' -> 3, 'y' -> 2, 'z' -> 1 )
 
+/* satanic
+a	  b	  c	  d	  e	  f	  g	  h	  i	  j	  k	  l	  m
+36	37	38	39	40	41	42	43	44	45	46	47	48
+n	  o	  p	  q	  r	  s	  t	  u	  v	  w	  x	  y	  z
+49	50	51	52	53	54	55	56	57	58	59	60	61
+*/
   final case class Encodings(text: String,
                              ordinal: Ordinal,
                              reverseOrdinal: ReverseOrdinal,
