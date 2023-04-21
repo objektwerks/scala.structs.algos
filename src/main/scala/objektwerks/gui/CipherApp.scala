@@ -125,6 +125,10 @@ final class EncodingsPane extends VBox:
         text = "Reverse\nSquares"
         cellValueFactory = _.value.reverseSquaresProperty
       ,
+      new TableColumn[Encodings, Int]:
+        text = "Trigonal"
+        cellValueFactory = _.value.trigonalProperty
+      ,
     )
     items = Model.observableEncodings
 
