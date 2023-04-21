@@ -97,6 +97,10 @@ final class EncodingsPane extends VBox:
         text = "Sumerian"
         cellValueFactory = _.value.sumerianProperty
       ,
+      new TableColumn[Encodings, Int]:
+        text = "Reverse\nSumerian"
+        cellValueFactory = _.value.reverseSumerianProperty
+      ,
     )
     items = Model.observableEncodings
 
