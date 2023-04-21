@@ -113,6 +113,10 @@ final class EncodingsPane extends VBox:
         text = "Reverse\nPrimes"
         cellValueFactory = _.value.reversePrimesProperty
       ,
+      new TableColumn[Encodings, Int]:
+        text = "Fibonacci"
+        cellValueFactory = _.value.fibonacciProperty
+      ,
     )
     items = Model.observableEncodings
 
