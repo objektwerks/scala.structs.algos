@@ -117,6 +117,10 @@ final class EncodingsPane extends VBox:
         text = "Fibonacci"
         cellValueFactory = _.value.fibonacciProperty
       ,
+      new TableColumn[Encodings, Int]:
+        text = "Squares"
+        cellValueFactory = _.value.squaresProperty
+      ,
     )
     items = Model.observableEncodings
 
