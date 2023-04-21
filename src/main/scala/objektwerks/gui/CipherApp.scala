@@ -141,6 +141,10 @@ final class EncodingsPane extends VBox:
         text = "Reverse\nSingle\nReduction"
         cellValueFactory = _.value.reverseSingleReductionProperty
       ,
+      new TableColumn[Encodings, Int]:
+        text = "Satanic"
+        cellValueFactory = _.value.satanicProperty
+      ,
     )
     items = Model.observableEncodings
 
