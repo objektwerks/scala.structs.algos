@@ -154,7 +154,9 @@ n	  o	  p	  q	  r	  s	  t	  u	  v	  w	  x	  y	  z
                              reverseSingleReduction: ReverseSingleReduction,
                              keypad: Keypad,
                              chaldean: Chaldean,
-                             septenary: Septenary):
+                             septenary: Septenary,
+                             satanic: Satanic,
+                             reverseSatanic: ReverseSatanic):
     val textProperty = ObjectProperty[String](this, "text", text)
     val ordinalProperty = ObjectProperty[Int](this, "ordinal", ordinal.value)
     val reverseOrdinalProperty = ObjectProperty[Int](this, "reverseOrdinal", reverseOrdinal.value)
@@ -177,6 +179,8 @@ n	  o	  p	  q	  r	  s	  t	  u	  v	  w	  x	  y	  z
     val keypadProperty = ObjectProperty[Int](this, "keypad", keypad.value)
     val chaldeanProperty = ObjectProperty[Int](this, "chaldean", chaldean.value)
     val septenaryProperty = ObjectProperty[Int](this, "septenary", septenary.value)
+    val satanicProperty = ObjectProperty[Int](this, "satanic", satanic.value)
+    val reverseSatanicProperty = ObjectProperty[Int](this, "reverseSatanic", reverseSatanic.value)
     val encodings = this
 
   object Encodings:
@@ -203,7 +207,9 @@ n	  o	  p	  q	  r	  s	  t	  u	  v	  w	  x	  y	  z
         reverseSingleReduction = ReverseSingleReduction( encipher(reverseSingleReductionCipher, text) ),
         keypad = Keypad( encipher(keypadCipher, text) ),
         chaldean = Chaldean( encipher(chaldeanCipher, text) ),
-        septenary = Septenary( encipher(septenaryCipher, text) )
+        septenary = Septenary( encipher(septenaryCipher, text) ),
+        satanic = Satanic( encipher(satanicCipher, text) ),
+        reverseSatanic = ReverseSatanic( encipher(reverseSatanicCipher, text) )
       )
 
   def encipher(cipher: Map[Char, Int], text: String): Int =
