@@ -118,6 +118,10 @@ class CiphersTest extends AnyFunSuite with Matchers:
     encipher(satanicCipher, text) shouldBe 474
   }
 
+  test("reverse satanic") {
+    encipher(reverseSatanicCipher, text) shouldBe 496
+  }
+
   test("encipher to map") {
     encipherToMap( ordinalCipher, text) shouldBe List(('h',8), ('e',5), ('l',12), ('l',12), ('o',15), ('w',23), ('o',15), ('r',18), ('l',12), ('d',4))
     encipherToMap( ordinalCipher, text).map( (l, i) => l).mkString shouldBe "helloworld"
