@@ -109,6 +109,10 @@ final class EncodingsPane extends VBox:
         text = "Primes"
         cellValueFactory = _.value.primesProperty
       ,
+      new TableColumn[Encodings, Int]:
+        text = "Reverse\nPrimes"
+        cellValueFactory = _.value.reversePrimesProperty
+      ,
     )
     items = Model.observableEncodings
 
