@@ -30,6 +30,7 @@ Test
 
 Run
 ---
+1. sbt clean run
 >Multiple main classes detected. Select one to run:
 1. objektwerks.cli.runEval
 2. objektwerks.cli.runJustifyText
