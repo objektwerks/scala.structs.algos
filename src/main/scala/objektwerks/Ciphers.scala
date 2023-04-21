@@ -111,8 +111,8 @@ object Ciphers:
 
   final case class Satanic(value: Int) extends AnyVal
   val satanicCipher =
-    Map( 'a' -> 1, 'b' -> 2, 'c' -> 3, 'd' -> 4, 'e' -> 5, 'f' -> 6, 'g' -> 7, 'h' -> 6, 'i' -> 5, 'j' -> 4, 'k' -> 3, 'l' -> 2, 'm' -> 1,
-         'n' -> 1, 'o' -> 2, 'p' -> 3, 'q' -> 4, 'r' -> 5, 's' -> 6, 't' -> 7, 'u' -> 6, 'v' -> 5, 'w' -> 4, 'x' -> 3, 'y' -> 2, 'z' -> 1 )
+    Map( 'a' -> 36, 'b' -> 37, 'c' -> 38, 'd' -> 39, 'e' -> 40, 'f' -> 41, 'g' -> 42, 'h' -> 43, 'i' -> 44, 'j' -> 45, 'k' -> 46, 'l' -> 47, 'm' -> 48,
+         'n' -> 49, 'o' -> 50, 'p' -> 51, 'q' -> 52, 'r' -> 53, 's' -> 54, 't' -> 55, 'u' -> 56, 'v' -> 57, 'w' -> 58, 'x' -> 59, 'y' -> 60, 'z' -> 61 )
 
   final case class ReverseSatanic(value: Int) extends AnyVal
   val reverseSatanicCipher =
