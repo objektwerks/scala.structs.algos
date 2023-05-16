@@ -2,7 +2,6 @@ package objektwerks.gui
 
 import scalafx.Includes.*
 import scalafx.application.JFXApp3
-import scalafx.beans.property.ObjectProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Scene
