@@ -1,6 +1,5 @@
 package objektwerks
 
-import scala.collection.immutable.SortedMap
 import scalafx.beans.property.ObjectProperty
 
 object Ciphers:
