@@ -150,6 +150,8 @@ final class EncodingsPane extends VBox:
     )
     items = Model.observableEncodings
 
+  tableView.selectionModel.onChange { (source, oldValue, newValue) => println(newValue) }
+
   children = List(tableView)
   VBox.setVgrow(tableView, Priority.Always)
 
