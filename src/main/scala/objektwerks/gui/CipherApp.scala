@@ -158,7 +158,7 @@ final class EncodingsPane extends VBox:
     val cellRow = tablePosition.getRow()
     val cellData = tablePosition.getTableColumn().getCellData(cellRow)
     println(s"cell data: $cellData")
-  }
+  } // TODO! Build out metadata per number in cipher table.
 
   children = List(tableView)
   VBox.setVgrow(tableView, Priority.Always)
