@@ -150,8 +150,10 @@ final class EncodingsPane extends VBox:
     )
     items = Model.observableEncodings
 
-  tableView.selectionModel.apply().selectedItem.onChange { (_, _, _) =>
-    println( tableView.selectionModel.apply().getSelectedIndices() )
+  val tableViewSelectionModel = tableView.selectionModel.apply()
+  tableViewSelectionModel.selectedItem.onChange { (_, _, _) =>
+    println( s"selected indices: ${tableViewSelectionModel.getSelectedIndices()}" )
+    println( s"selected index: ${tableViewSelectionModel.getSelectedIndex()}" )
   }
 
   children = List(tableView)
