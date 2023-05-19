@@ -154,6 +154,7 @@ final class EncodingsPane extends VBox:
   tableViewSelectionModel.selectedItem.onChange { (_, _, _) =>
     println( s"selected indices: ${tableViewSelectionModel.getSelectedIndices()}" )
     println( s"selected index: ${tableViewSelectionModel.getSelectedIndex()}" )
+    println( s"selected cell data: ${tableViewSelectionModel.getSelectedCells().get(0).getTableColumn().getCellData(0)}" )
   }
 
   children = List(tableView)
