@@ -53,6 +53,10 @@ final class NumberPane extends HBox:
   spacing = 6
   padding = Insets(6)
 
+  val encoding = new Label:
+    alignment = Pos.CenterLeft
+    text = "Encoding: "
+
 final class EncodingsPane extends VBox:
   spacing = 6
   padding = Insets(6)
