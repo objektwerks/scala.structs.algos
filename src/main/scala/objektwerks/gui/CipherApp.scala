@@ -24,6 +24,14 @@ object CipherApp extends JFXApp3:
       icons.add( new Image(Image.getClass.getResourceAsStream("/cipher.png")) )
     stage.show()
 
+object Model:
+  val observableEncodings = ObservableBuffer[Encodings]()
+  val observableNumber = ObjectProperty[Int](0)
+
+  def encode(text: String): Unit = observableEncodings += Encodings.encode(text)
+
+  def clear(): Unit = observableEncodings.clear()
+
 object View:
   val width = 800
   val height = 400
@@ -40,14 +48,6 @@ object View:
   val scene = new Scene:
     root = borderPane
     stylesheets = List("/style.css")
-
-object Model:
-  val observableEncodings = ObservableBuffer[Encodings]()
-  val observableNumber = ObjectProperty[Int](0)
-
-  def encode(text: String): Unit = observableEncodings += Encodings.encode(text)
-
-  def clear(): Unit = observableEncodings.clear()
 
 final class NumberPane extends HBox:
   spacing = 6
