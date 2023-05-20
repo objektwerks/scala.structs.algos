@@ -14,6 +14,8 @@ import scalafx.scene.layout.{BorderPane, GridPane, HBox, Priority, VBox}
 import objektwerks.Ciphers.*
 import objektwerks.gui.Model.observableEncoding
 
+import objektwerks.Numbers.isPrime
+
 object CipherApp extends JFXApp3:
   override def start(): Unit =
     stage = new JFXApp3.PrimaryStage:
@@ -62,7 +64,8 @@ final class EncodingPane extends HBox:
     text = ""
 
   observableEncoding.onChange { (_, _, newValue) =>
-    encoding.text = s"$newValue"
+    val isPrimeText = if isPrime(newValue) then "Yes" else "No"
+    encoding.text = s"$newValue, Is Prime: $isPrimeText"
   }
 
   val encodingGrid = new GridPane:
