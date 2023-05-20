@@ -61,16 +61,16 @@ final class EncodingPane extends HBox:
     alignment = Pos.CenterLeft
     text = ""
 
+  observableEncoding.onChange { (_, _, newValue) =>
+    encoding.text = s"$newValue"
+  }
+
   val encodingGrid = new GridPane:
     hgap = 6
     vgap = 6
     padding = Insets(top = 6, right = 6, bottom = 6, left = 6)
     add(label, columnIndex = 0, rowIndex = 0)
     add(encoding, columnIndex = 1, rowIndex = 0)
-
-  observableEncoding.onChange { (_, _, newValue) =>
-    encoding.text = s"$newValue"
-  }
 
   children = List(encodingGrid)
   HBox.setHgrow(encodingGrid, Priority.Always)
