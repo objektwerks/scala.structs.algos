@@ -62,10 +62,10 @@ final class EncodingPane extends HBox:
     text = ""
 
   Model.observableEncoding.onChange { (_, _, newValue) =>
-    val isPrimeText = if isPrime(newValue) then "Yes" else "No"
-    val isStarText = if isStar(newValue) then "Yes" else "No"
+    val prime = if isPrime(newValue) then "Yes" else "No"
+    val star = if isStar(newValue) then "Yes" else "No"
     val factors = listFactors(newValue).mkString(", ")
-    encoding.text = s"$newValue      Prime: $isPrimeText      Star: $isStarText      Factors: $factors"
+    encoding.text = s"$newValue      Prime: $prime      Star: $star      Factors: $factors"
   }
 
   val encodingGrid = new GridPane:
