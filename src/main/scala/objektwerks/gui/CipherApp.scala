@@ -12,7 +12,7 @@ import scalafx.scene.input.{KeyCode, KeyEvent}
 import scalafx.scene.layout.{BorderPane, GridPane, HBox, Priority, VBox}
 
 import objektwerks.Ciphers.*
-import objektwerks.Numbers.{isPrime, isStar, listFactors}
+import objektwerks.Numbers.{isPrime, isStar, isTriangular, listFactors}
 
 object CipherApp extends JFXApp3:
   override def start(): Unit =
@@ -64,8 +64,9 @@ final class EncodingPane extends HBox:
   Model.observableEncoding.onChange { (_, _, newValue) =>
     val prime = if isPrime(newValue) then "Yes" else "No"
     val star = if isStar(newValue) then "Yes" else "No"
+    val triangular = if isTriangular(newValue) then "Yes" else "No"
     val factors = listFactors(newValue).mkString(", ")
-    encoding.text = s"$newValue      Prime: $prime      Star: $star      Factors: $factors"
+    encoding.text = s"$newValue      Prime: $prime      Star: $star      Triangular: $triangular      Factors: $factors"
   }
 
   val encodingGrid = new GridPane:
