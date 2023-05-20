@@ -53,13 +53,27 @@ final class EncodingPane extends HBox:
   spacing = 6
   padding = Insets(6)
 
+  val label = new Label:
+    alignment = Pos.CenterLeft
+    text = "Encoding:"
+
   val encoding = new Label:
     alignment = Pos.CenterLeft
     text = ""
 
+  val encodingGrid = new GridPane:
+    hgap = 6
+    vgap = 6
+    padding = Insets(top = 6, right = 6, bottom = 6, left = 6)
+    add(label, columnIndex = 0, rowIndex = 0)
+    add(encoding, columnIndex = 1, rowIndex = 0)
+
   observableEncoding.onChange { (_, _, newValue) =>
     encoding.text = s"Encoding: $newValue"
   }
+
+  children = List(encodingGrid)
+  HBox.setHgrow(encodingGrid, Priority.Always)
 
 final class EncodingsPane extends VBox:
   spacing = 6
