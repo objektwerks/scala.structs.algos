@@ -55,7 +55,11 @@ final class EncodingPane extends HBox:
 
   val encoding = new Label:
     alignment = Pos.CenterLeft
-    text = "Encoding: "
+    text = ""
+
+  observableEncoding.onChange { (_, _, newValue) =>
+    encoding.text = s"Encoding: $newValue"
+  }
 
 final class EncodingsPane extends VBox:
   spacing = 6
