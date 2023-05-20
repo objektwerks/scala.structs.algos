@@ -12,7 +12,7 @@ import scalafx.scene.input.{KeyCode, KeyEvent}
 import scalafx.scene.layout.{BorderPane, GridPane, HBox, Priority, VBox}
 
 import objektwerks.Ciphers.*
-import objektwerks.gui.Model.observableNumber
+import objektwerks.gui.Model.observableEncoding
 
 object CipherApp extends JFXApp3:
   override def start(): Unit =
@@ -26,7 +26,7 @@ object CipherApp extends JFXApp3:
 
 object Model:
   val observableEncodings = ObservableBuffer[Encodings]()
-  val observableNumber = ObjectProperty[Int](0)
+  val observableEncoding = ObjectProperty[Int](0)
 
   def encode(text: String): Unit = observableEncodings += Encodings.encode(text)
 
@@ -164,8 +164,8 @@ final class EncodingsPane extends VBox:
   selectedCells.onChange {
     val tablePosition = selectedCells.get(0)
     val cellRow = tablePosition.getRow()
-    observableNumber.value = tablePosition.getTableColumn().getCellData(cellRow).asInstanceOf[Int]
-    println(s"cell data: ${observableNumber.value}")
+    observableEncoding.value = tablePosition.getTableColumn().getCellData(cellRow).asInstanceOf[Int]
+    println(s"cell data: ${observableEncoding.value}")
   } // TODO! Build out metadata per number in cipher table.
 
   children = List(tableView)
