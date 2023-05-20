@@ -2,6 +2,7 @@ package objektwerks.gui
 
 import scalafx.Includes.*
 import scalafx.application.JFXApp3
+import scalafx.beans.property.ObjectProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Scene
@@ -40,6 +41,7 @@ object View:
 
 object Model:
   val observableEncodings = ObservableBuffer[Encodings]()
+  val observableNumber = ObjectProperty[Int](0)
 
   def encode(text: String): Unit = observableEncodings += Encodings.encode(text)
 
