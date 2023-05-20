@@ -41,7 +41,7 @@ object View:
     prefHeight = View.height
     padding = Insets(6)
 
-  borderPane.top = NumberPane()
+  borderPane.top = EncodingPane()
   borderPane.center = EncodingsPane()
   borderPane.bottom = TextPane()
 
@@ -49,7 +49,7 @@ object View:
     root = borderPane
     stylesheets = List("/style.css")
 
-final class NumberPane extends HBox:
+final class EncodingPane extends HBox:
   spacing = 6
   padding = Insets(6)
 
