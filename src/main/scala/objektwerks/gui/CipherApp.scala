@@ -30,7 +30,9 @@ object Model:
 
   def encode(text: String): Unit = observableEncodings += Encodings.encode(text)
 
-  def clear(): Unit = observableEncodings.clear()
+  def clear(): Unit =
+    observableEncodings.clear()
+    observableEncoding.value = 0
 
 object View:
   val width = 800
