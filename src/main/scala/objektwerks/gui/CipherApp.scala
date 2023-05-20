@@ -65,7 +65,7 @@ final class EncodingPane extends HBox:
     val isPrimeText = if isPrime(newValue) then "Yes" else "No"
     val isStarText = if isStar(newValue) then "Yes" else "No"
     val factors = listFactors(newValue).mkString(", ")
-    encoding.text = s"$newValue      Is Prime: $isPrimeText      Is Star: $isStarText      Factors: $factors"
+    encoding.text = s"$newValue      Prime: $isPrimeText      Star: $isStarText      Factors: $factors"
   }
 
   val encodingGrid = new GridPane:
