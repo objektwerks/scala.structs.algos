@@ -21,7 +21,7 @@ object CipherApp extends JFXApp3:
       title = "Ciphers"
       minWidth = View.width
       minHeight = View.height
-      icons.add( new Image(Image.getClass.getResourceAsStream("/cipher.png")) )
+      icons.add( new Image( Image.getClass.getResourceAsStream("/cipher.png") ) )
     stage.show()
 
 object Model:
