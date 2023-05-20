@@ -33,8 +33,9 @@ object View:
     prefHeight = View.height
     padding = Insets(6)
 
-  borderPane.top = EncodingsPane()
-  borderPane.center = TextPane()
+  borderPane.top = NumberPane()
+  borderPane.center = EncodingsPane()
+  borderPane.bottom = TextPane()
 
   val scene = new Scene:
     root = borderPane
@@ -47,6 +48,10 @@ object Model:
   def encode(text: String): Unit = observableEncodings += Encodings.encode(text)
 
   def clear(): Unit = observableEncodings.clear()
+
+final class NumberPane extends HBox:
+  spacing = 6
+  padding = Insets(6)
 
 final class EncodingsPane extends VBox:
   spacing = 6
