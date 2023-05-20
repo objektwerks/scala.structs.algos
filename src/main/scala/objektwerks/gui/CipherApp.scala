@@ -69,7 +69,7 @@ final class EncodingPane extends HBox:
     add(encoding, columnIndex = 1, rowIndex = 0)
 
   observableEncoding.onChange { (_, _, newValue) =>
-    encoding.text = s"Encoding: $newValue"
+    encoding.text = s"$newValue"
   }
 
   children = List(encodingGrid)
