@@ -190,9 +190,10 @@ final class EncodingsPane extends VBox:
   tableViewSelectionModel.setCellSelectionEnabled(true)
   val selectedCells = tableViewSelectionModel.getSelectedCells()
   selectedCells.onChange {
-    val tablePosition = selectedCells.get(0)
-    val cellRow = tablePosition.getRow()
-    Model.observableEncoding.value = tablePosition.getTableColumn().getCellData(cellRow).asInstanceOf[Int]
+    if selectedCells.nonEmpty then 
+      val tablePosition = selectedCells.get(0)
+      val cellRow = tablePosition.getRow()
+      Model.observableEncoding.value = tablePosition.getTableColumn().getCellData(cellRow).asInstanceOf[Int]
   }
 
   children = List(tableView)
