@@ -165,7 +165,6 @@ final class EncodingsPane extends VBox:
     val tablePosition = selectedCells.get(0)
     val cellRow = tablePosition.getRow()
     observableEncoding.value = tablePosition.getTableColumn().getCellData(cellRow).asInstanceOf[Int]
-    println(s"cell data: ${observableEncoding.value}")
   }
 
   children = List(tableView)
