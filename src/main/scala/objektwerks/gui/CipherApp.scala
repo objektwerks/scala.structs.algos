@@ -12,8 +12,6 @@ import scalafx.scene.input.{KeyCode, KeyEvent}
 import scalafx.scene.layout.{BorderPane, GridPane, HBox, Priority, VBox}
 
 import objektwerks.Ciphers.*
-import objektwerks.gui.Model.observableEncoding
-
 import objektwerks.Numbers.{isPrime, isStar}
 
 object CipherApp extends JFXApp3:
@@ -63,7 +61,7 @@ final class EncodingPane extends HBox:
     alignment = Pos.CenterLeft
     text = ""
 
-  observableEncoding.onChange { (_, _, newValue) =>
+  Model.observableEncoding.onChange { (_, _, newValue) =>
     val isPrimeText = if isPrime(newValue) then "Yes" else "No"
     val isStarText = if isStar(newValue) then "Yes" else "No"
     encoding.text = s"$newValue      Is Prime: $isPrimeText      Is Star: $isStarText"
@@ -190,7 +188,7 @@ final class EncodingsPane extends VBox:
   selectedCells.onChange {
     val tablePosition = selectedCells.get(0)
     val cellRow = tablePosition.getRow()
-    observableEncoding.value = tablePosition.getTableColumn().getCellData(cellRow).asInstanceOf[Int]
+    Model.observableEncoding.value = tablePosition.getTableColumn().getCellData(cellRow).asInstanceOf[Int]
   }
 
   children = List(tableView)
