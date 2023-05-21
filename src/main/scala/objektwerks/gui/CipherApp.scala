@@ -57,9 +57,9 @@ final class EncodingPane extends HBox:
 
   val label = new Label:
     alignment = Pos.CenterLeft
-    text = "Encoding:"
+    text = "Number:"
 
-  val encoding = new Label:
+  val number = new Label:
     alignment = Pos.CenterLeft
     text = ""
 
@@ -68,7 +68,7 @@ final class EncodingPane extends HBox:
     val star = if isStar(newValue) then "Yes" else "No"
     val triangular = if isTriangular(newValue) then "Yes" else "No"
     val factors = listFactors(newValue).mkString(", ")
-    encoding.text = s"$newValue      Prime: $prime      Star: $star      Triangular: $triangular      Factors: $factors"
+    number.text = s"$newValue      Prime: $prime      Star: $star      Triangular: $triangular      Factors: $factors"
   }
 
   val encodingGrid = new GridPane:
@@ -76,7 +76,7 @@ final class EncodingPane extends HBox:
     vgap = 6
     padding = Insets(top = 6, right = 6, bottom = 6, left = 6)
     add(label, columnIndex = 0, rowIndex = 0)
-    add(encoding, columnIndex = 1, rowIndex = 0)
+    add(number, columnIndex = 1, rowIndex = 0)
 
   children = List(encodingGrid)
   HBox.setHgrow(encodingGrid, Priority.Always)
