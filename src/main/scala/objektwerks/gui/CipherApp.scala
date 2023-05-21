@@ -205,9 +205,17 @@ final class TextPane extends HBox:
 
   val textLabel = new Label:
     alignment = Pos.CenterLeft
-    text = "Enter:"
+    text = "Text:"
 
   val textField = new TextField:
+    hgrow = Priority.Always
+    onKeyReleased = (event: KeyEvent) => if event.code == KeyCode.Enter then Model.encode(text.value)
+
+  val numberLabel = new Label:
+    alignment = Pos.CenterLeft
+    text = "Number:"
+
+  val numberField = new TextField:
     hgrow = Priority.Always
     onKeyReleased = (event: KeyEvent) => if event.code == KeyCode.Enter then Model.encode(text.value)
 
@@ -224,7 +232,9 @@ final class TextPane extends HBox:
     padding = Insets(top = 6, right = 6, bottom = 6, left = 6)
     add(textLabel, columnIndex = 0, rowIndex = 0)
     add(textField, columnIndex = 1, rowIndex = 0)
-    add(clearButton, columnIndex = 2, rowIndex = 0)
+    add(numberLabel, columnIndex = 2, rowIndex = 0)
+    add(numberField, columnIndex = 3, rowIndex = 0)
+    add(clearButton, columnIndex = 4, rowIndex = 0)
 
   children = List(textGrid)
   HBox.setHgrow(textGrid, Priority.Always)
