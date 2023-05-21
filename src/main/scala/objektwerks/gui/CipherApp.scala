@@ -217,7 +217,7 @@ final class TextPane extends HBox:
 
   val numberField = new TextField:
     hgrow = Priority.Always
-    onKeyReleased = (event: KeyEvent) => if event.code == KeyCode.Enter then Model.encode(text.value)
+    onKeyReleased = (event: KeyEvent) => if event.code == KeyCode.Enter then Model.observableEncoding.value = text.value.toIntOption.getOrElse(0)
 
   val clearButton = new Button:
     text = "Clear"
