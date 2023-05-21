@@ -45,7 +45,7 @@ object View:
 
   borderPane.top = EncodingPane()
   borderPane.center = EncodingsPane()
-  borderPane.bottom = TextPane()
+  borderPane.bottom = TextNumberPane()
 
   val scene = new Scene:
     root = borderPane
@@ -199,7 +199,7 @@ final class EncodingsPane extends VBox:
   children = List(tableView)
   VBox.setVgrow(tableView, Priority.Always)
 
-final class TextPane extends HBox:
+final class TextNumberPane extends HBox:
   spacing = 6
   padding = Insets(6)
 
