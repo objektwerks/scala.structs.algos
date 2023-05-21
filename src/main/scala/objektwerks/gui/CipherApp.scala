@@ -227,7 +227,7 @@ final class TextPane extends HBox:
       Model.clear()
     }
 
-  val textGrid = new GridPane:
+  val grid = new GridPane:
     hgap = 6
     vgap = 6
     padding = Insets(top = 6, right = 6, bottom = 6, left = 6)
@@ -237,5 +237,5 @@ final class TextPane extends HBox:
     add(numberField, columnIndex = 3, rowIndex = 0)
     add(clearButton, columnIndex = 4, rowIndex = 0)
 
-  children = List(textGrid)
-  HBox.setHgrow(textGrid, Priority.Always)
+  children = List(grid)
+  HBox.setHgrow(grid, Priority.Always)
