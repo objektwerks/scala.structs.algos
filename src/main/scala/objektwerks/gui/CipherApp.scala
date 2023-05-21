@@ -71,15 +71,15 @@ final class NumberPane extends HBox:
     number.text = s"$newValue      Prime: $prime      Star: $star      Triangular: $triangular      Factors: $factors"
   }
 
-  val encodingGrid = new GridPane:
+  val grid = new GridPane:
     hgap = 6
     vgap = 6
     padding = Insets(top = 6, right = 6, bottom = 6, left = 6)
     add(label, columnIndex = 0, rowIndex = 0)
     add(number, columnIndex = 1, rowIndex = 0)
 
-  children = List(encodingGrid)
-  HBox.setHgrow(encodingGrid, Priority.Always)
+  children = List(grid)
+  HBox.setHgrow(grid, Priority.Always)
 
 final class EncodingsPane extends VBox:
   spacing = 6
