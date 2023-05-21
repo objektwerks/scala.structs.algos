@@ -223,6 +223,7 @@ final class TextPane extends HBox:
     text = "Clear"
     onAction = { _ =>
       textField.text = ""
+      numberField.text = ""
       Model.clear()
     }
 
