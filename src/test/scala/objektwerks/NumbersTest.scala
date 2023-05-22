@@ -42,8 +42,8 @@ class NumbersTest extends AnyFunSuite with Matchers:
   }
 
   test("find prime rank") {
-    println( listPrimes(0 to 1000) )
     findPrimeRank( listPrimes(0 to 1000), 101 ) shouldBe 26
+    findPrimeRank( listPrimes(0 to 100), 101 ) shouldBe 0
   }
 
   test("find tetrahedral") {
