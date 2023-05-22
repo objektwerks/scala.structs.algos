@@ -34,9 +34,7 @@ object Numbers:
     if n == -1 || n == 0 || n == 1 then false
     else loop(2)
 
-  def listPrimes(range: Range): List[Int] = range.filter(isPrime).toList
-
-  def getPrimeRank(primes: List[Int], prime: Int) = ???
+  def listPrimes(range: Range): List[(Int, Int)] = range.filter(isPrime).toList.zipWithIndex
 
   def findTetrahedral(n: Int): Int = (n * (n + 1) * (n + 2)) / 6
 
