@@ -12,7 +12,7 @@ import scalafx.scene.input.{KeyCode, KeyEvent}
 import scalafx.scene.layout.{BorderPane, GridPane, HBox, Priority, VBox}
 
 import objektwerks.Ciphers.*
-import objektwerks.Numbers.{isPrime, isStar, isTriangular, listFactors}
+import objektwerks.Numbers.{isPrime, isStar, isTriangular, listFactors, listPrimes}
 
 object CipherApp extends JFXApp3:
   override def start(): Unit =
@@ -27,6 +27,7 @@ object CipherApp extends JFXApp3:
 object Model:
   val observableEncodings = ObservableBuffer[Encodings]()
   val observableEncoding = ObjectProperty[Int](0)
+  val primes = listPrimes(0 to 1000)
 
   def encode(text: String): Unit = observableEncodings += Encodings.encode(text)
 
