@@ -37,6 +37,10 @@ class NumbersTest extends AnyFunSuite with Matchers:
     isPrime(-1) shouldBe false
   }
 
+  test("list primes") {
+    listPrimes(0 to 1000).length shouldBe 168
+  }
+
   test("find tetrahedral") {
     findTetrahedral(5) shouldBe 35
     findTetrahedral(6) shouldBe 56
