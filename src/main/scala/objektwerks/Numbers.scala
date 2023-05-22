@@ -36,8 +36,7 @@ object Numbers:
 
   def listPrimes(range: Range): List[(Int, Int)] = range.filter(isPrime).toList.zipWithIndex.map( (prime, rank) => (rank + 1, prime))
 
-  def findPrimeRank(primes: List[(Int, Int)], target: Int): Int =
-    primes.filter { (_, prime) => prime == target }.head._1
+  def findPrimeRank(primes: List[(Int, Int)], target: Int): Int = primes.filter { (_, prime) => prime == target }.head._1
 
   def findTetrahedral(n: Int): Int = (n * (n + 1) * (n + 2)) / 6
 
