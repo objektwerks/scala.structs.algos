@@ -25,6 +25,9 @@ object Numbers:
 
   def toPrimes(primes: List[(Int, Int)]): List[Prime] = primes.map( (rank, prime) => Prime(rank, prime) )
 
+  def findPrimeRank(primes: List[Prime], target: Prime): Prime =
+    primes.filter( prime => prime == target).headOption.getOrElse( Prime(0, 0) )
+
   def isSquare(n: Int): Boolean =
     val square = Math.sqrt(n)
     square - Math.floor(square) == 0
