@@ -5,6 +5,8 @@ import Math.*
 import scala.annotation.tailrec
 import scala.util.Random
 
+final case class Prime(rank: Int, prime: Int)
+
 object Numbers:
   def isSquare(n: Int): Boolean =
     val square = Math.sqrt(n)
