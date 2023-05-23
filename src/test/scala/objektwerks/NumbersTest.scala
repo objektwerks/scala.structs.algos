@@ -17,6 +17,7 @@ class NumbersTest extends AnyFunSuite with Matchers:
 
   test("list primes") {
     listPrimes(0 to 1000).length shouldBe 168
+    toPrimes(0 to 1000).length shouldBe 168
   }
 
   test("find prime rank") {
