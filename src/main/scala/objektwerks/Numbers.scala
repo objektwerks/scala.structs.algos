@@ -26,8 +26,8 @@ object Numbers:
   def findPrimeRank(primes: List[(Int, Int)], target: Int): Int =
     primes.filter{ (_, prime) => prime == target }.headOption.getOrElse( (0, 0) )._1
 
-  def findPrimeRank(primes: List[Prime], target: Prime): Prime =
-    primes.filter( prime => prime == target ).headOption.getOrElse( Prime(0, 0) )
+  def findPrimeRank(primes: List[Prime], target: Int): Prime =
+    primes.filter( prime => prime.prime == target ).headOption.getOrElse( Prime(0, 0) )
 
   def isSquare(n: Int): Boolean =
     val square = Math.sqrt(n)
