@@ -22,7 +22,9 @@ class NumbersTest extends AnyFunSuite with Matchers:
 
   test("find prime rank") {
     findPrimeRank( listPrimes(0 to 1000), 101 ) shouldBe 26
+    findPrimeRank( toPrimes(0 to 1000), 101 ) shouldBe Prime(26, 101)
     findPrimeRank( listPrimes(0 to 100), 101 ) shouldBe 0
+    findPrimeRank( toPrimes(0 to 100), 101 ) shouldBe Prime(0, 0)
   }
 
   test("is square") {
