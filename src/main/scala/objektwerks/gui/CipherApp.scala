@@ -12,8 +12,7 @@ import scalafx.scene.input.{KeyCode, KeyEvent}
 import scalafx.scene.layout.{BorderPane, GridPane, HBox, Priority, VBox}
 
 import objektwerks.Ciphers.*
-import objektwerks.Prime
-import objektwerks.Numbers.{isPrime, isStar, isTriangular, findPrimeRank, listFactors, toPrimes}
+import objektwerks.Numbers.{isPrime, isStar, isTriangular, findPrimeRank, listFactors, listPrimes}
 
 object CipherApp extends JFXApp3:
   override def start(): Unit =
@@ -28,9 +27,9 @@ object CipherApp extends JFXApp3:
 object Model:
   val observableEncodings = ObservableBuffer[Encodings]()
   val observableEncoding = ObjectProperty[Int](0)
-  val primes = toPrimes(0 to 1000)
+  val primes = listPrimes(0 to 1000)
 
-  def primeRank(prime: Int): Prime = findPrimeRank(primes, prime)
+  def primeRank(prime: Int): Int = findPrimeRank(primes, prime)
 
   def encode(text: String): Unit = observableEncodings += Encodings.encode(text)
 
@@ -68,7 +67,7 @@ final class NumberPane extends HBox:
     text = ""
 
   Model.observableEncoding.onChange { (_, _, newValue) =>
-    val prime = if isPrime(newValue) then s"Yes - #${Model.primeRank(newValue).rank}" else "No"
+    val prime = if isPrime(newValue) then s"Yes - #${Model.primeRank(newValue)}" else "No"
     val star = if isStar(newValue) then "Yes" else "No"
     val triangular = if isTriangular(newValue) then "Yes" else "No"
     val factors = listFactors(newValue).mkString(", ")
