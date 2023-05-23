@@ -12,6 +12,7 @@ import scalafx.scene.input.{KeyCode, KeyEvent}
 import scalafx.scene.layout.{BorderPane, GridPane, HBox, Priority, VBox}
 
 import objektwerks.Ciphers.*
+import objektwerks.Prime
 import objektwerks.Numbers.{isPrime, isStar, isTriangular, findPrimeRank, listFactors, toPrimes}
 
 object CipherApp extends JFXApp3:
@@ -29,7 +30,7 @@ object Model:
   val observableEncoding = ObjectProperty[Int](0)
   val primes = toPrimes(0 to 1000)
 
-  def primeRank(prime: Int): Int = findPrimeRank(primes, prime)
+  def primeRank(prime: Int): Prime = findPrimeRank(primes, prime)
 
   def encode(text: String): Unit = observableEncodings += Encodings.encode(text)
 

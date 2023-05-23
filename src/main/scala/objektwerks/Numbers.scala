@@ -5,7 +5,7 @@ import Math.*
 import scala.annotation.tailrec
 import scala.util.Random
 
-final case class Prime(rank: Int, prime: Int)
+final case class Prime(rank: Int, value: Int)
 
 object Numbers:
   def isPrime(n: Int): Boolean =
@@ -27,7 +27,7 @@ object Numbers:
     primes.filter{ (_, prime) => prime == target }.headOption.getOrElse( (0, 0) )._1
 
   def findPrimeRank(primes: List[Prime], target: Int): Prime =
-    primes.filter( prime => prime.prime == target ).headOption.getOrElse( Prime(0, 0) )
+    primes.filter( prime => prime.value == target ).headOption.getOrElse( Prime(0, 0) )
 
   def isSquare(n: Int): Boolean =
     val square = Math.sqrt(n)
