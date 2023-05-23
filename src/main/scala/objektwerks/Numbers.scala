@@ -8,6 +8,19 @@ import scala.util.Random
 final case class Prime(rank: Int, prime: Int)
 
 object Numbers:
+  def isPrime(n: Int): Boolean =
+    @tailrec
+    def loop(current: Int): Boolean =
+      if current > sqrt(abs(n.toDouble)) then true
+      else n % current != 0 && loop(current + 1)
+
+    if n == -1 || n == 0 || n == 1 then false
+    else loop(2)
+
+  def listPrimes(range: Range): List[(Int, Int)] = range.filter(isPrime).toList.zipWithIndex.map( (prime, rank) => (rank + 1, prime))
+
+  def findPrimeRank(primes: List[(Int, Int)], target: Int): Int = primes.filter { (_, prime) => prime == target }.headOption.getOrElse((0, 0))._1
+
   def isSquare(n: Int): Boolean =
     val square = Math.sqrt(n)
     square - Math.floor(square) == 0
@@ -26,19 +39,6 @@ object Numbers:
     else if sum == n then true
     else if counter > n then false
     else isTriangular(n, counter + 1, sum + counter)
-
-  def isPrime(n: Int): Boolean =
-    @tailrec
-    def loop(current: Int): Boolean =
-      if current > sqrt(abs(n.toDouble)) then true
-      else n % current != 0 && loop(current + 1)
-
-    if n == -1 || n == 0 || n == 1 then false
-    else loop(2)
-
-  def listPrimes(range: Range): List[(Int, Int)] = range.filter(isPrime).toList.zipWithIndex.map( (prime, rank) => (rank + 1, prime))
-
-  def findPrimeRank(primes: List[(Int, Int)], target: Int): Int = primes.filter { (_, prime) => prime == target }.headOption.getOrElse((0, 0))._1
 
   def findTetrahedral(n: Int): Int = (n * (n + 1) * (n + 2)) / 6
 
