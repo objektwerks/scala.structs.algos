@@ -17,9 +17,11 @@ object Numbers:
     if n == -1 || n == 0 || n == 1 then false
     else loop(2)
 
-  def listPrimes(range: Range): List[(Int, Int)] = range.filter(isPrime).toList.zipWithIndex.map( (prime, rank) => (rank + 1, prime))
+  def listPrimes(range: Range): List[(Int, Int)] =
+    range.filter(isPrime).toList.zipWithIndex.map( (prime, rank) => (rank + 1, prime))
 
-  def findPrimeRank(primes: List[(Int, Int)], target: Int): Int = primes.filter { (_, prime) => prime == target }.headOption.getOrElse((0, 0))._1
+  def findPrimeRank(primes: List[(Int, Int)], target: Int): Int =
+    primes.filter { (_, prime) => prime == target }.headOption.getOrElse((0, 0))._1
 
   def isSquare(n: Int): Boolean =
     val square = Math.sqrt(n)
