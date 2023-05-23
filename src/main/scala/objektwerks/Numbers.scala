@@ -24,10 +24,10 @@ object Numbers:
     range.filter(isPrime).toList.zipWithIndex.map( (prime, rank) => Prime(rank + 1, prime) )
 
   def findPrimeRank(primes: List[(Int, Int)], target: Int): Int =
-    primes.filter { (_, prime) => prime == target }.headOption.getOrElse((0, 0))._1
+    primes.filter{ (_, prime) => prime == target }.headOption.getOrElse( (0, 0) )._1
 
   def findPrimeRank(primes: List[Prime], target: Prime): Prime =
-    primes.filter( prime => prime == target).headOption.getOrElse( Prime(0, 0) )
+    primes.filter( prime => prime == target ).headOption.getOrElse( Prime(0, 0) )
 
   def isSquare(n: Int): Boolean =
     val square = Math.sqrt(n)
