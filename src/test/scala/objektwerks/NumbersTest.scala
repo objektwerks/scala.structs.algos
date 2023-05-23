@@ -7,6 +7,23 @@ import Eval.*
 import Numbers.*
 
 class NumbersTest extends AnyFunSuite with Matchers:
+  test("is prime") {
+    isPrime(11) shouldBe true
+    isPrime(15) shouldBe false
+    isPrime(0) shouldBe false
+    isPrime(1) shouldBe false
+    isPrime(-1) shouldBe false
+  }
+
+  test("list primes") {
+    listPrimes(0 to 1000).length shouldBe 168
+  }
+
+  test("find prime rank") {
+    findPrimeRank( listPrimes(0 to 1000), 101 ) shouldBe 26
+    findPrimeRank( listPrimes(0 to 100), 101 ) shouldBe 0
+  }
+
   test("is square") {
     isSquare(4) shouldBe true
     isSquare(3) shouldBe false
@@ -27,23 +44,6 @@ class NumbersTest extends AnyFunSuite with Matchers:
     isTriangular(10) shouldBe true
     isTriangular(0) shouldBe false
     isTriangular(9) shouldBe false
-  }
-
-  test("is prime") {
-    isPrime(11) shouldBe true
-    isPrime(15) shouldBe false
-    isPrime(0) shouldBe false
-    isPrime(1) shouldBe false
-    isPrime(-1) shouldBe false
-  }
-
-  test("list primes") {
-    listPrimes(0 to 1000).length shouldBe 168
-  }
-
-  test("find prime rank") {
-    findPrimeRank( listPrimes(0 to 1000), 101 ) shouldBe 26
-    findPrimeRank( listPrimes(0 to 100), 101 ) shouldBe 0
   }
 
   test("find tetrahedral") {
