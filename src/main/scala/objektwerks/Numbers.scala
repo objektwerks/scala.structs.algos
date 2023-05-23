@@ -5,9 +5,9 @@ import Math.*
 import scala.annotation.tailrec
 import scala.util.Random
 
-final case class Prime(rank: Int, value: Int)
-
 object Numbers:
+  case class Prime(rank: Int, value: Int)
+
   def isPrime(n: Int): Boolean =
     @tailrec
     def loop(current: Int): Boolean =
