@@ -68,7 +68,7 @@ final class NumberPane extends HBox:
     text = ""
 
   Model.observableEncoding.onChange { (_, _, newValue) =>
-    val prime = if isPrime(newValue) then s"Yes - #${Model.primeRank(newValue)}" else "No"
+    val prime = if isPrime(newValue) then s"Yes - #${Model.primeRank(newValue).rank}" else "No"
     val star = if isStar(newValue) then "Yes" else "No"
     val triangular = if isTriangular(newValue) then "Yes" else "No"
     val factors = listFactors(newValue).mkString(", ")
