@@ -18,12 +18,13 @@ object Numbers:
     else loop(2)
 
   def listPrimes(range: Range): List[(Int, Int)] =
-    range.filter(isPrime).toList.zipWithIndex.map( (prime, rank) => (rank + 1, prime))
+    range.filter(isPrime).toList.zipWithIndex.map( (prime, rank) => (rank + 1, prime) )
+
+  def toPrimes(range: Range): List[Prime] =
+    range.filter(isPrime).toList.zipWithIndex.map( (prime, rank) => Prime(rank + 1, prime) )
 
   def findPrimeRank(primes: List[(Int, Int)], target: Int): Int =
     primes.filter { (_, prime) => prime == target }.headOption.getOrElse((0, 0))._1
-
-  def toPrimes(primes: List[(Int, Int)]): List[Prime] = primes.map( (rank, prime) => Prime(rank, prime) )
 
   def findPrimeRank(primes: List[Prime], target: Prime): Prime =
     primes.filter( prime => prime == target).headOption.getOrElse( Prime(0, 0) )
