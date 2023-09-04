@@ -37,3 +37,7 @@ Run
 3. objektwerks.cli.runNQueens
 4. objektwerks.cli.runSierpinski
 5. objektwerks.gui.CipherApp
+
+Resources
+---------
+* [Scala Algos](https://github.com/objektwerks/scala.algos)
