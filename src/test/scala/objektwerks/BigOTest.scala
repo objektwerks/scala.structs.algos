@@ -5,38 +5,32 @@ import org.scalatest.matchers.should.Matchers
 
 import scala.collection.mutable.ArrayBuffer
 
-import BigO._
+import BigO.*
 
-class BigOTest extends AnyFunSuite with Matchers:
-  test("constant time - O(1)") {
+final class BigOTest extends AnyFunSuite with Matchers:
+  test("constant time - O(1)"):
     constantTimeGetByIndex((1 to 10).toArray[Int], 3) shouldBe 4
-  }
 
-  test("linear time - O(n)") {
+  test("linear time - O(n)"):
     linearTimeSum( (0 to 9).toArray[Int] ) shouldBe 45
-  }
 
-  test("binary search - O(log N)") {
+  test("binary search - O(log N)"):
     val buffer = ArrayBuffer[Value]()
     for 
       i <- 0 to 9 
     do 
       buffer.addOne( Value(i) )
     binarySearch(buffer, Value(3)) shouldBe 3
-  }
 
-  test("quadratic time - O(n^2)") {
+  test("quadratic time - O(n^2)"):
     quadraticTimeBuildMatrix().length shouldBe 3
-  }
 
-  test("exponential time - O(2^N)") {
+  test("exponential time - O(2^N)"):
     exponentialTimeFibonacci(39) shouldBe 63245986
-  }
 
-  test("factorial time - O(N!)") {
+  test("factorial time - O(N!)"):
     val listA = (1 to 10).toList
     val listB = (5 to 15).toList
     val intersectListsResult = factorialTimeIntersectLists(listA, listB)
     val intersectSdkResult = listA intersect listB
     intersectListsResult shouldEqual intersectSdkResult
-  }
