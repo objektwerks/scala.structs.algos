@@ -5,7 +5,6 @@ import org.scalatest.matchers.should.Matchers
 
 import NQueens.*
 
-class NQueensTest extends AnyFunSuite with Matchers:
-  test("nqueens") {
+final class NQueensTest extends AnyFunSuite with Matchers:
+  test("nqueens"):
     nQueens().length shouldBe 92
-  }
