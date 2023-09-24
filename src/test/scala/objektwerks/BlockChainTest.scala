@@ -3,8 +3,8 @@ package objektwerks
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-class BlockChainTest extends AnyFunSuite with Matchers:
-  test("blockchain") {
+final class BlockChainTest extends AnyFunSuite with Matchers:
+  test("blockchain"):
     val blockChain = BlockChain[String]( genesisBlock = Block[String](value = "0") )
     blockChain.count shouldBe 1
 
@@ -20,4 +20,3 @@ class BlockChainTest extends AnyFunSuite with Matchers:
       blockChain.count shouldBe i + 1
 
     blockChain.isValid shouldBe true
-  }
