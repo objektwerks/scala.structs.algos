@@ -6,7 +6,7 @@ import scala.annotation.tailrec
 import scala.util.Random
 
 object Numbers:
-  case class Prime(rank: Int, value: Int)
+  final case class Prime(rank: Int, value: Int)
 
   def isPrime(n: Int): Boolean =
     @tailrec
