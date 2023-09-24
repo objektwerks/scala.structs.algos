@@ -3,8 +3,8 @@ package objektwerks
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-class SymmetricCryptoTest extends AnyFunSuite with Matchers:
-  test("encrypt > decrypt") {
+final class SymmetricCryptoTest extends AnyFunSuite with Matchers:
+  test("encrypt > decrypt"):
     val sharedSecret = SymmetricCrypto.secureRandomByteArray.mkString
     val sharedSalt = SymmetricCrypto.secureRandomByteArray
     val text = "Dogfishhead 60' IPA is the best IPA in the world!"
@@ -20,4 +20,3 @@ class SymmetricCryptoTest extends AnyFunSuite with Matchers:
       println(s"symmetric encrypted text: $encryptedText")
       println(s"symmetric decrypted text: $decryptedText")
       text shouldBe decryptedText
-  }
