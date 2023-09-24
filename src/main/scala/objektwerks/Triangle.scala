@@ -6,7 +6,7 @@ object Triangle:
   case object isoceles extends Kind    // 2 sides equal
   case object equilateral extends Kind // 3 sides equal
 
-case class Triangle(a: Int, b: Int, c: Int):
+final case class Triangle(a: Int, b: Int, c: Int):
   import Triangle.*
   
   def kind: Kind =
