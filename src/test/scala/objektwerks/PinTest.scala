@@ -5,4 +5,5 @@ import org.scalatest.matchers.should.Matchers
 
 final class PinTest extends AnyFunSuite with Matchers:
   test("pin"):
-    Pin().length shouldBe 7
+    for i <- 1 to 1_000_000
+    do Pin().length shouldBe 7
