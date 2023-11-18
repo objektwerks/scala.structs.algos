@@ -4,7 +4,7 @@ version := "0.1-SNAPSHOT"
 scalaVersion := "3.3.1"
 libraryDependencies ++= {
   Seq(
-    "org.scalafx" %% "scalafx" % "20.0.0-R31",
+    "org.scalafx" %% "scalafx" % "21.0.0-R32",
     "org.scalatest" %% "scalatest" % "3.2.17" % Test
   )
 }
