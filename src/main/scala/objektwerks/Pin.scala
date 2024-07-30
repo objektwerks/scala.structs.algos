@@ -5,6 +5,9 @@ import java.util.concurrent.ThreadLocalRandom
 import scala.collection.mutable
 import scala.util.Random
 
+/**
+ * See: https://sigpwned.com/2024/04/11/java-threadlocalrandom-is-safe-to-use-with-virtual-threads/
+ */
 object Pin:
   private val numbers = "0123456789"
   private val chars = "abcdefghijklmnopqrstuvwxyz"
