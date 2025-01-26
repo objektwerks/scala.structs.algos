@@ -3,6 +3,14 @@ package objektwerks
 import scala.annotation.tailrec
 import scala.collection.mutable.ArrayBuffer
 
+/**
+ * 1. O(1)     - constant time
+ * 2. O(log N) - logarithmic time
+ * 3. O(N)     - linear time
+ * 4. O(N2)    - quadratic time
+ * 5. O(2^n)   - exponential time
+ * 6. O(n!)    - factorial time
+ */
 object BigO:
   // O(1) - Constant Time
   def constantTimeGetByIndex(array: Array[Int], index: Int): Int = array(index)
