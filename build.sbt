@@ -9,5 +9,5 @@ libraryDependencies ++= {
   )
 }
 scalacOptions ++= Seq(
-  "-Wall"
+  "-Wunused:all"
 )
