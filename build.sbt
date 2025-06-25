@@ -1,7 +1,7 @@
 name := "scala.structs.algos"
 organization := "objektwerks"
 version := "0.2-SNAPSHOT"
-scalaVersion := "3.6.4" // Scala 3.7.1 still breaks ScalaFx!
+scalaVersion := "3.7.2-RC1"
 libraryDependencies ++= {
   Seq(
     "org.scalafx" %% "scalafx" % "24.0.0-R35",
@@ -9,5 +9,7 @@ libraryDependencies ++= {
   )
 }
 scalacOptions ++= Seq(
-  "-Wunused:all"
+  "-Wunused:all",
+  // Silences 3.7.0+ implicit using warnings:
+  "-Wconf:msg=Implicit parameters should be provided with a `using` clause:s"
 )
