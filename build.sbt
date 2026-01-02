@@ -1,7 +1,7 @@
 name := "scala.structs.algos"
 organization := "objektwerks"
 version := "0.2-SNAPSHOT"
-scalaVersion := "3.8.0-RC3"
+scalaVersion := "3.8.0-RC4"
 libraryDependencies ++= {
   Seq(
     "org.scalafx" %% "scalafx" % "24.0.2-R36",
